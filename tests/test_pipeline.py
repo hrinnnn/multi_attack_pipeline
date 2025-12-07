@@ -1,14 +1,14 @@
 import os
 import sys
 
-# 将当前目录添加到 path 以便导入模块
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+# 将项目根目录添加到 path 以便导入模块
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from openai import OpenAI
-from structures import Vulnerability
-from multi_attack_pipeline.src.models import OpenAITarget
-from evaluator import Evaluator
-from multi_attack_pipeline.src.orchestrator import MultiRoundAttackOrchestrator
+from src.structures import Vulnerability
+from src.models import OpenAITarget
+from src.evaluator import Evaluator
+from src.orchestrator import MultiRoundAttackOrchestrator
 
 # === 1. 配置环境 ===
 dashscope_key = os.getenv("DASHSCOPE_API_KEY")

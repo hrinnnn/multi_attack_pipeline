@@ -1,5 +1,5 @@
 from typing import Optional, Tuple
-from structures import Vulnerability
+from src.structures import Vulnerability
 
 class Evaluator:
     """
