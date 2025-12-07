@@ -1,6 +1,6 @@
 from typing import List, Dict, Any, Optional
 from structures import Vulnerability, AttackInput, AttackResult, AttackRound, MultiRoundAttack
-from models import TargetModel
+from multi_attack_pipeline.src.models import TargetModel
 from evaluator import Evaluator
 
 class MultiRoundAttackOrchestrator:

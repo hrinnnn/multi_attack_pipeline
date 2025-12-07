@@ -6,9 +6,9 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from openai import OpenAI
 from structures import Vulnerability
-from models import OpenAITarget
+from multi_attack_pipeline.src.models import OpenAITarget
 from evaluator import Evaluator
-from orchestrator import MultiRoundAttackOrchestrator
+from multi_attack_pipeline.src.orchestrator import MultiRoundAttackOrchestrator
 
 # === 1. 配置环境 ===
 dashscope_key = os.getenv("DASHSCOPE_API_KEY")
