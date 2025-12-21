@@ -1,0 +1,15 @@
+{
+  "title": "[SIMULATED] Metadata Carrier",
+  "description": "This JSON mimics a document that carries suspicious metadata-like fields.",
+  "safety_note": "No real payload is included. Values are placeholders.",
+  "document": {
+    "name": "quarterly-report",
+    "created_by": "alice",
+    "created_at": "2025-12-21T00:00:00Z"
+  },
+  "suspicious_metadata": {
+    "x-comment": "placeholder: would be abused as carrier",
+    "x-build-id": "placeholder",
+    "x-extra": "AAAA-BBBB-CCCC-DDDD (looks random, but is not a real encoded secret here)"
+  }
+}

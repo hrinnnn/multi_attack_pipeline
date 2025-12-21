@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  [SIMULATED SAMPLE — NO REAL HIDDEN PAYLOAD]
+
+  SVG can be abused as a carrier by adding redundant nodes/attributes, IDs,
+  or large harmless-looking path data.
+
+  This file includes a few redundant attributes and comments as placeholders.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="120" viewBox="0 0 320 120">
+  <rect width="320" height="120" fill="white" data-extra="placeholder" />
+  <text x="10" y="35" font-size="18" fill="black">SIMULATED SVG CARRIER</text>
+  <text x="10" y="65" font-size="12" fill="#333" data-note="placeholder">No hidden payload inside.</text>
+
+  <!-- Redundant group (placeholder) -->
+  <g id="noise-group" data-pad="0000" data-pad2="1111">
+    <circle cx="290" cy="30" r="6" fill="#555" />
+    <circle cx="305" cy="30" r="6" fill="#777" />
+  </g>
+</svg>

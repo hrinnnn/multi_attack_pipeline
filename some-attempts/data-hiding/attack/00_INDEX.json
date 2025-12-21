@@ -1,0 +1,48 @@
+{
+  "purpose": "Security training dataset (simulated stego attack artifacts)",
+  "safety_note": "These artifacts do NOT contain real hidden payloads. They are for detection/awareness exercises.",
+  "samples": [
+    {
+      "id": "zwsp_simulated",
+      "attack_file": "attack/01_zero_width_SIMULATED.txt",
+      "explain_file": "explain/01_zero_width.md",
+      "technique": "Zero-width / invisible Unicode abuse (simulated)"
+    },
+    {
+      "id": "whitespace_simulated",
+      "attack_file": "attack/02_whitespace_channel_SIMULATED.md",
+      "explain_file": "explain/02_whitespace.md",
+      "technique": "Whitespace channel in text/markdown (simulated)"
+    },
+    {
+      "id": "metadata_simulated",
+      "attack_file": "attack/03_metadata_carrier_SIMULATED.json",
+      "explain_file": "explain/03_metadata.md",
+      "technique": "Metadata as carrier (simulated)"
+    },
+    {
+      "id": "source_comment_simulated",
+      "attack_file": "attack/04_source_comment_carrier_SIMULATED.cpp",
+      "explain_file": "explain/04_source_comments.md",
+      "technique": "Source code comments / string litter as carrier (simulated)"
+    },
+    {
+      "id": "svg_noise_simulated",
+      "attack_file": "attack/05_svg_noise_SIMULATED.svg",
+      "explain_file": "explain/05_svg.md",
+      "technique": "Vector image (SVG) as carrier via redundant data (simulated)"
+    },
+    {
+      "id": "zip_structure_simulated",
+      "attack_file": "attack/06_archive_structure_SIMULATED.txt",
+      "explain_file": "explain/06_archive.md",
+      "technique": "Archive/container structure abuse (simulated)"
+    },
+    {
+      "id": "network_covert_simulated",
+      "attack_file": "attack/07_http_headers_SIMULATED.http",
+      "explain_file": "explain/07_network.md",
+      "technique": "Network covert channel via headers/fields (simulated)"
+    }
+  ]
+}

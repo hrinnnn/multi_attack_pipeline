@@ -1,0 +1,19 @@
+[SIMULATED] Archive/Container Abuse
+
+Attack idea (high level): use container formats (zip/tar) to hide data via:
+- unusually deep directory trees
+- misleading file names
+- duplicate entries
+- oversized comments/extra fields
+
+This dataset does not provide a real crafted archive.
+Instead, this text describes what a suspicious listing might look like:
+
+zip listing (illustrative only):
+- docs/readme.txt
+- docs/.hidden/.hidden/.hidden/padding.txt
+- images/holiday.jpg
+- images/holiday.jpg  (duplicate entry)
+- __MACOSX/._holiday.jpg
+
+Detection hint: validate archive structure, block duplicates, enforce limits.

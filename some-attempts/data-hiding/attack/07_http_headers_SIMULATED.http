@@ -1,0 +1,15 @@
+# [SIMULATED] HTTP Covert Channel via Headers
+#
+# This is NOT an operational exfiltration script.
+# It demonstrates what suspicious-looking headers might resemble.
+
+POST /upload HTTP/1.1
+Host: example.internal
+User-Agent: normal-client/1.0
+X-Request-ID: 6f0b1b1f-0000-0000-0000-000000000000
+X-Debug-Trace: placeholder-placeholder-placeholder
+X-Extra: THIS-LOOKS-RANDOM-BUT-IS-NOT-A-REAL-SECRET
+Content-Type: application/json
+Content-Length: 18
+
+{"ok": true}
