@@ -69,38 +69,101 @@ def extract_graph_from_text(text: str, source_url: str):
     """
     使用LLM从文本中提取图结构，同时进行图构建性检查
     """
-    
+# 普通的system_prompt
+#     system_prompt = """
+# 你是一个网络安全专家，负责构建"Agent攻击风险图谱"。
+# 你的任务是从给定的情报文本中提取结构化的"攻击场景(Attack Scenarios)"。
+
+# ### 1. 核心任务: 提取技术性攻击场景
+# 每个场景必须通过以下三元组 (Star Topology) 描述一个完整的技术路径：
+# 1.  **Attack (核心)**: 具体的攻击技术或手段。
+#     - **【硬性要求】**: 必须包含具体的**实现方法论 (Methodology)**。
+# 	- 在节点的description中，你应该将attack方法的实现细节全部记录下来，必要时你可以将原文关于攻击具体方法的段落复制到description中
+# 	- Description 可以非常长，必须要具体。如果原文没有具体的实现方法，请不要总结成attack节点。
+#     - **【禁令】**: 禁止提取宽泛的分类词（如 "Prompt Injection", "Data Leakage"）作为节点，除非文中详细描述了其实现步骤。
+#     - 示例: 提取 "Indirect Prompt Injection via SVG obfuscation" 而不是 "Prompt Injection"。
+# 2.  **Functionality (利用点/手段)**: 攻击者利用了 Agent 的哪个具体技术组件？
+#     - **【推理与具象化】**: 若文中未直言组件名，必须基于技术常识推理。
+#     - **【推荐分类 (Taxonomy)】**: 
+#         - `System Prompt Store` (系统提示词存储)
+#         - `Input Sanitizer/Validator` (输入清洗/验证器)
+#         - `RAG Retriever` (RAG检索器)
+#         - `External Tool Connector` (外部工具连接器/MCP服务器)
+#         - `Model Parameter/Weights` (模型权重)
+#         - `Context Window Manager` (上下文窗口管理器)
+#         - `Output Filter/Parser` (输出过滤器/解析器)
+#         - `Sandboxed Executor` (代码沙箱执行器)
+#     - **【禁令】**: 严禁使用 "General Agent", "AI System" 等模糊词。
+# 3.  **Risk (后果)**: 攻击最终造成的技术或业务风险状态。
+
+# ### 2. 图构建性检查 (Graphability) - 严苛模式
+# 只有满足以下条件的材料才被视为 `graphable: true`:
+# - 描述了具体的**利用路径** (Exploit Path)。
+# - 至少包含一个明确的**技术实现细节**（例如特定的攻击载荷格式、利用的特定协议缺陷、绕过逻辑等）。
+# - 如果仅是新闻播报、合规建议、或无细节的漏洞声明，请设为 `graphable: false`。
+
+# ### 3. 边关系定义:
+# - `utilizes`: Attack -> Functionality (攻击利用了功能)
+# - `causes`: Attack -> Risk (攻击导致了风险)
+# - `exposes`: Functionality -> Risk (功能设计/缺陷暴露了风险)
+# - `escalates_to`: Risk -> Risk (风险引发进一步风险)
+
+# ### 4. JSON 输出要求:
+# - 所有 `id` 必须为下划线命名 (snake_case)。
+# - `description` 必须详细描述**“它是如何工作的”**。
+# - 如果 `graphable` 为 false，`reason` 必须指明缺失的具体技术要素。
+
+# JSON 输出结构:
+# ```json
+# {
+#   "graphable": true,
+#   "scenarios": [
+#     {
+#       "attack": { "id": "snake_case_id", "label": "中文名", "type": "Attack", "description": "详细实现步骤" },
+#       "functionality": { "id": "snake_case_id", "label": "中文名", "type": "Functionality", "description": "组件功能描述" },
+#       "risk": { "id": "snake_case_id", "label": "中文名", "type": "Risk", "description": "后果详细描述" },
+#       "details": "该特定场景的简要总结"
+#     }
+#   ],
+#   "additional_edges": [{"source": "id1", "target": "id2", "relation": "..."}]
+# }
+# ```
+# """
+
+# 专门用来prompt Injection的system_prompt
     system_prompt = """
 你是一个网络安全专家，负责构建"Agent攻击风险图谱"。
+**本项目目前处于极其专注的阶段：仅提取与 "Jailbreak (越狱)" 和 "Prompt Injection (提示注入)" 相关的攻击手法。**
+
 你的任务是从给定的情报文本中提取结构化的"攻击场景(Attack Scenarios)"。
 
 ### 1. 核心任务: 提取技术性攻击场景
 每个场景必须通过以下三元组 (Star Topology) 描述一个完整的技术路径：
 1.  **Attack (核心)**: 具体的攻击技术或手段。
     - **【硬性要求】**: 必须包含具体的**实现方法论 (Methodology)**。
+	- 在节点的 description 中，务必详细记录 Attack 的触发逻辑、Payload 构造方式或具体绕过策略。
 	- 在节点的description中，你应该将attack方法的实现细节全部记录下来，必要时你可以将原文关于攻击具体方法的段落复制到description中
-	- Description 可以非常长，必须要具体。如果原文没有具体的实现方法，请不要总结成attack节点。
-    - **【禁令】**: 禁止提取宽泛的分类词（如 "Prompt Injection", "Data Leakage"）作为节点，除非文中详细描述了其实现步骤。
-    - 示例: 提取 "Indirect Prompt Injection via SVG obfuscation" 而不是 "Prompt Injection"。
+	- Description 可以非常长，必须要具体。如果原文没有具体的实现方法，请不要总结成attack节点，也就是说，不要总结成scenario
+    - **【专项聚焦示例】**:
+        - `GCG (Greedy Coordinate Gradient) Optimization`: 通过离散梯度搜索生成的对抗性后缀。
+        - `DAN (Do Anything Now) Roleplay`: 构造极端的人格设定来强制模型忽略安全准则。
+        - `Indirect Prompt Injection via SVG/Markdown`: 通过 RAG 检索到的外部污染数据源注入指令。
+        - `Translation/Character-Shift Obfuscation`: 利用多语言或 Base64 编码绕过静态字符匹配过滤器。
+    - **【禁令】**: 禁止提取宽泛的非技术词汇（如 "Cybersecurity Risk", "Phishing"），禁止提取与 AI 核心语境无关的传统漏洞。
 2.  **Functionality (利用点/手段)**: 攻击者利用了 Agent 的哪个具体技术组件？
-    - **【推理与具象化】**: 若文中未直言组件名，必须基于技术常识推理。
-    - **【推荐分类 (Taxonomy)】**: 
-        - `System Prompt Store` (系统提示词存储)
-        - `Input Sanitizer/Validator` (输入清洗/验证器)
-        - `RAG Retriever` (RAG检索器)
-        - `External Tool Connector` (外部工具连接器/MCP服务器)
-        - `Model Parameter/Weights` (模型权重)
-        - `Context Window Manager` (上下文窗口管理器)
-        - `Output Filter/Parser` (输出过滤器/解析器)
-        - `Sandboxed Executor` (代码沙箱执行器)
-    - **【禁令】**: 严禁使用 "General Agent", "AI System" 等模糊词。
+    - **【针对性分类 (Taxonomy)】**: 
+        - `System Prompt Store`: 存储核心指令的地方，常被直接注入攻击。
+        - `Input Sanitizer/Validator`: 拦截恶意字符的组件，常被编码混淆绕过。
+        - `RAG Retriever`: 检索外部文档的组件，常被间接注入利用。
+        - `Output Filter/Parser`: 检查模型输出的组件，常被越狱后产生的恶意负载绕过。
+        - `Context Window Manager`: 管理对话历史的组件，常被长文本填充或指令覆盖利用。
 3.  **Risk (后果)**: 攻击最终造成的技术或业务风险状态。
+    - **【示例】**: `System Prompt Disclosure` (系统提示词泄露), `Security Constraint Bypass` (安全约束绕过), `Malicious Code Execution` (执行恶意指令), `Unauthorized Data Access` (越狱导致的非授权访问)。
 
 ### 2. 图构建性检查 (Graphability) - 严苛模式
 只有满足以下条件的材料才被视为 `graphable: true`:
-- 描述了具体的**利用路径** (Exploit Path)。
-- 至少包含一个明确的**技术实现细节**（例如特定的攻击载荷格式、利用的特定协议缺陷、绕过逻辑等）。
-- 如果仅是新闻播报、合规建议、或无细节的漏洞声明，请设为 `graphable: false`。
+- 描述了具体的 **Prompt 构造思路** 或 **绕过逻辑**。
+- 如果仅是政策讨论、一般性风险概述、或不涉及“指令劫持/绕过”的普通漏洞，请设为 `graphable: false`。
 
 ### 3. 边关系定义:
 - `utilizes`: Attack -> Functionality (攻击利用了功能)
@@ -110,8 +173,8 @@ def extract_graph_from_text(text: str, source_url: str):
 
 ### 4. JSON 输出要求:
 - 所有 `id` 必须为下划线命名 (snake_case)。
-- `description` 必须详细描述**“它是如何工作的”**。
-- 如果 `graphable` 为 false，`reason` 必须指明缺失的具体技术要素。
+- `description` 务必保留原始技术细节。
+- 如果 `graphable` 为 false，`reason` 必须说明为何该项不属于 Prompt Injection 或 Jailbreak 的技术细节。
 
 JSON 输出结构:
 ```json
@@ -119,9 +182,9 @@ JSON 输出结构:
   "graphable": true,
   "scenarios": [
     {
-      "attack": { "id": "snake_case_id", "label": "中文名", "type": "Attack", "description": "详细实现步骤" },
-      "functionality": { "id": "snake_case_id", "label": "中文名", "type": "Functionality", "description": "组件功能描述" },
-      "risk": { "id": "snake_case_id", "label": "中文名", "type": "Risk", "description": "后果详细描述" },
+      "attack": { "id": "snake_case_id", "label": "中文名", "type": "Attack", "description": " Payload 构造或触发逻辑的细节" },
+      "functionality": { "id": "id", "label": "组件名", "type": "Functionality", "description": "描述该组件如何被指令操控" },
+      "risk": { "id": "id", "label": "后果名", "type": "Risk", "description": "越狱或注入后的具体影响" },
       "details": "该特定场景的简要总结"
     }
   ],

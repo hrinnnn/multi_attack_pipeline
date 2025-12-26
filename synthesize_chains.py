@@ -16,7 +16,10 @@ def synthesize_chain(atk, func, risk):
     通过 LLM 对三元组进行逻辑验证并合成复现剧本
     """
     prompt = f"""
-你是一位顶尖的 AI 安全专家。请根据以下提取出的图谱三元组（Attack, Functionality, Risk），验证其逻辑完整性并合成一个详细的**端到端攻击复现剧本**。
+你是一位顶尖的 AI 安全专家。请根据以下提取出的图谱三元组（Attack, Functionality, Risk）
+来：
+1.用易懂的语言总结一下这个攻击链。（大约100字）
+2.给出一个 1-5 分的可复现性评分。
 
 ### 输入节点信息:
 1. **Attack (攻击手段)**:
@@ -40,7 +43,7 @@ def synthesize_chain(atk, func, risk):
 {{
   "is_logical": true/false,
   "reason": "逻辑验证的理由",
-  "exploit_narrative": "详细的复现剧本 (Markdown 格式)",
+  "exploit_narrative": "攻击链路描述 (Markdown 格式)",
   "reproducibility_score": 1-5
 }}
 """
@@ -139,7 +142,11 @@ def main():
 
     for edge in edges:
         s, t, r = edge['source'], edge['target'], edge['relation']
-        refs = ev_map[(s, t, r)]["refs"]
+        ev_info = ev_map.get((s, t, r))
+        if not ev_info or not ev_info["refs"]:
+            continue # Skip edges without evidence
+            
+        refs = ev_info["refs"]
         if r == 'utilizes': func_uses[t].append((s, refs))
         elif r == 'exposes': func_exposes[s].append((t, refs))
 

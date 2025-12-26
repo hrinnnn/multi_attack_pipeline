@@ -10,10 +10,3 @@ ENV/
 *.db
 *.sqlite3
 
-# Logs and results
-node_summary.txt
-chains_*.txt
-*.png
-attack_scenarios.json
-discovered_attack_chains.txt
-attack_chains_robust.txt

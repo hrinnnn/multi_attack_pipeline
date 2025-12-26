@@ -37,7 +37,9 @@ def discover_new_chains():
     
     for edge in edges:
         src, dst, rel = edge['source'], edge['target'], edge['relation']
-        ev_info = evidence_map[(src, dst, rel)]
+        ev_info = evidence_map.get((src, dst, rel))
+        if not ev_info or not ev_info.get("refs"):
+            continue # Skip edges without evidence
         
         if rel == 'utilizes':
             if nodes.get(dst, {}).get('type') == 'Functionality':
@@ -80,10 +82,14 @@ def discover_new_chains():
                     chain_type = "New (Discovered)" # 全新推断发现
                 
                 # 为了报告显示，选一个代表性的描述和 Ref
-                ref_atk = sorted(list(atk_ev['refs']))[0]
+                atk_refs_sorted = sorted(list(atk_ev['refs']))
+                if not atk_refs_sorted: continue # Double check
+                ref_atk = atk_refs_sorted[0]
                 desc_atk = next((d for r, d in atk_ev['descs'] if r == ref_atk), "")
                 
-                ref_risk = sorted(list(risk_ev['refs']))[0]
+                risk_refs_sorted = sorted(list(risk_ev['refs']))
+                if not risk_refs_sorted: continue
+                ref_risk = risk_refs_sorted[0]
                 desc_risk = next((d for r, d in risk_ev['descs'] if r == ref_risk), "")
 
                 # 如果是单源，优先显示那个共同的 Ref
