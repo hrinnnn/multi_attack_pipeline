@@ -135,60 +135,68 @@ def extract_graph_from_text(text: str, source_url: str):
 你是一个网络安全专家，负责构建"Agent攻击风险图谱"。
 **本项目目前处于极其专注的阶段：仅提取与 "Jailbreak (越狱)" 和 "Prompt Injection (提示注入)" 相关的攻击手法。**
 
-你的任务是从给定的情报文本中提取结构化的"攻击场景(Attack Scenarios)"。
+你的任务是从给定的情报文本中提取结构化的"攻击原子链"或"复合攻击场景"。
 
-### 1. 核心任务: 提取技术性攻击场景
-每个场景必须通过以下三元组 (Star Topology) 描述一个完整的技术路径：
-1.  **Attack (核心)**: 具体的攻击技术或手段。
-    - **【硬性要求】**: 必须包含具体的**实现方法论 (Methodology)**。
-	- 在节点的 description 中，务必详细记录 Attack 的触发逻辑、Payload 构造方式或具体绕过策略。
-	- 在节点的description中，你应该将attack方法的实现细节全部记录下来，必要时你可以将原文关于攻击具体方法的段落复制到description中
-	- Description 可以非常长，必须要具体。如果原文没有具体的实现方法，请不要总结成attack节点，也就是说，不要总结成scenario
-    - **【专项聚焦示例】**:
-        - `GCG (Greedy Coordinate Gradient) Optimization`: 通过离散梯度搜索生成的对抗性后缀。
-        - `DAN (Do Anything Now) Roleplay`: 构造极端的人格设定来强制模型忽略安全准则。
-        - `Indirect Prompt Injection via SVG/Markdown`: 通过 RAG 检索到的外部污染数据源注入指令。
-        - `Translation/Character-Shift Obfuscation`: 利用多语言或 Base64 编码绕过静态字符匹配过滤器。
-    - **【禁令】**: 禁止提取宽泛的非技术词汇（如 "Cybersecurity Risk", "Phishing"），禁止提取与 AI 核心语境无关的传统漏洞。
-2.  **Functionality (利用点/手段)**: 攻击者利用了 Agent 的哪个具体技术组件？
-    - **【针对性分类 (Taxonomy)】**: 
-        - `System Prompt Store`: 存储核心指令的地方，常被直接注入攻击。
-        - `Input Sanitizer/Validator`: 拦截恶意字符的组件，常被编码混淆绕过。
-        - `RAG Retriever`: 检索外部文档的组件，常被间接注入利用。
-        - `Output Filter/Parser`: 检查模型输出的组件，常被越狱后产生的恶意负载绕过。
-        - `Context Window Manager`: 管理对话历史的组件，常被长文本填充或指令覆盖利用。
-3.  **Risk (后果)**: 攻击最终造成的技术或业务风险状态。
-    - **【示例】**: `System Prompt Disclosure` (系统提示词泄露), `Security Constraint Bypass` (安全约束绕过), `Malicious Code Execution` (执行恶意指令), `Unauthorized Data Access` (越狱导致的非授权访问)。
+### 1. 核心任务定义
 
-### 2. 图构建性检查 (Graphability) - 严苛模式
-只有满足以下条件的材料才被视为 `graphable: true`:
-- 描述了具体的 **Prompt 构造思路** 或 **绕过逻辑**。
-- 如果仅是政策讨论、一般性风险概述、或不涉及“指令劫持/绕过”的普通漏洞，请设为 `graphable: false`。
+#### 概念 A: Atomic Chain (原子链)
+当情报描述了单个离散的攻击手法时。必须通过 **Attack-Func-Risk 三角路径** 补全细节：
+- **Attack (核心)**: 具体的 Payload 构造、绕过策略或触发逻辑。必须包含实现方法论。
+- **Functionality (利用点)**: 被利用的 Agent 具体组件（见下文分类）。
+- **Risk (后果)**: 攻击造成的直接风险状态。
 
-### 3. 边关系定义:
-- `utilizes`: Attack -> Functionality (攻击利用了功能)
-- `causes`: Attack -> Risk (攻击导致了风险)
-- `exposes`: Functionality -> Risk (功能设计/缺陷暴露了风险)
-- `escalates_to`: Risk -> Risk (风险引发进一步风险)
+#### 概念 B: Complex Scenario (复合场景)
+当情报描述了一个包含多个时序步骤的完整攻击过程时。
+- 每个步骤必须引用一个 Atomic Chain。
+- 步骤间通过 `resulting_state` (即上一步的 Risk/State) 逻辑连接。
 
-### 4. JSON 输出要求:
-- 所有 `id` 必须为下划线命名 (snake_case)。
-- `description` 务必保留原始技术细节。
-- 如果 `graphable` 为 false，`reason` 必须说明为何该项不属于 Prompt Injection 或 Jailbreak 的技术细节。
+### 2. 技术分类 (Taxonomy)
 
-JSON 输出结构:
+**利用点 (Functionality):**
+- `System Prompt Store`: 存储核心指令的地方。
+- `Input Sanitizer/Validator`: 拦截恶意字符的组件。
+- `RAG Retriever`: 检索外部文档的组件。
+- `External Tool Connector`: 连接外部服务/工具的接口。
+- `Context Window Manager`: 管理历史上下文的组件。
+- `Output Filter/Parser`: 检查或解析模型输出的组件。
+
+### 3. 合法边定义 (严格遵守)
+
+你必须且只能使用以下三种关系来构建原子链：
+1. `utilizes`: **Attack** -> **Functionality** (攻击利用了功能)
+2. `causes`: **Attack** -> **Risk** (攻击导致了风险)
+3. `exposes`: **Functionality** -> **Risk** (功能暴露了风险)
+
+### 4. 输出格式要求 (JSON)
+
+你必须根据情报粒度，灵活选择输出 `atomic_chains` 或 `complex_scenarios`（两者可并存）。
+
 ```json
 {
   "graphable": true,
-  "scenarios": [
+  "atomic_chains": [
     {
-      "attack": { "id": "snake_case_id", "label": "中文名", "type": "Attack", "description": " Payload 构造或触发逻辑的细节" },
-      "functionality": { "id": "id", "label": "组件名", "type": "Functionality", "description": "描述该组件如何被指令操控" },
-      "risk": { "id": "id", "label": "后果名", "type": "Risk", "description": "越狱或注入后的具体影响" },
-      "details": "该特定场景的简要总结"
+      "attack": { "id": "id", "label": "中文名", "type": "Attack", "description": "实现细节" },
+      "functionality": { "id": "id", "label": "名", "type": "Functionality", "description": "用途" },
+      "risk": { "id": "id", "label": "名", "type": "Risk", "description": "后果" },
+      "details": "该单步攻击的摘要"
     }
   ],
-  "additional_edges": [{"source": "id1", "target": "id2", "relation": "..."}]
+  "complex_scenarios": [
+    {
+      "name": "场景名称",
+      "description": "一两句话简要描述",
+      "steps": [
+        {
+          "order": 1,
+          "chain": { "attack": "{...}", "functionality": "{...}", "risk": "{...}" },
+          "resulting_state": "完成此步后系统的状态"
+        }
+      ],
+      "final_state": "整个场景完成后的最终状态"
+    }
+  ],
+  "reason": "如果 graphable 为 false，在此说明缺失的技术细节"
 }
 ```
 """
@@ -368,6 +376,36 @@ def insert_edge(cursor, source, target, relation, description, intelligence_id):
     except Exception as e:
         print(f"    插入边/证据失败 {source}->{target}: {e}")
 
+def validate_and_insert_edge(cursor, source, target, relation, description, intelligence_id, nodes_dict):
+    """
+    严格验证边是否符合 Schema，并插入
+    Schema:
+    - utilizes: Attack -> Functionality
+    - causes: Attack -> Risk
+    - exposes: Functionality -> Risk
+    """
+    valid_schema = {
+        'utilizes': ('Attack', 'Functionality'),
+        'causes': ('Attack', 'Risk'),
+        'exposes': ('Functionality', 'Risk')
+    }
+
+    if relation not in valid_schema:
+        print(f"    [Strict Val] 拒绝未知边类型: {relation}")
+        return False
+
+    src_type = nodes_dict.get(source, {}).get('type')
+    dst_type = nodes_dict.get(target, {}).get('type')
+
+    expected_src, expected_dst = valid_schema[relation]
+
+    if src_type == expected_src and dst_type == expected_dst:
+        insert_edge(cursor, source, target, relation, description, intelligence_id)
+        return True
+    else:
+        print(f"    [Strict Val] 拒绝非法连接: {source}({src_type}) -[{relation}]-> {target}({dst_type}). 期望: {expected_src}->{expected_dst}")
+        return False
+
 def save_graph_data(conn, data, source_url, intelligence_id):
     cursor = conn.cursor()
     
@@ -378,10 +416,14 @@ def save_graph_data(conn, data, source_url, intelligence_id):
         conn.commit()
         return
 
-    scenarios = data.get("scenarios", [])
-    additional_edges = data.get("additional_edges", [])
+    atomic_chains = data.get("atomic_chains", [])
+    complex_scenarios = data.get("complex_scenarios", [])
     
-    print(f"  -> 提取: {len(scenarios)} 场景, {len(additional_edges)} 额外边")
+    # 向后兼容处理
+    if not atomic_chains and data.get("scenarios"):
+        atomic_chains = data.get("scenarios")
+
+    print(f"  -> 提取: {len(atomic_chains)} 原子链, {len(complex_scenarios)} 复合场景")
 
     # 预加载所有现有节点
     cursor.execute("SELECT id, label, type, description FROM graph_nodes")
@@ -399,48 +441,81 @@ def save_graph_data(conn, data, source_url, intelligence_id):
 
     id_mapping = {}
 
-    # 1. 处理 Scenarios (节点 + 核心边)
-    for scenario in scenarios:
-        # 提取并在必要时创建节点
-        attack_node = scenario.get('attack')
-        func_node = scenario.get('functionality')
-        risk_node = scenario.get('risk')
+    def process_chain(chain_data):
+        """处理原子链，返回对齐后的 (atk_id, func_id, risk_id)"""
+        attack_node = chain_data.get('attack')
+        func_node = chain_data.get('functionality')
+        risk_node = chain_data.get('risk')
         
         if not (attack_node and func_node and risk_node):
-            print("    [Warn] 跳过不完整的 Scenario")
-            continue
+            return None
 
         # 处理节点 (并获取对齐后的ID)
         atk_id = process_node(cursor, attack_node, existing_nodes_dict, existing_nodes_by_type, id_mapping, intelligence_id)
         func_id = process_node(cursor, func_node, existing_nodes_dict, existing_nodes_by_type, id_mapping, intelligence_id)
         risk_id = process_node(cursor, risk_node, existing_nodes_dict, existing_nodes_by_type, id_mapping, intelligence_id)
 
-        # 核心关系 1: Attack -> utilizes -> Functionality
-        insert_edge(cursor, atk_id, func_id, 'utilizes', scenario.get('details', ''), intelligence_id)
+        details = chain_data.get('details', '')
         
-        # 核心关系 2: Attack -> causes -> Risk
-        insert_edge(cursor, atk_id, risk_id, 'causes', scenario.get('details', ''), intelligence_id)
+        # 严格验证并插入三条核心边
+        validate_and_insert_edge(cursor, atk_id, func_id, 'utilizes', details, intelligence_id, existing_nodes_dict)
+        validate_and_insert_edge(cursor, atk_id, risk_id, 'causes', details, intelligence_id, existing_nodes_dict)
+        validate_and_insert_edge(cursor, func_id, risk_id, 'exposes', details, intelligence_id, existing_nodes_dict)
 
-    # 2. 处理 Additional Edges
-    for edge in additional_edges:
-        # 兼容性处理：LLM有时会用 type 代替 relation
-        relation = edge.get('relation') or edge.get('type')
-        if not relation:
-            print(f"    [Warn] 跳过格式错误的边 (缺少 relation/type): {edge}")
-            continue
+        return (atk_id, func_id, risk_id)
 
-        src = id_mapping.get(edge['source'], edge['source'])
-        dst = id_mapping.get(edge['target'], edge['target'])
+    # 1. 存储原子链并注册到 chains 表
+    for chain in atomic_chains:
+        ids = process_chain(chain)
+        if ids:
+            atk_id, func_id, risk_id = ids
+            # 注册到 chains 表
+            chain_id = f"chain_{atk_id[:15]}_{func_id[:10]}_{risk_id[:10]}"
+            cursor.execute('''
+                INSERT OR IGNORE INTO chains (id, attack_id, func_id, risk_id, source_type, source_refs)
+                VALUES (?, ?, ?, ?, 'existing', ?)
+            ''', (chain_id, atk_id, func_id, risk_id, json.dumps([intelligence_id])))
+
+    # 2. 存储复合场景
+    for scenario in complex_scenarios:
+        s_name = scenario.get('name', '未命名场景')
+        s_desc = scenario.get('description', '')
+        s_id = "scenario_" + s_name.lower().replace(" ", "_")[:30]
         
-        # 简单的边验证
-        if src in existing_nodes_dict and dst in existing_nodes_dict:
-             insert_edge(cursor, src, dst, relation, edge.get('description', ''), intelligence_id)
-        else:
-             print(f"    [Warn] 跳过额外边 {src}->{dst}: 节点未找到")
+        steps_processed = []
+        for step in scenario.get('steps', []):
+            order = step.get('order')
+            chain_data = step.get('chain')
+            res_state = step.get('resulting_state', '')
+            
+            if chain_data:
+                ids = process_chain(chain_data)
+                if ids:
+                    atk_id, func_id, risk_id = ids
+                    c_id = f"chain_{atk_id[:15]}_{func_id[:10]}_{risk_id[:10]}"
+                    # 注册 chain
+                    cursor.execute('''
+                        INSERT OR IGNORE INTO chains (id, attack_id, func_id, risk_id, source_type, source_refs)
+                        VALUES (?, ?, ?, ?, 'existing', ?)
+                    ''', (c_id, atk_id, func_id, risk_id, json.dumps([intelligence_id])))
+                    
+                    steps_processed.append({
+                        "order": order,
+                        "chain_id": c_id,
+                        "action": chain_data.get('attack', {}).get('label', ''),
+                        "resulting_state": res_state
+                    })
+
+        if steps_processed:
+            cursor.execute('''
+                INSERT OR REPLACE INTO scenarios (id, name, description, steps_json, final_state)
+                VALUES (?, ?, ?, ?, ?)
+            ''', (s_id, s_name, s_desc, json.dumps(steps_processed, ensure_ascii=False), scenario.get('final_state')))
 
     # 更新状态为已提取
     cursor.execute("UPDATE intel_core SET extraction_status = 'extracted' WHERE id = ?", (intelligence_id,))
     conn.commit()
+
 
 def main():
     conn = sqlite3.connect(DB_PATH)

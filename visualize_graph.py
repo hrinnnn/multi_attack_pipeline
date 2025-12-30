@@ -5,7 +5,7 @@ import matplotlib.patches as mpatches
 
 def visualize():
     print("正在生成图谱可视化...")
-    conn = sqlite3.connect('agent_intelligence.db')
+    conn = sqlite3.connect('intelligence_v2.db')
     cursor = conn.cursor()
 
     # Fetch nodes

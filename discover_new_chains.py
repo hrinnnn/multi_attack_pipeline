@@ -178,7 +178,56 @@ def discover_new_chains():
     write_chain_report("chains_existing.txt", single_source_chains, "Single-Source Verified Attack Chains")
     write_chain_report("chains_discovered.txt", inferred_chains, "Inferred & Discovered Attack Chains (Multi-Source)")
 
+    # 4. Save to Database (New Step)
+    print("\nSaving chains to database...")
+    save_chains_to_db(cursor, discovered_chains)
+    conn.commit()
+    print(f"✓ Chains synced to database")
+
     conn.close()
+
+def save_chains_to_db(cursor, chains):
+    """
+    Save discovered chains to the chains table
+    """
+    def generate_chain_id(attack_id, func_id, risk_id):
+        # Consistent ID generation strategy
+        a = attack_id[:20] if len(attack_id) > 20 else attack_id
+        f = func_id[:15] if len(func_id) > 15 else func_id
+        r = risk_id[:15] if len(risk_id) > 15 else risk_id
+        return f"chain_{a}_{f}_{r}"
+
+    inserted_count = 0
+    updated_count = 0
+    
+    for chain in chains:
+        attack_id = chain['attack']['id']
+        func_id = chain['functionality']['id']
+        risk_id = chain['risk']['id']
+        
+        chain_id = generate_chain_id(attack_id, func_id, risk_id)
+        
+        # Determine source type based on discovery logic
+        if "New" in chain['type']:
+            source_type = 'discovered'
+        else:
+            source_type = 'existing'
+            
+        common_refs = chain['inference_logic']['common_refs']
+        source_refs_json = json.dumps(common_refs) if common_refs else None
+        
+        try:
+            # Use INSERT OR REPLACE to update existing entries or insert new ones
+            cursor.execute('''
+                INSERT OR REPLACE INTO chains 
+                (id, attack_id, func_id, risk_id, source_type, source_refs)
+                VALUES (?, ?, ?, ?, ?, ?)
+            ''', (chain_id, attack_id, func_id, risk_id, source_type, source_refs_json))
+            inserted_count += 1
+        except Exception as e:
+            print(f"Error saving chain {chain_id}: {e}")
+            
+    print(f" - Processed {inserted_count} chains for database storage")
 
 if __name__ == "__main__":
     discover_new_chains()
