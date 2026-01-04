@@ -15,13 +15,13 @@ Scenario 管理工具：创建、查看、列出复合攻击场景
 
 3. 搜索可用攻击链 (用于构建场景):
     python manage_scenarios.py chains [--limit N] [--type existing|discovered] [--search KEYWORD]
-    示例: 
-        python manage_scenarios.py chains --search "jailbreak"
-        python manage_scenarios.py chains --type existing --limit 50
 
-4. 创建新场景 (交互式):
+4. 导出场景详情到文件:
+    python manage_scenarios.py export <scenario_id> [--output filename.txt]
+    示例: python manage_scenarios.py export scenario_drip_example
+
+5. 创建新场景 (交互式):
     python manage_scenarios.py create "场景名称" [--desc "场景描述"]
-    (运行后将进入交互模式，按提示输入步骤信息)
 """
 import sqlite3
 import json
@@ -118,6 +118,104 @@ def show_scenario(scenario_id):
     
     conn.close()
 
+def export_scenario(scenario_id, output_file=None):
+    """导出格式化的场景报告"""
+    conn = get_connection()
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+        SELECT id, name, description, steps_json, final_state, created_at
+        FROM scenarios WHERE id = ?
+    ''', (scenario_id,))
+    row = cursor.fetchone()
+    
+    if not row:
+        print(f"场景 '{scenario_id}' 不存在")
+        return
+    
+    sid, name, desc, steps_json, final_state, created = row
+    steps = json.loads(steps_json)
+    
+    if not output_file:
+        output_file = f"{name.replace(' ', '_')}_report.txt"
+        
+    with open(output_file, 'w', encoding='utf-8') as f:
+        # Header
+        f.write("=" * 80 + "\n")
+        f.write(f"ATTACK SCENARIO REPORT\n")
+        f.write("=" * 80 + "\n\n")
+        
+        # Meta Info
+        f.write(f"NAME        : {name}\n")
+        f.write(f"ID          : {sid}\n")
+        f.write(f"CREATED     : {created}\n")
+        f.write(f"DESCRIPTION : {desc or 'N/A'}\n")
+        f.write("-" * 80 + "\n\n")
+        
+        # Steps
+        f.write("ATTACK EXECUTION FLOW\n")
+        f.write("=" * 21 + "\n\n")
+        
+        for step in steps:
+            order = step.get('order', '?')
+            chain_id = step.get('chain_id', '?')
+            action = step.get('action', 'Unknown Action')
+            state = step.get('resulting_state', 'Unknown State')
+            state_type = step.get('state_type', '')
+            
+            # Fetch Chain Details
+            cursor.execute('''
+                SELECT 
+                    n1.label as attack, n1.description as atk_desc,
+                    n2.label as func, n2.description as func_desc,
+                    n3.label as risk, n3.description as risk_desc,
+                    c.source_type
+                FROM chains c
+                JOIN graph_nodes n1 ON c.attack_id = n1.id
+                JOIN graph_nodes n2 ON c.func_id = n2.id
+                JOIN graph_nodes n3 ON c.risk_id = n3.id
+                WHERE c.id = ?
+            ''', (chain_id,))
+            chain_row = cursor.fetchone()
+            
+            f.write(f"[STEP {order}] {action}\n")
+            f.write("+" + "-"*78 + "+\n")
+            
+            if chain_row:
+                atk, atk_d, func, func_d, risk, risk_d, ctype = chain_row
+                
+                f.write(f"| Chain ID : {chain_id}\n")
+                f.write(f"| Type     : {ctype.upper()}\n")
+                f.write("|\n")
+                f.write(f"| [ATTACK] : {atk}\n")
+                # f.write(f"|            {atk_d[:100]}...\n")
+                f.write("|    |\n")
+                f.write("|    v (utilizes)\n")
+                f.write(f"| [FUNC]   : {func}\n")
+                # f.write(f"|            {func_d[:100]}...\n")
+                f.write("|    |\n")
+                f.write("|    v (exposes)\n")
+                f.write(f"| [RISK]   : {risk}\n")
+                # f.write(f"|            {risk_d[:100]}...\n")
+            else:
+                f.write(f"| Chain ID : {chain_id} (Details not found in DB)\n")
+                
+            f.write("|\n")
+            f.write(f"| >>> Resulting State: {state}\n")
+            if state_type:
+                f.write(f"| >>> State Type     : {state_type}\n")
+            f.write("+" + "-"*78 + "+\n")
+            f.write("      |\n")
+            f.write("      v\n\n")
+            
+        # Final State
+        f.write("[FINAL OUTCOME]\n")
+        f.write(f"{final_state or 'No final state defined.'}\n")
+        f.write("\n" + "=" * 80 + "\n")
+        
+    conn.close()
+    print(f"✓ Scenario report saved to: {output_file}")
+
 def create_scenario(name, description, steps, final_state=None):
     """创建新场景"""
     conn = get_connection()
@@ -204,6 +302,11 @@ def main():
     chains_parser.add_argument('--type', choices=['existing', 'discovered'], help='筛选类型')
     chains_parser.add_argument('--search', help='搜索关键词 (Attack/Func/Risk)')
     
+    # export 命令
+    export_parser = subparsers.add_parser('export', help='导出场景详情到文件')
+    export_parser.add_argument('scenario_id', help='场景ID')
+    export_parser.add_argument('--output', help='输出文件名')
+
     # create 命令 (简化版，通过交互式创建)
     create_parser = subparsers.add_parser('create', help='创建新场景')
     create_parser.add_argument('name', help='场景名称')
@@ -217,6 +320,8 @@ def main():
         show_scenario(args.scenario_id)
     elif args.command == 'chains':
         list_chains(args.limit, args.type, args.search)
+    elif args.command == 'export':
+        export_scenario(args.scenario_id, args.output)
     elif args.command == 'create':
         print(f"\n创建场景: {args.name}")
         print("请输入步骤 (格式: chain_id | action | state | state_type)")

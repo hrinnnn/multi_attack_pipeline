@@ -141,25 +141,51 @@ def extract_graph_from_text(text: str, source_url: str):
 
 #### 概念 A: Atomic Chain (原子链)
 当情报描述了单个离散的攻击手法时。必须通过 **Attack-Func-Risk 三角路径** 补全细节：
-- **Attack (核心)**: 具体的 Payload 构造、绕过策略或触发逻辑。必须包含实现方法论。
-- **Functionality (利用点)**: 被利用的 Agent 具体组件（见下文分类）。
-- **Risk (后果)**: 攻击造成的直接风险状态。
+# 必须通过以下三元组 (Star Topology) 描述一个完整的技术路径：
+# 1.  **Attack (核心)**: 具体的攻击技术或手段。
+#     - **【硬性要求】**: 必须包含具体的**实现方法论 (Methodology)**。
+# 	- 在节点的description中，你应该将attack方法的实现细节全部记录下来，必要时你可以将原文关于攻击具体方法的段落复制到description中
+# 	- Description 可以非常长，必须要具体。如果原文没有具体的实现方法，请不要总结成attack节点，也就不要新组织这个chain。
+#     - **【禁令】**: 禁止提取宽泛的分类词（如 "Prompt Injection", "Data Leakage"）作为节点，除非文中详细描述了其实现步骤。
+#     - 示例: 提取 "Indirect Prompt Injection via SVG obfuscation" 而不是 "Prompt Injection"。
+# 2.  **Functionality (利用点/手段)**: 攻击者利用了 Agent 的哪个具体技术组件？
+#     - **【推理与具象化】**: 若文中未直言组件名，必须基于技术常识推理。
+#     - **【推荐分类 (Taxonomy)】**: 
+#         - `System Prompt Store` (系统提示词存储)
+#         - `Input Sanitizer/Validator` (输入清洗/验证器)
+#         - `RAG Retriever` (RAG检索器)
+#         - `External Tool Connector` (外部工具连接器/MCP服务器)
+#         - `Model Parameter/Weights` (模型权重)
+#         - `Context Window Manager` (上下文窗口管理器)
+#         - `Output Filter/Parser` (输出过滤器/解析器)
+#         - `Sandboxed Executor` (代码沙箱执行器)
+#     - **【禁令】**: 严禁使用 "General Agent", "AI System" 等模糊词。
+# 3.  **Risk (后果)**: 攻击最终造成的技术或业务风险状态。
+
+# ### 2. 图构建性检查 (Graphability) - 严苛模式
+# 只有满足以下条件的材料才被视为 `graphable: true`:
+# - 描述了具体的**利用路径** (Exploit Path)。
+# - 至少包含一个明确的**技术实现细节**（例如特定的攻击载荷格式、利用的特定协议缺陷、绕过逻辑等）。
+# - 如果仅是新闻播报、合规建议、或无细节的漏洞声明，请设为 `graphable: false`。
 
 #### 概念 B: Complex Scenario (复合场景)
-当情报描述了一个包含多个时序步骤的完整攻击过程时。
-- 每个步骤必须引用一个 Atomic Chain。
+当情报描述了一个包含多个时序步骤的完整攻击过程时。也就是说，是一个复合的攻击场景。
+每一个场景都包含了多步的攻击操作。每一步攻击操作环环相扣，以达成最终的攻击目的。
+在这种情况下，就应该组织成一个scenario。
+- 每个步骤必须引用一个 Atomic Chain。也就是说，scenario包含多个chain作为其中的步骤。
 - 步骤间通过 `resulting_state` (即上一步的 Risk/State) 逻辑连接。
 
 ### 2. 技术分类 (Taxonomy)
 
 **利用点 (Functionality):**
+示例：
 - `System Prompt Store`: 存储核心指令的地方。
 - `Input Sanitizer/Validator`: 拦截恶意字符的组件。
 - `RAG Retriever`: 检索外部文档的组件。
 - `External Tool Connector`: 连接外部服务/工具的接口。
 - `Context Window Manager`: 管理历史上下文的组件。
 - `Output Filter/Parser`: 检查或解析模型输出的组件。
-
+（你也可以组建你自己的functionality点）
 ### 3. 合法边定义 (严格遵守)
 
 你必须且只能使用以下三种关系来构建原子链：
@@ -169,7 +195,7 @@ def extract_graph_from_text(text: str, source_url: str):
 
 ### 4. 输出格式要求 (JSON)
 
-你必须根据情报粒度，灵活选择输出 `atomic_chains` 或 `complex_scenarios`（两者可并存）。
+你必须根据情报粒度，灵活选择输出 `atomic_chains` 或 `complex_scenarios`（两者可并存，也可以只存在其中一种）。
 
 ```json
 {
