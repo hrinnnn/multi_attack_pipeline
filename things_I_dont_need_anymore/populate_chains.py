@@ -9,11 +9,7 @@ DB_PATH = 'intelligence_v2.db'
 
 def generate_chain_id(attack_id, func_id, risk_id):
     """生成唯一的 chain ID"""
-    # 简化：取各ID的前20个字符拼接
-    a = attack_id[:20] if len(attack_id) > 20 else attack_id
-    f = func_id[:15] if len(func_id) > 15 else func_id
-    r = risk_id[:15] if len(risk_id) > 15 else risk_id
-    return f"chain_{a}_{f}_{r}"
+    return f"chain_{attack_id}_{func_id}_{risk_id}"
 
 def populate_chains():
     conn = sqlite3.connect(DB_PATH)

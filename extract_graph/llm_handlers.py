@@ -35,7 +35,7 @@ def extract_graph_from_text(text: str, source_url: str) -> Dict[str, Any]:
     start_time = time.time()
     try:
         completion = client.chat.completions.create(
-            model="qwen-max",
+            model="qwen-plus",
             messages=[
                 {'role': 'system', 'content': SYSTEM_PROMPT},
                 {'role': 'user', 'content': user_prompt}

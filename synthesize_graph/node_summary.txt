@@ -1,0 +1,66 @@
+--- Graph Nodes (Total: 59) ---
+
+[ATTACK] nodes:
+  - 紧急场景诱导型提示注入 (ID: A-001)
+  - 多模态紧急凭证伪造型提示注入 (ID: attack_e5a49ae6a8) [augmented]
+  - 时序压缩型语音紧急指令注入 (ID: attack_e697b6e5ba) [augmented]
+  - RAG检索器上下文污染注入 (ID: A-002)
+  - 通过检索器Query重写机制注入伪造元数据过滤条件 (ID: attack_e9809ae8bf) [augmented]
+  - 输出过滤器语义盲区绕过 (ID: A-003)
+  - 间接提示注入（PDF白字隐写） (ID: ai-attack-pi-pdf-white-text)
+  - PDF注释层指令注入（隐藏批注+自动触发） (ID: attack_504446e6b3) [augmented]
+  - 会话劫持与凭证收集 (ID: atk-004)
+  - 直接指令覆盖攻击（Instruction Overriding） (ID: AI-PI-001)
+  - 元指令混淆式覆盖（Meta-Instruction Obfuscation） (ID: attack_e58583e68c) [augmented]
+  - 角色欺骗攻击（Role-Based Deception） (ID: AI-PI-002)
+  - 时间轴欺骗攻击 (ID: attack_e697b6e997) [augmented]
+  - 多语言/同形字混淆绕过（Multilingual & Homoglyph Bypass） (ID: AI-PI-003)
+  - 叙事诱导攻击（Narrative-Based Induction） (ID: AI-PI-004)
+  - 视觉提示注入攻击（Visual Prompt Injection） (ID: AI-PI-006)
+  - 贪婪坐标梯度攻击（Greedy Coordinate Gradient, GCG） (ID: AI-PI-007)
+  - Arbitrary Shell Command Injection via Unsanitized cURL Construction (ID: ATT-001)
+  - 恶意 OAuth 登录话题重定向注入 (ID: A-CPHISH-OAUTH-REDIRECT)
+  - Unicode Variation Selector Jailbreak (ID: A-JB-001)
+  - Unicode ZWJ/ZWNJ 序列混淆攻击 (ID: attack_556e69636f) [augmented]
+  - MCP服务器端提示注入（恶意工具描述+伪造元数据诱导） (ID: A-MCP-PROMPT-INJ-001)
+  - MCP初始化逻辑越狱（Init Hook注入） (ID: A-MCP-JAILBREAK-001)
+  - BreakFun Trojan Schema 注入 (ID: A-BreakFun-TrojanSchema)
+
+[FUNCTIONALITY] nodes:
+  - Input Sanitizer/Validator (ID: F-001)
+  - RAG Retriever (ID: F-002)
+  - Output Filter/Parser (ID: F-003)
+  - External Tool Connector（search工具接口） (ID: func-external-tool-connector-search)
+  - Input Sanitizer/Validator (ID: f2)
+  - Input Sanitizer/Validator (ID: FUNC-2025-001)
+  - System Prompt Store (ID: FUNC-2025-002)
+  - 上下文窗口管理器 (ID: func-002)
+  - 沙箱执行器 (ID: func-003)
+  - Input Sanitizer/Validator (ID: FUNC-003)
+  - Model Parameter/Weights (ID: FUNC-007)
+  - Copilot Studio Login Topic (ID: F-COPILSTUDIO-LOGIN-TOPIC)
+  - Entra ID 应用权限授予流程 (ID: F-ENTRA-ID-APP-CONSENT-FLOW)
+  - LLM Tokenizer (ID: F-TOK-001)
+  - MCP工具描述与元数据组件（Tool Schema & Metadata） (ID: F-MCP-TOOL-SCHEMA)
+  - MCP服务器初始化钩子（Init Hook / Connection Callback） (ID: F-MCP-INIT-HOOK)
+  - MCP工具后端执行逻辑（Tool Backend Implementation） (ID: F-MCP-TOOL-BACKEND)
+  - Schema 解析器 / 结构化输入处理器 (ID: F-SchemaParser)
+
+[RISK] nodes:
+  - 敏感医疗数据明文泄露 (ID: R-001)
+  - 越权数据检索 (ID: R-002)
+  - 结构化敏感信息外泄 (ID: R-003)
+  - 通过Web日志通道的隐蔽数据外泄 (ID: risk-data-exfiltration-via-web-log)
+  - Prompt Injection indiretta attraverso input non validato (ID: r2)
+  - 凭证窃取 (ID: risk-001)
+  - 社会工程成功 (ID: risk-002)
+  - 绕过静态分析与沙箱检测 (ID: risk-003)
+  - 系统指令失效（System Prompt Bypass） (ID: RISK-001)
+  - 输出过滤降级（Output Filter Degradation） (ID: RISK-004)
+  - 第三方内容污染（Third-Party Content Poisoning） (ID: RISK-005)
+  - 模态通道污染（Modality Channel Poisoning） (ID: RISK-006)
+  - 对齐边界侵蚀（Alignment Boundary Erosion） (ID: RISK-007)
+  - OAuth 访问令牌劫持与会话接管 (ID: R-OAUTH-TOKEN-HIJACK)
+  - Safety Alignment Circumvention (ID: R-JB-001)
+  - Privilege Escalation via Context Poisoning (ID: R-PI-001)
+  - 结构化敏感数据明文泄露（含凭证、schema、业务逻辑） (ID: R-DATA-LEAKAGE-001)

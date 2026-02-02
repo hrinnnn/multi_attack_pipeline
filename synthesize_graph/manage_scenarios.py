@@ -26,9 +26,10 @@ Scenario 管理工具：创建、查看、列出复合攻击场景
 import sqlite3
 import json
 import argparse
+import textwrap
 from datetime import datetime
 
-DB_PATH = 'intelligence_v2.db'
+DB_PATH = '../intelligence_v2.db'
 
 def get_connection():
     return sqlite3.connect(DB_PATH)
@@ -94,9 +95,9 @@ def show_scenario(scenario_id):
         # 获取 chain 详情
         cursor.execute('''
             SELECT 
-                n1.label as attack,
-                n2.label as func,
-                n3.label as risk
+                n1.label as attack, n1.description as atk_desc,
+                n2.label as func, n2.description as func_desc,
+                n3.label as risk, n3.description as risk_desc
             FROM chains c
             JOIN graph_nodes n1 ON c.attack_id = n1.id
             JOIN graph_nodes n2 ON c.func_id = n2.id
@@ -105,13 +106,40 @@ def show_scenario(scenario_id):
         ''', (chain_id,))
         chain_row = cursor.fetchone()
         
+        # 补救逻辑：如果精确 ID 匹配不到（解决不同版本截断规则不一致的问题）
+        if not chain_row:
+            # 去除前缀 'chain_'，按下划线拆分，构建模糊匹配模式
+            core_id = chain_id[6:] if chain_id.startswith('chain_') else chain_id
+            parts = [p for p in core_id.split('_') if p]
+            fuzzy_pattern = "chain%" + "%".join(parts) + "%"
+            
+            cursor.execute('''
+                SELECT 
+                    n1.label as attack, n1.description as atk_desc,
+                    n2.label as func, n2.description as func_desc,
+                    n3.label as risk, n3.description as risk_desc
+                FROM chains c
+                JOIN graph_nodes n1 ON c.attack_id = n1.id
+                JOIN graph_nodes n2 ON c.func_id = n2.id
+                JOIN graph_nodes n3 ON c.risk_id = n3.id
+                WHERE c.id LIKE ?
+                LIMIT 1
+            ''', (fuzzy_pattern,))
+            chain_row = cursor.fetchone()
+
         print(f"\n步骤 {order}: {action}")
         if chain_row:
-            attack, func, risk = chain_row
+            attack, atk_desc, func, func_desc, risk, risk_desc = chain_row
             print(f"  Chain: {attack} → {func} → {risk}")
+            print(f"    - [Attack] {attack}:")
+            print(textwrap.indent(textwrap.fill(atk_desc or "无描述", width=100), "        "))
+            print(f"    - [Func]   {func}:")
+            print(textwrap.indent(textwrap.fill(func_desc or "无描述", width=100), "        "))
+            print(f"    - [Risk]   {risk}:")
+            print(textwrap.indent(textwrap.fill(risk_desc or "无描述", width=100), "        "))
         else:
             print(f"  Chain ID: {chain_id}")
-        print(f"  状态变化: {state} [{state_type}]")
+        print(f"  >>> 状态变化: {state} [{state_type}]")
     
     if final_state:
         print(f"\n最终状态: {final_state}")
@@ -188,15 +216,18 @@ def export_scenario(scenario_id, output_file=None):
                 f.write(f"| Type     : {ctype.upper()}\n")
                 f.write("|\n")
                 f.write(f"| [ATTACK] : {atk}\n")
-                # f.write(f"|            {atk_d[:100]}...\n")
+                if atk_d:
+                    f.write(textwrap.indent(textwrap.fill(atk_d, width=75), "|            ") + "\n")
                 f.write("|    |\n")
                 f.write("|    v (utilizes)\n")
                 f.write(f"| [FUNC]   : {func}\n")
-                # f.write(f"|            {func_d[:100]}...\n")
+                if func_d:
+                    f.write(textwrap.indent(textwrap.fill(func_d, width=75), "|            ") + "\n")
                 f.write("|    |\n")
                 f.write("|    v (exposes)\n")
                 f.write(f"| [RISK]   : {risk}\n")
-                # f.write(f"|            {risk_d[:100]}...\n")
+                if risk_d:
+                    f.write(textwrap.indent(textwrap.fill(risk_d, width=75), "|            ") + "\n")
             else:
                 f.write(f"| Chain ID : {chain_id} (Details not found in DB)\n")
                 

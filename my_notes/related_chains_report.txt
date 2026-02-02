@@ -1,0 +1,5018 @@
+=== Related Chains Report (Shared 2 Nodes) ===
+Existing Chains: 116
+Discovered Chains: 184
+Found Pairs: 358
+================================================================================
+
+Pair #1
+Shared Nodes: ACE三要素协同越狱, AI Agent执行环境（ACE三位一体架构）
+
+--- Existing Chain [chain_A-ACE-JAILBREAK-001_F-AGENT-EXECUTION-ENV-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: ACE三要素协同越狱
+Func:   AI Agent执行环境（ACE三位一体架构）
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ACE三要素协同越狱
+Func:   AI Agent执行环境（ACE三位一体架构）
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #2
+Shared Nodes: 敏感业务数据外泄, AI Agent执行环境（ACE三位一体架构）
+
+--- Existing Chain [chain_A-PDF-STEALTH-INJ-001_F-AGENT-EXECUTION-ENV-001_R-DATA-EXFILTRATION-001] ---
+Attack: 白底白字PDF隐写提示注入
+Func:   AI Agent执行环境（ACE三位一体架构）
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ACE三要素协同越狱
+Func:   AI Agent执行环境（ACE三位一体架构）
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #3
+Shared Nodes: 敏感业务数据外泄, ACE三要素协同越狱
+
+--- Existing Chain [chain_A-ACE-JAILBREAK-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-DATA-EXFILTRATION-001] ---
+Attack: ACE三要素协同越狱
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ACE三要素协同越狱
+Func:   AI Agent执行环境（ACE三位一体架构）
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #4
+Shared Nodes: ACE三要素协同越狱, 模型语义劫持（越狱）
+
+--- Existing Chain [chain_A-ACE-JAILBREAK-001_F-AGENT-EXECUTION-ENV-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: ACE三要素协同越狱
+Func:   AI Agent执行环境（ACE三位一体架构）
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ACE三要素协同越狱
+Func:   Output Filter/Parser
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #5
+Shared Nodes: ACE三要素协同越狱, 模型语义劫持（越狱）
+
+--- Existing Chain [chain_A-ACE-JAILBREAK-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: ACE三要素协同越狱
+Func:   MCP Server 外部工具连接器
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ACE三要素协同越狱
+Func:   Output Filter/Parser
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #6
+Shared Nodes: 敏感业务数据外泄, 预授权命令参数注入：find -exec滥用
+
+--- Existing Chain [chain_A-ARGUMENT-INJECTION-FIND-EXEC-001_F-TOOL-PARAMETER-VALIDATOR-001_R-DATA-EXFILTRATION-001] ---
+Attack: 预授权命令参数注入：find -exec滥用
+Func:   工具参数校验器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 预授权命令参数注入：find -exec滥用
+Func:   工具参数编码与序列化器
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #7
+Shared Nodes: 工具参数编码与序列化器, 预授权命令参数注入：find -exec滥用
+
+--- Existing Chain [chain_A-ARGUMENT-INJECTION-FIND-EXEC-001_F-TOOL-PARAMETER-ENCODER-001_R-RCE-002] ---
+Attack: 预授权命令参数注入：find -exec滥用
+Func:   工具参数编码与序列化器
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 预授权命令参数注入：find -exec滥用
+Func:   工具参数编码与序列化器
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #8
+Shared Nodes: 预授权命令参数注入：find -exec滥用, 工具参数校验器
+
+--- Existing Chain [chain_A-ARGUMENT-INJECTION-FIND-EXEC-001_F-TOOL-PARAMETER-VALIDATOR-001_R-DATA-EXFILTRATION-001] ---
+Attack: 预授权命令参数注入：find -exec滥用
+Func:   工具参数校验器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 预授权命令参数注入：find -exec滥用
+Func:   工具参数校验器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #9
+Shared Nodes: 预授权命令参数注入：find -exec滥用, 远程代码执行 (RCE)
+
+--- Existing Chain [chain_A-ARGUMENT-INJECTION-FIND-EXEC-001_F-TOOL-PARAMETER-ENCODER-001_R-RCE-002] ---
+Attack: 预授权命令参数注入：find -exec滥用
+Func:   工具参数编码与序列化器
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 预授权命令参数注入：find -exec滥用
+Func:   工具参数校验器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #10
+Shared Nodes: Schema Trojan 型越狱攻击, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-BREAKFUN-SCHEMA-TROJAN-001_F-SCHEMA-PROCESSOR-001_R-JAILBREAK-001] ---
+Attack: Schema Trojan 型越狱攻击
+Func:   结构化Schema解析器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: Schema Trojan 型越狱攻击
+Func:   工具参数校验器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #11
+Shared Nodes: Schema Trojan 型越狱攻击, 工具参数校验器
+
+--- Existing Chain [chain_A-BREAKFUN-SCHEMA-TROJAN-001_F-TOOL-PARAMETER-VALIDATOR-001_R-TOOL-HIJACK-001] ---
+Attack: Schema Trojan 型越狱攻击
+Func:   工具参数校验器
+Risk:   工具调用劫持 (risk-tool-call-hijack)
+
+--- Discovered Chain [Cross-Source] ---
+Attack: Schema Trojan 型越狱攻击
+Func:   工具参数校验器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #12
+Shared Nodes: Schema Trojan 型越狱攻击, 工具参数校验器
+
+--- Existing Chain [chain_A-BREAKFUN-SCHEMA-TROJAN-001_F-TOOL-PARAMETER-VALIDATOR-001_R-TOOL-HIJACK-001] ---
+Attack: Schema Trojan 型越狱攻击
+Func:   工具参数校验器
+Risk:   工具调用劫持 (risk-tool-call-hijack)
+
+--- Discovered Chain [Cross-Source] ---
+Attack: Schema Trojan 型越狱攻击
+Func:   工具参数校验器
+Risk:   元认知级越狱（已知风险下的确定性违规执行）
+--------------------------------------------------------------------------------
+
+Pair #13
+Shared Nodes: Markdown图像渲染触发数据外泄, 凭证窃取
+
+--- Existing Chain [chain_A-IMAGE-RENDER-EXFIL-001_F-OUTPUT-FILTER-PARSER-001_R-CREDENTIAL-EXFILTRATION-001] ---
+Attack: Markdown图像渲染触发数据外泄
+Func:   Output Filter/Parser
+Risk:   凭证窃取
+
+--- Discovered Chain [Cross-Source] ---
+Attack: Markdown图像渲染触发数据外泄
+Func:   Export to Colab 导出管道
+Risk:   凭证窃取
+--------------------------------------------------------------------------------
+
+Pair #14
+Shared Nodes: 敏感业务数据外泄, Markdown图像渲染触发数据外泄
+
+--- Existing Chain [chain_A-IMAGE-RENDER-EXFIL-001_F-OUTPUT-FILTER-PARSER-001_R-DATA-EXFILTRATION-001] ---
+Attack: Markdown图像渲染触发数据外泄
+Func:   Output Filter/Parser
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: Markdown图像渲染触发数据外泄
+Func:   Export to Colab 导出管道
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #15
+Shared Nodes: 敏感业务数据外泄, Markdown图像渲染触发数据外泄
+
+--- Existing Chain [chain_A-IMAGE-RENDER-EXFIL-001_F-MARKDOWN-RENDERER_R-DATA-EXFILTRATION-001] ---
+Attack: Markdown图像渲染触发数据外泄
+Func:   Markdown 渲染器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: Markdown图像渲染触发数据外泄
+Func:   Export to Colab 导出管道
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #16
+Shared Nodes: Markdown图像渲染触发数据外泄, 凭证窃取
+
+--- Existing Chain [chain_A-IMAGE-RENDER-EXFIL-001_F-OUTPUT-FILTER-PARSER-001_R-CREDENTIAL-EXFILTRATION-001] ---
+Attack: Markdown图像渲染触发数据外泄
+Func:   Output Filter/Parser
+Risk:   凭证窃取
+
+--- Discovered Chain [Cross-Source] ---
+Attack: Markdown图像渲染触发数据外泄
+Func:   Markdown 渲染器
+Risk:   凭证窃取
+--------------------------------------------------------------------------------
+
+Pair #17
+Shared Nodes: Markdown图像渲染触发数据外泄, Markdown 渲染器
+
+--- Existing Chain [chain_A-IMAGE-RENDER-EXFIL-001_F-MARKDOWN-RENDERER_R-DATA-EXFILTRATION-001] ---
+Attack: Markdown图像渲染触发数据外泄
+Func:   Markdown 渲染器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: Markdown图像渲染触发数据外泄
+Func:   Markdown 渲染器
+Risk:   凭证窃取
+--------------------------------------------------------------------------------
+
+Pair #18
+Shared Nodes: Markdown图像渲染触发数据外泄, Markdown 渲染器
+
+--- Existing Chain [chain_A-IMAGE-RENDER-EXFIL-001_F-MARKDOWN-RENDERER_R-DATA-EXFILTRATION-001] ---
+Attack: Markdown图像渲染触发数据外泄
+Func:   Markdown 渲染器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: Markdown图像渲染触发数据外泄
+Func:   Markdown 渲染器
+Risk:   未经授权的Web请求
+--------------------------------------------------------------------------------
+
+Pair #19
+Shared Nodes: Output Filter/Parser, Markdown图像渲染触发数据外泄
+
+--- Existing Chain [chain_A-IMAGE-RENDER-EXFIL-001_F-OUTPUT-FILTER-PARSER-001_R-CREDENTIAL-EXFILTRATION-001] ---
+Attack: Markdown图像渲染触发数据外泄
+Func:   Output Filter/Parser
+Risk:   凭证窃取
+
+--- Discovered Chain [Cross-Source] ---
+Attack: Markdown图像渲染触发数据外泄
+Func:   Output Filter/Parser
+Risk:   未经授权的Web请求
+--------------------------------------------------------------------------------
+
+Pair #20
+Shared Nodes: Output Filter/Parser, Markdown图像渲染触发数据外泄
+
+--- Existing Chain [chain_A-IMAGE-RENDER-EXFIL-001_F-OUTPUT-FILTER-PARSER-001_R-DATA-EXFILTRATION-001] ---
+Attack: Markdown图像渲染触发数据外泄
+Func:   Output Filter/Parser
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: Markdown图像渲染触发数据外泄
+Func:   Output Filter/Parser
+Risk:   未经授权的Web请求
+--------------------------------------------------------------------------------
+
+Pair #21
+Shared Nodes: CometJacking URL参数提示注入, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-COMET-URL-COLLECTION-001_F-MEMORY-ACCESS-ORCHESTRATOR-COMET-001_R-JAILBREAK-001] ---
+Attack: CometJacking URL参数提示注入
+Func:   记忆访问编排器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: CometJacking URL参数提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #22
+Shared Nodes: 系统指令绕过（越狱）, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-PROMPT-INJ-EXTERNAL-SOURCE-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-JAILBREAK-001] ---
+Attack: 外部源注入型提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: CometJacking URL参数提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #23
+Shared Nodes: 系统指令绕过（越狱）, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: CometJacking URL参数提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #24
+Shared Nodes: 系统指令绕过（越狱）, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-UNVALIDATED-TOOL-DESC-INJ-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-JAILBREAK-001] ---
+Attack: 工具描述注入（自然语言注入）
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: CometJacking URL参数提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #25
+Shared Nodes: CometJacking URL参数提示注入, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-COMET-URL-COLLECTION-001_F-RAG-RETRIEVER-001_R-JAILBREAK-001] ---
+Attack: CometJacking URL参数提示注入
+Func:   RAG Retriever
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: CometJacking URL参数提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #26
+Shared Nodes: 系统指令绕过（越狱）, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-PROMPTFLUX-OBFS-PROMPT-INJ-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-JAILBREAK-001] ---
+Attack: 硬编码API密钥驱动的提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: CometJacking URL参数提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #27
+Shared Nodes: CometJacking URL参数提示注入, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-PROMPT-INJ-COMET-URL-COLLECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-CREDENTIAL-EXFILTRATION-001] ---
+Attack: CometJacking URL参数提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   凭证窃取
+
+--- Discovered Chain [Cross-Source] ---
+Attack: CometJacking URL参数提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #28
+Shared Nodes: CometJacking URL参数提示注入, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-PROMPT-INJ-COMET-URL-COLLECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-DATA-EXFILTRATION-001] ---
+Attack: CometJacking URL参数提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: CometJacking URL参数提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #29
+Shared Nodes: 记忆访问编排器, CometJacking URL参数提示注入
+
+--- Existing Chain [chain_A-PROMPT-INJ-COMET-URL-COLLECTION-001_F-MEMORY-ACCESS-ORCHESTRATOR-COMET-001_R-JAILBREAK-001] ---
+Attack: CometJacking URL参数提示注入
+Func:   记忆访问编排器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: CometJacking URL参数提示注入
+Func:   记忆访问编排器
+Risk:   凭证窃取
+--------------------------------------------------------------------------------
+
+Pair #30
+Shared Nodes: CometJacking URL参数提示注入, 凭证窃取
+
+--- Existing Chain [chain_A-PROMPT-INJ-COMET-URL-COLLECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-CREDENTIAL-EXFILTRATION-001] ---
+Attack: CometJacking URL参数提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   凭证窃取
+
+--- Discovered Chain [Cross-Source] ---
+Attack: CometJacking URL参数提示注入
+Func:   记忆访问编排器
+Risk:   凭证窃取
+--------------------------------------------------------------------------------
+
+Pair #31
+Shared Nodes: RAG Retriever, CometJacking URL参数提示注入
+
+--- Existing Chain [chain_A-PROMPT-INJ-COMET-URL-COLLECTION-001_F-RAG-RETRIEVER-001_R-JAILBREAK-001] ---
+Attack: CometJacking URL参数提示注入
+Func:   RAG Retriever
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: CometJacking URL参数提示注入
+Func:   RAG Retriever
+Risk:   凭证窃取
+--------------------------------------------------------------------------------
+
+Pair #32
+Shared Nodes: RAG Retriever, 凭证窃取
+
+--- Existing Chain [chain_A-PROMPT-INJ-EXTERNAL-SOURCE-001_F-RAG-RETRIEVER-001_R-CREDENTIAL-EXFILTRATION-001] ---
+Attack: 外部源注入型提示注入
+Func:   RAG Retriever
+Risk:   凭证窃取
+
+--- Discovered Chain [Cross-Source] ---
+Attack: CometJacking URL参数提示注入
+Func:   RAG Retriever
+Risk:   凭证窃取
+--------------------------------------------------------------------------------
+
+Pair #33
+Shared Nodes: CometJacking URL参数提示注入, 凭证窃取
+
+--- Existing Chain [chain_A-PROMPT-INJ-COMET-URL-COLLECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-CREDENTIAL-EXFILTRATION-001] ---
+Attack: CometJacking URL参数提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   凭证窃取
+
+--- Discovered Chain [Cross-Source] ---
+Attack: CometJacking URL参数提示注入
+Func:   RAG Retriever
+Risk:   凭证窃取
+--------------------------------------------------------------------------------
+
+Pair #34
+Shared Nodes: 敏感业务数据外泄, CometJacking URL参数提示注入
+
+--- Existing Chain [chain_A-PROMPT-INJ-COMET-URL-COLLECTION-001_F-URL-PARAM-PROCESSOR-COMET-001_R-DATA-EXFILTRATION-001] ---
+Attack: CometJacking URL参数提示注入
+Func:   URL参数解析器（collection字段）
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: CometJacking URL参数提示注入
+Func:   RAG Retriever
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #35
+Shared Nodes: RAG Retriever, CometJacking URL参数提示注入
+
+--- Existing Chain [chain_A-PROMPT-INJ-COMET-URL-COLLECTION-001_F-RAG-RETRIEVER-001_R-JAILBREAK-001] ---
+Attack: CometJacking URL参数提示注入
+Func:   RAG Retriever
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: CometJacking URL参数提示注入
+Func:   RAG Retriever
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #36
+Shared Nodes: 敏感业务数据外泄, CometJacking URL参数提示注入
+
+--- Existing Chain [chain_A-PROMPT-INJ-COMET-URL-COLLECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-DATA-EXFILTRATION-001] ---
+Attack: CometJacking URL参数提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: CometJacking URL参数提示注入
+Func:   RAG Retriever
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #37
+Shared Nodes: CometJacking URL参数提示注入, URL参数解析器（collection字段）
+
+--- Existing Chain [chain_A-PROMPT-INJ-COMET-URL-COLLECTION-001_F-URL-PARAM-PROCESSOR-COMET-001_R-DATA-EXFILTRATION-001] ---
+Attack: CometJacking URL参数提示注入
+Func:   URL参数解析器（collection字段）
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: CometJacking URL参数提示注入
+Func:   URL参数解析器（collection字段）
+Risk:   凭证窃取
+--------------------------------------------------------------------------------
+
+Pair #38
+Shared Nodes: CometJacking URL参数提示注入, 凭证窃取
+
+--- Existing Chain [chain_A-PROMPT-INJ-COMET-URL-COLLECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-CREDENTIAL-EXFILTRATION-001] ---
+Attack: CometJacking URL参数提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   凭证窃取
+
+--- Discovered Chain [Cross-Source] ---
+Attack: CometJacking URL参数提示注入
+Func:   URL参数解析器（collection字段）
+Risk:   凭证窃取
+--------------------------------------------------------------------------------
+
+Pair #39
+Shared Nodes: 紧急场景诱导型提示注入, 身份核验环节被绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-EMERG-001_F-INPUT-SANITIZER-001_R-JAILBREAK-BYPASS-AUTH-001] ---
+Attack: 紧急场景诱导型提示注入
+Func:   输入验证器（Input Validator）
+Risk:   身份核验环节被绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 紧急场景诱导型提示注入
+Func:   ChatGPT 记忆存储
+Risk:   身份核验环节被绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #40
+Shared Nodes: 紧急场景诱导型提示注入, ChatGPT 记忆存储
+
+--- Existing Chain [chain_A-PROMPT-INJ-EMERG-001_F-CHATGPT-MEMORY-STORE_R-PERSISTENT-DATA-EXFILTRATION-001] ---
+Attack: 紧急场景诱导型提示注入
+Func:   ChatGPT 记忆存储
+Risk:   持久化敏感数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 紧急场景诱导型提示注入
+Func:   ChatGPT 记忆存储
+Risk:   身份核验环节被绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #41
+Shared Nodes: 紧急场景诱导型提示注入, 输入验证器（Input Validator）
+
+--- Existing Chain [chain_A-PROMPT-INJ-EMERG-001_F-INPUT-SANITIZER-001_R-JAILBREAK-BYPASS-AUTH-001] ---
+Attack: 紧急场景诱导型提示注入
+Func:   输入验证器（Input Validator）
+Risk:   身份核验环节被绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 紧急场景诱导型提示注入
+Func:   输入验证器（Input Validator）
+Risk:   持久化敏感数据外泄
+--------------------------------------------------------------------------------
+
+Pair #42
+Shared Nodes: 紧急场景诱导型提示注入, 持久化敏感数据外泄
+
+--- Existing Chain [chain_A-PROMPT-INJ-EMERG-001_F-CHATGPT-MEMORY-STORE_R-PERSISTENT-DATA-EXFILTRATION-001] ---
+Attack: 紧急场景诱导型提示注入
+Func:   ChatGPT 记忆存储
+Risk:   持久化敏感数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 紧急场景诱导型提示注入
+Func:   输入验证器（Input Validator）
+Risk:   持久化敏感数据外泄
+--------------------------------------------------------------------------------
+
+Pair #43
+Shared Nodes: 外部源注入型提示注入, Deep Research 检索器
+
+--- Existing Chain [chain_A-PROMPT-INJ-EXTERNAL-SOURCE-001_F-DEEP-RESEARCH-RETRIEVER-001_R-JAILBREAK-001] ---
+Attack: 外部源注入型提示注入
+Func:   Deep Research 检索器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 外部源注入型提示注入
+Func:   Deep Research 检索器
+Risk:   凭证窃取
+--------------------------------------------------------------------------------
+
+Pair #44
+Shared Nodes: 外部源注入型提示注入, 凭证窃取
+
+--- Existing Chain [chain_A-PROMPT-INJ-EXTERNAL-SOURCE-001_F-RAG-RETRIEVER-001_R-CREDENTIAL-EXFILTRATION-001] ---
+Attack: 外部源注入型提示注入
+Func:   RAG Retriever
+Risk:   凭证窃取
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 外部源注入型提示注入
+Func:   Deep Research 检索器
+Risk:   凭证窃取
+--------------------------------------------------------------------------------
+
+Pair #45
+Shared Nodes: 外部源注入型提示注入, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-PROMPT-INJ-EXTERNAL-SOURCE-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-JAILBREAK-001] ---
+Attack: 外部源注入型提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 外部源注入型提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   凭证窃取
+--------------------------------------------------------------------------------
+
+Pair #46
+Shared Nodes: 外部源注入型提示注入, 凭证窃取
+
+--- Existing Chain [chain_A-PROMPT-INJ-EXTERNAL-SOURCE-001_F-RAG-RETRIEVER-001_R-CREDENTIAL-EXFILTRATION-001] ---
+Attack: 外部源注入型提示注入
+Func:   RAG Retriever
+Risk:   凭证窃取
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 外部源注入型提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   凭证窃取
+--------------------------------------------------------------------------------
+
+Pair #47
+Shared Nodes: MCP Server 外部工具连接器, 凭证窃取
+
+--- Existing Chain [chain_A-PROMPT-INJ-COMET-URL-COLLECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-CREDENTIAL-EXFILTRATION-001] ---
+Attack: CometJacking URL参数提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   凭证窃取
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 外部源注入型提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   凭证窃取
+--------------------------------------------------------------------------------
+
+Pair #48
+Shared Nodes: 外部源注入型提示注入, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-EXTERNAL-SOURCE-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-JAILBREAK-001] ---
+Attack: 外部源注入型提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 外部源注入型提示注入
+Func:   RAG Retriever
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #49
+Shared Nodes: 外部源注入型提示注入, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-EXTERNAL-SOURCE-001_F-DEEP-RESEARCH-RETRIEVER-001_R-JAILBREAK-001] ---
+Attack: 外部源注入型提示注入
+Func:   Deep Research 检索器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 外部源注入型提示注入
+Func:   RAG Retriever
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #50
+Shared Nodes: RAG Retriever, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-COMET-URL-COLLECTION-001_F-RAG-RETRIEVER-001_R-JAILBREAK-001] ---
+Attack: CometJacking URL参数提示注入
+Func:   RAG Retriever
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 外部源注入型提示注入
+Func:   RAG Retriever
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #51
+Shared Nodes: 外部源注入型提示注入, RAG Retriever
+
+--- Existing Chain [chain_A-PROMPT-INJ-EXTERNAL-SOURCE-001_F-RAG-RETRIEVER-001_R-CREDENTIAL-EXFILTRATION-001] ---
+Attack: 外部源注入型提示注入
+Func:   RAG Retriever
+Risk:   凭证窃取
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 外部源注入型提示注入
+Func:   RAG Retriever
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #52
+Shared Nodes: 指令覆盖型提示注入, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-INST-OVERRIDE-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 指令覆盖型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 指令覆盖型提示注入
+Func:   execute_command工具调用机制
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #53
+Shared Nodes: 指令覆盖型提示注入, execute_command工具调用机制
+
+--- Existing Chain [chain_A-PROMPT-INJ-INST-OVERRIDE-001_F-SYSTEM-PROMPT-EXECUTE-COMMAND_R-RCE-002] ---
+Attack: 指令覆盖型提示注入
+Func:   execute_command工具调用机制
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 指令覆盖型提示注入
+Func:   execute_command工具调用机制
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #54
+Shared Nodes: 指令覆盖型提示注入, System Prompt Store
+
+--- Existing Chain [chain_A-PROMPT-INJ-INST-OVERRIDE-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 指令覆盖型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 指令覆盖型提示注入
+Func:   System Prompt Store
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #55
+Shared Nodes: 指令覆盖型提示注入, 远程代码执行 (RCE)
+
+--- Existing Chain [chain_A-PROMPT-INJ-INST-OVERRIDE-001_F-SYSTEM-PROMPT-EXECUTE-COMMAND_R-RCE-002] ---
+Attack: 指令覆盖型提示注入
+Func:   execute_command工具调用机制
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 指令覆盖型提示注入
+Func:   System Prompt Store
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #56
+Shared Nodes: 视觉编码器注意力机制, 视觉提示注入
+
+--- Existing Chain [chain_A-PROMPT-INJ-VISUAL-001_F-VLM-ATTENTION-MECHANISM-001_R-JAILBREAK-001] ---
+Attack: 视觉提示注入
+Func:   视觉编码器注意力机制
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 视觉提示注入
+Func:   视觉编码器注意力机制
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #57
+Shared Nodes: 视觉提示注入, 模型语义劫持（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-VISUAL-001_F-MULTIMODAL-INPUT-PROCESSOR-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: 视觉提示注入
+Func:   Multimodal Input Processor
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 视觉提示注入
+Func:   视觉编码器注意力机制
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #58
+Shared Nodes: 视觉编码器注意力机制, 视觉提示注入
+
+--- Existing Chain [chain_A-PROMPT-INJ-VISUAL-001_F-VLM-ATTENTION-MECHANISM-001_R-JAILBREAK-001] ---
+Attack: 视觉提示注入
+Func:   视觉编码器注意力机制
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 视觉提示注入
+Func:   视觉编码器注意力机制
+Risk:   通用越狱（Universal Jailbreak）
+--------------------------------------------------------------------------------
+
+Pair #59
+Shared Nodes: 通用越狱（Universal Jailbreak）, 视觉提示注入
+
+--- Existing Chain [chain_A-PROMPT-INJ-VISUAL-001_F-MULTIMODAL-INPUT-PROCESSOR-001_R-JAILBREAK-UNIVERSAL-001] ---
+Attack: 视觉提示注入
+Func:   Multimodal Input Processor
+Risk:   通用越狱（Universal Jailbreak）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 视觉提示注入
+Func:   视觉编码器注意力机制
+Risk:   通用越狱（Universal Jailbreak）
+--------------------------------------------------------------------------------
+
+Pair #60
+Shared Nodes: 视觉-语言跨模态对齐机制, 视觉提示注入
+
+--- Existing Chain [chain_A-PROMPT-INJ-VISUAL-001_F-VLM-CROSSMODAL-ALIGNMENT-001_R-JAILBREAK-001] ---
+Attack: 视觉提示注入
+Func:   视觉-语言跨模态对齐机制
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 视觉提示注入
+Func:   视觉-语言跨模态对齐机制
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #61
+Shared Nodes: 视觉提示注入, 模型语义劫持（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-VISUAL-001_F-MULTIMODAL-INPUT-PROCESSOR-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: 视觉提示注入
+Func:   Multimodal Input Processor
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 视觉提示注入
+Func:   视觉-语言跨模态对齐机制
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #62
+Shared Nodes: 视觉-语言跨模态对齐机制, 视觉提示注入
+
+--- Existing Chain [chain_A-PROMPT-INJ-VISUAL-001_F-VLM-CROSSMODAL-ALIGNMENT-001_R-JAILBREAK-001] ---
+Attack: 视觉提示注入
+Func:   视觉-语言跨模态对齐机制
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 视觉提示注入
+Func:   视觉-语言跨模态对齐机制
+Risk:   通用越狱（Universal Jailbreak）
+--------------------------------------------------------------------------------
+
+Pair #63
+Shared Nodes: 通用越狱（Universal Jailbreak）, 视觉提示注入
+
+--- Existing Chain [chain_A-PROMPT-INJ-VISUAL-001_F-MULTIMODAL-INPUT-PROCESSOR-001_R-JAILBREAK-UNIVERSAL-001] ---
+Attack: 视觉提示注入
+Func:   Multimodal Input Processor
+Risk:   通用越狱（Universal Jailbreak）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 视觉提示注入
+Func:   视觉-语言跨模态对齐机制
+Risk:   通用越狱（Universal Jailbreak）
+--------------------------------------------------------------------------------
+
+Pair #64
+Shared Nodes: ShadowLeak HTML内嵌提示注入, Deep Research 检索器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-DEEP-RESEARCH-RETRIEVER-001_R-DATA-EXFILTRATION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   上下文污染
+--------------------------------------------------------------------------------
+
+Pair #65
+Shared Nodes: ShadowLeak HTML内嵌提示注入, Deep Research 检索器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-DEEP-RESEARCH-RETRIEVER-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   上下文污染
+--------------------------------------------------------------------------------
+
+Pair #66
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 上下文污染
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-CONTEXT-POLLUTION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   上下文污染
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   上下文污染
+--------------------------------------------------------------------------------
+
+Pair #67
+Shared Nodes: ShadowLeak HTML内嵌提示注入, Deep Research 检索器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-DEEP-RESEARCH-RETRIEVER-001_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   上下文污染
+--------------------------------------------------------------------------------
+
+Pair #68
+Shared Nodes: Deep Research 检索器, 上下文污染
+
+--- Existing Chain [chain_A-CLOAKING-USER-AGENT-SWITCH-001_F-DEEP-RESEARCH-RETRIEVER-001_R-CONTEXT-POLLUTION-001] ---
+Attack: AI-targeted cloaking（AI定向伪装）
+Func:   Deep Research 检索器
+Risk:   上下文污染
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   上下文污染
+--------------------------------------------------------------------------------
+
+Pair #69
+Shared Nodes: ShadowLeak HTML内嵌提示注入, Deep Research 检索器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-DEEP-RESEARCH-RETRIEVER-001_R-DATA-EXFILTRATION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   非授权数据外泄（data-exfiltration-unprompted-sql）
+--------------------------------------------------------------------------------
+
+Pair #70
+Shared Nodes: ShadowLeak HTML内嵌提示注入, Deep Research 检索器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-DEEP-RESEARCH-RETRIEVER-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   非授权数据外泄（data-exfiltration-unprompted-sql）
+--------------------------------------------------------------------------------
+
+Pair #71
+Shared Nodes: ShadowLeak HTML内嵌提示注入, Deep Research 检索器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-DEEP-RESEARCH-RETRIEVER-001_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   非授权数据外泄（data-exfiltration-unprompted-sql）
+--------------------------------------------------------------------------------
+
+Pair #72
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 非授权数据外泄（data-exfiltration-unprompted-sql）
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-DATA-EXFILTRATION-VIA-UNPROMPTED-SQL-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   非授权数据外泄（data-exfiltration-unprompted-sql）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   非授权数据外泄（data-exfiltration-unprompted-sql）
+--------------------------------------------------------------------------------
+
+Pair #73
+Shared Nodes: ShadowLeak HTML内嵌提示注入, Deep Research 检索器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-DEEP-RESEARCH-RETRIEVER-001_R-DATA-EXFILTRATION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   PII数据明文外泄
+--------------------------------------------------------------------------------
+
+Pair #74
+Shared Nodes: ShadowLeak HTML内嵌提示注入, Deep Research 检索器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-DEEP-RESEARCH-RETRIEVER-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   PII数据明文外泄
+--------------------------------------------------------------------------------
+
+Pair #75
+Shared Nodes: ShadowLeak HTML内嵌提示注入, PII数据明文外泄
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-PII-EXFILTRATION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   PII数据明文外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   PII数据明文外泄
+--------------------------------------------------------------------------------
+
+Pair #76
+Shared Nodes: ShadowLeak HTML内嵌提示注入, Deep Research 检索器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-DEEP-RESEARCH-RETRIEVER-001_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   PII数据明文外泄
+--------------------------------------------------------------------------------
+
+Pair #77
+Shared Nodes: ShadowLeak HTML内嵌提示注入, Deep Research 检索器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-DEEP-RESEARCH-RETRIEVER-001_R-DATA-EXFILTRATION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #78
+Shared Nodes: ShadowLeak HTML内嵌提示注入, Deep Research 检索器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-DEEP-RESEARCH-RETRIEVER-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #79
+Shared Nodes: ShadowLeak HTML内嵌提示注入, Deep Research 检索器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-DEEP-RESEARCH-RETRIEVER-001_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #80
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 远程代码执行 (RCE)
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-RCE-002] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #81
+Shared Nodes: ShadowLeak HTML内嵌提示注入, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   上下文污染
+--------------------------------------------------------------------------------
+
+Pair #82
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 上下文污染
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-CONTEXT-POLLUTION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   上下文污染
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   上下文污染
+--------------------------------------------------------------------------------
+
+Pair #83
+Shared Nodes: ShadowLeak HTML内嵌提示注入, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-DATA-EXFILTRATION-VIA-UNPROMPTED-SQL-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   非授权数据外泄（data-exfiltration-unprompted-sql）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   上下文污染
+--------------------------------------------------------------------------------
+
+Pair #84
+Shared Nodes: 敏感业务数据外泄, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-MCP-EMAIL-BCC-INJECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-DATA-EXFILTRATION-001] ---
+Attack: 恶意 MCP Server BCC 邮件窃取注入
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #85
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 敏感业务数据外泄
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-DEEP-RESEARCH-RETRIEVER-001_R-DATA-EXFILTRATION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #86
+Shared Nodes: ShadowLeak HTML内嵌提示注入, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #87
+Shared Nodes: 敏感业务数据外泄, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-ACE-JAILBREAK-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-DATA-EXFILTRATION-001] ---
+Attack: ACE三要素协同越狱
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #88
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 敏感业务数据外泄
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-SEARCHGPT-RETRIEVER_R-DATA-EXFILTRATION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   SearchGPT 检索器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #89
+Shared Nodes: ShadowLeak HTML内嵌提示注入, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-DATA-EXFILTRATION-VIA-UNPROMPTED-SQL-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   非授权数据外泄（data-exfiltration-unprompted-sql）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #90
+Shared Nodes: 敏感业务数据外泄, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-PROMPT-INJ-DATA-EXFIL-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-DATA-EXFILTRATION-001] ---
+Attack: 数据外泄型提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #91
+Shared Nodes: 敏感业务数据外泄, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-PROMPT-INJ-COMET-URL-COLLECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-DATA-EXFILTRATION-001] ---
+Attack: CometJacking URL参数提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #92
+Shared Nodes: 敏感业务数据外泄, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-IDE-JSON-SCHEMA-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-DATA-EXFILTRATION-001] ---
+Attack: 远程 JSON Schema 数据外泄型提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #93
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 模型语义劫持（越狱）
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #94
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 模型语义劫持（越狱）
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-DEEP-RESEARCH-RETRIEVER-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #95
+Shared Nodes: ShadowLeak HTML内嵌提示注入, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #96
+Shared Nodes: MCP Server 外部工具连接器, 模型语义劫持（越狱）
+
+--- Existing Chain [chain_A-ACE-JAILBREAK-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: ACE三要素协同越狱
+Func:   MCP Server 外部工具连接器
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #97
+Shared Nodes: ShadowLeak HTML内嵌提示注入, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-DATA-EXFILTRATION-VIA-UNPROMPTED-SQL-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   非授权数据外泄（data-exfiltration-unprompted-sql）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #98
+Shared Nodes: ShadowLeak HTML内嵌提示注入, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   PII数据明文外泄
+--------------------------------------------------------------------------------
+
+Pair #99
+Shared Nodes: ShadowLeak HTML内嵌提示注入, PII数据明文外泄
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-PII-EXFILTRATION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   PII数据明文外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   PII数据明文外泄
+--------------------------------------------------------------------------------
+
+Pair #100
+Shared Nodes: ShadowLeak HTML内嵌提示注入, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-DATA-EXFILTRATION-VIA-UNPROMPTED-SQL-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   非授权数据外泄（data-exfiltration-unprompted-sql）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   PII数据明文外泄
+--------------------------------------------------------------------------------
+
+Pair #101
+Shared Nodes: ShadowLeak HTML内嵌提示注入, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #102
+Shared Nodes: ShadowLeak HTML内嵌提示注入, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-DATA-EXFILTRATION-VIA-UNPROMPTED-SQL-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   非授权数据外泄（data-exfiltration-unprompted-sql）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #103
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 远程代码执行 (RCE)
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-RCE-002] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #104
+Shared Nodes: MCP Server 外部工具连接器, 远程代码执行 (RCE)
+
+--- Existing Chain [chain_A-INDIRECT-PROMPT-INJ-RCE-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-RCE-002] ---
+Attack: 间接提示注入触发远程命令执行（Auto-Execute绕过）
+Func:   MCP Server 外部工具连接器
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #105
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 输入清洗/验证器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   上下文污染
+--------------------------------------------------------------------------------
+
+Pair #106
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 输入清洗/验证器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   上下文污染
+--------------------------------------------------------------------------------
+
+Pair #107
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 上下文污染
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-CONTEXT-POLLUTION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   上下文污染
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   上下文污染
+--------------------------------------------------------------------------------
+
+Pair #108
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 输入清洗/验证器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   非授权数据外泄（data-exfiltration-unprompted-sql）
+--------------------------------------------------------------------------------
+
+Pair #109
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 输入清洗/验证器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   非授权数据外泄（data-exfiltration-unprompted-sql）
+--------------------------------------------------------------------------------
+
+Pair #110
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 非授权数据外泄（data-exfiltration-unprompted-sql）
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-DATA-EXFILTRATION-VIA-UNPROMPTED-SQL-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   非授权数据外泄（data-exfiltration-unprompted-sql）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   非授权数据外泄（data-exfiltration-unprompted-sql）
+--------------------------------------------------------------------------------
+
+Pair #111
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 输入清洗/验证器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   PII数据明文外泄
+--------------------------------------------------------------------------------
+
+Pair #112
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 输入清洗/验证器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   PII数据明文外泄
+--------------------------------------------------------------------------------
+
+Pair #113
+Shared Nodes: ShadowLeak HTML内嵌提示注入, PII数据明文外泄
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-PII-EXFILTRATION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   PII数据明文外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   PII数据明文外泄
+--------------------------------------------------------------------------------
+
+Pair #114
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 输入清洗/验证器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #115
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 输入清洗/验证器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #116
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 远程代码执行 (RCE)
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-RCE-002] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #117
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 敏感业务数据外泄
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-DEEP-RESEARCH-RETRIEVER-001_R-DATA-EXFILTRATION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #118
+Shared Nodes: ShadowLeak HTML内嵌提示注入, RAG Retriever
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-PII-EXFILTRATION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   PII数据明文外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #119
+Shared Nodes: ShadowLeak HTML内嵌提示注入, RAG Retriever
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-CONTEXT-POLLUTION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   上下文污染
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #120
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 敏感业务数据外泄
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-SEARCHGPT-RETRIEVER_R-DATA-EXFILTRATION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   SearchGPT 检索器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #121
+Shared Nodes: ShadowLeak HTML内嵌提示注入, RAG Retriever
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-RCE-002] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #122
+Shared Nodes: ShadowLeak HTML内嵌提示注入, RAG Retriever
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-PII-EXFILTRATION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   PII数据明文外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   非授权数据外泄（data-exfiltration-unprompted-sql）
+--------------------------------------------------------------------------------
+
+Pair #123
+Shared Nodes: ShadowLeak HTML内嵌提示注入, RAG Retriever
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-CONTEXT-POLLUTION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   上下文污染
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   非授权数据外泄（data-exfiltration-unprompted-sql）
+--------------------------------------------------------------------------------
+
+Pair #124
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 非授权数据外泄（data-exfiltration-unprompted-sql）
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-DATA-EXFILTRATION-VIA-UNPROMPTED-SQL-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   非授权数据外泄（data-exfiltration-unprompted-sql）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   非授权数据外泄（data-exfiltration-unprompted-sql）
+--------------------------------------------------------------------------------
+
+Pair #125
+Shared Nodes: ShadowLeak HTML内嵌提示注入, RAG Retriever
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-RCE-002] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   非授权数据外泄（data-exfiltration-unprompted-sql）
+--------------------------------------------------------------------------------
+
+Pair #126
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #127
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #128
+Shared Nodes: RAG Retriever, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-COMET-URL-COLLECTION-001_F-RAG-RETRIEVER-001_R-JAILBREAK-001] ---
+Attack: CometJacking URL参数提示注入
+Func:   RAG Retriever
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #129
+Shared Nodes: ShadowLeak HTML内嵌提示注入, RAG Retriever
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-PII-EXFILTRATION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   PII数据明文外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #130
+Shared Nodes: ShadowLeak HTML内嵌提示注入, RAG Retriever
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-CONTEXT-POLLUTION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   上下文污染
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #131
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-DEEP-RESEARCH-RETRIEVER-001_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #132
+Shared Nodes: ShadowLeak HTML内嵌提示注入, RAG Retriever
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-RCE-002] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #133
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 模型语义劫持（越狱）
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #134
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 模型语义劫持（越狱）
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-DEEP-RESEARCH-RETRIEVER-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #135
+Shared Nodes: ShadowLeak HTML内嵌提示注入, RAG Retriever
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-PII-EXFILTRATION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   PII数据明文外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #136
+Shared Nodes: ShadowLeak HTML内嵌提示注入, RAG Retriever
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-CONTEXT-POLLUTION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   上下文污染
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #137
+Shared Nodes: ShadowLeak HTML内嵌提示注入, RAG Retriever
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-RCE-002] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #138
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 上下文污染
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-CONTEXT-POLLUTION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   上下文污染
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   SearchGPT 检索器
+Risk:   上下文污染
+--------------------------------------------------------------------------------
+
+Pair #139
+Shared Nodes: ShadowLeak HTML内嵌提示注入, SearchGPT 检索器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-SEARCHGPT-RETRIEVER_R-DATA-EXFILTRATION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   SearchGPT 检索器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   SearchGPT 检索器
+Risk:   上下文污染
+--------------------------------------------------------------------------------
+
+Pair #140
+Shared Nodes: ShadowLeak HTML内嵌提示注入, SearchGPT 检索器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-SEARCHGPT-RETRIEVER_R-DATA-EXFILTRATION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   SearchGPT 检索器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   SearchGPT 检索器
+Risk:   非授权数据外泄（data-exfiltration-unprompted-sql）
+--------------------------------------------------------------------------------
+
+Pair #141
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 非授权数据外泄（data-exfiltration-unprompted-sql）
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-DATA-EXFILTRATION-VIA-UNPROMPTED-SQL-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   非授权数据外泄（data-exfiltration-unprompted-sql）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   SearchGPT 检索器
+Risk:   非授权数据外泄（data-exfiltration-unprompted-sql）
+--------------------------------------------------------------------------------
+
+Pair #142
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 模型语义劫持（越狱）
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   SearchGPT 检索器
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #143
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 模型语义劫持（越狱）
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-DEEP-RESEARCH-RETRIEVER-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   Deep Research 检索器
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   SearchGPT 检索器
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #144
+Shared Nodes: ShadowLeak HTML内嵌提示注入, SearchGPT 检索器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-SEARCHGPT-RETRIEVER_R-DATA-EXFILTRATION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   SearchGPT 检索器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   SearchGPT 检索器
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #145
+Shared Nodes: ShadowLeak HTML内嵌提示注入, PII数据明文外泄
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-PII-EXFILTRATION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   PII数据明文外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   SearchGPT 检索器
+Risk:   PII数据明文外泄
+--------------------------------------------------------------------------------
+
+Pair #146
+Shared Nodes: ShadowLeak HTML内嵌提示注入, SearchGPT 检索器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-SEARCHGPT-RETRIEVER_R-DATA-EXFILTRATION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   SearchGPT 检索器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   SearchGPT 检索器
+Risk:   PII数据明文外泄
+--------------------------------------------------------------------------------
+
+Pair #147
+Shared Nodes: ShadowLeak HTML内嵌提示注入, SearchGPT 检索器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-SEARCHGPT-RETRIEVER_R-DATA-EXFILTRATION-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   SearchGPT 检索器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   SearchGPT 检索器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #148
+Shared Nodes: ShadowLeak HTML内嵌提示注入, 远程代码执行 (RCE)
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-RAG-RETRIEVER-001_R-RCE-002] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   RAG Retriever
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Cross-Source] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   SearchGPT 检索器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #149
+Shared Nodes: 工具描述注入（自然语言注入）, System Prompt Store
+
+--- Existing Chain [chain_A-UNVALIDATED-TOOL-DESC-INJ-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 工具描述注入（自然语言注入）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 工具描述注入（自然语言注入）
+Func:   System Prompt Store
+Risk:   工具调用劫持 (risk-tool-call-hijack)
+--------------------------------------------------------------------------------
+
+Pair #150
+Shared Nodes: 工具调用劫持 (risk-tool-call-hijack), 工具描述注入（自然语言注入）
+
+--- Existing Chain [chain_A-UNVALIDATED-TOOL-DESC-INJ-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-TOOL-HIJACK-001] ---
+Attack: 工具描述注入（自然语言注入）
+Func:   MCP Server 外部工具连接器
+Risk:   工具调用劫持 (risk-tool-call-hijack)
+
+--- Discovered Chain [Cross-Source] ---
+Attack: 工具描述注入（自然语言注入）
+Func:   System Prompt Store
+Risk:   工具调用劫持 (risk-tool-call-hijack)
+--------------------------------------------------------------------------------
+
+Pair #151
+Shared Nodes: 系统指令绕过（越狱）, 思维链（CoT）执行器
+
+--- Existing Chain [chain_A-SCPGA-001_F-COT-EXECUTOR-001_R-JAILBREAK-001] ---
+Attack: SCPGA自认同CoT渐进式泛化攻击
+Func:   思维链（CoT）执行器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: CoT种子污染式跨模型迁移攻击
+Func:   思维链（CoT）执行器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #152
+Shared Nodes: 大规模虚假信息传播, 上下文窗口管理器
+
+--- Existing Chain [chain_A-WEB-CRAWL-CONTEXT-HIJACK-001_F-CONTEXT-WINDOW-MANAGER-001_R-DISINFORMATION-DISSEMINATION-001] ---
+Attack: Web爬虫上下文劫持重述
+Func:   上下文窗口管理器
+Risk:   大规模虚假信息传播
+
+--- Discovered Chain [Augmented] ---
+Attack: DOM树结构诱导性重排序注入
+Func:   上下文窗口管理器
+Risk:   大规模虚假信息传播
+--------------------------------------------------------------------------------
+
+Pair #153
+Shared Nodes: IDE 配置加载器, 远程代码执行 (RCE)
+
+--- Existing Chain [chain_A-IDE-SETTINGS-OVERWRITE-001_F-IDE-CONFIG-LOADER_R-RCE-002] ---
+Attack: IDE 设置覆盖型远程代码执行提示注入
+Func:   IDE 配置加载器
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Augmented] ---
+Attack: IDE 插件配置覆盖型远程代码执行提示注入
+Func:   IDE 配置加载器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #154
+Shared Nodes: IDE 配置加载器, 远程代码执行 (RCE)
+
+--- Existing Chain [chain_A-IDE-SETTINGS-OVERWRITE-001_F-IDE-CONFIG-LOADER_R-RCE-002] ---
+Attack: IDE 设置覆盖型远程代码执行提示注入
+Func:   IDE 配置加载器
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Augmented] ---
+Attack: IDE 调试配置覆盖型远程代码执行提示注入
+Func:   IDE 配置加载器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #155
+Shared Nodes: KV缓存管理器, 模型语义劫持（越狱）
+
+--- Existing Chain [chain_A-KV-HISTORY-SWAP-001_F-KV-CACHE-MANAGER_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: KV缓存历史块级替换攻击（History Swapping）
+Func:   KV缓存管理器
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: KV缓存跨层时序错位注入（Temporal Misalignment Injection）
+Func:   KV缓存管理器
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #156
+Shared Nodes: AI安全扫描器越狱（误判豁免）, RAG增强型AI代码审查代理
+
+--- Existing Chain [chain_A-PROMPT-INJ-ESLINT-001_F-RAG-SCANNER-001_R-JAILBREAK-SCANNER-001] ---
+Attack: LLM扫描器诱导型提示注入
+Func:   RAG增强型AI代码审查代理
+Risk:   AI安全扫描器越狱（误判豁免）
+
+--- Discovered Chain [Augmented] ---
+Attack: LLM扫描器上下文污染型注释混淆攻击
+Func:   RAG增强型AI代码审查代理
+Risk:   AI安全扫描器越狱（误判豁免）
+--------------------------------------------------------------------------------
+
+Pair #157
+Shared Nodes: Export to Colab 导出管道, 未经授权的Web请求
+
+--- Existing Chain [chain_A-GEMINI-MD-IMG-BYPASS-001_F-MARKDOWN-EXPORT-PIPELINE-001_R-UNAUTHORIZED-WEB-REQUEST-001] ---
+Attack: Markdown图像语法前缀混淆型提示注入
+Func:   Export to Colab 导出管道
+Risk:   未经授权的Web请求
+
+--- Discovered Chain [Augmented] ---
+Attack: Markdown 行内代码反引号嵌套逃逸注入
+Func:   Export to Colab 导出管道
+Risk:   未经授权的Web请求
+--------------------------------------------------------------------------------
+
+Pair #158
+Shared Nodes: 系统指令绕过（越狱）, Markdown 渲染器
+
+--- Existing Chain [chain_A-MARKDOWN-FENCED-BLOCK-OBSCURATION-001_F-MARKDOWN-RENDERER_R-JAILBREAK-001] ---
+Attack: Markdown围栏代码块渲染缺陷隐匿提示注入
+Func:   Markdown 渲染器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: Markdown 行内代码反引号嵌套逃逸注入
+Func:   Markdown 渲染器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #159
+Shared Nodes: 系统指令绕过（越狱）, 结构化Schema解析器
+
+--- Existing Chain [chain_A-BREAKFUN-SCHEMA-TROJAN-001_F-SCHEMA-PROCESSOR-001_R-JAILBREAK-001] ---
+Attack: Schema Trojan 型越狱攻击
+Func:   结构化Schema解析器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: Schema 递归引用膨胀型越狱攻击
+Func:   结构化Schema解析器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #160
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: Unicode零宽字符混淆式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #161
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-CONFUSION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 混淆诱导型提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: Unicode零宽字符混淆式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #162
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-ENCODING-OBFUSCATION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 编码混淆型提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: Unicode零宽字符混淆式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #163
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-GCG-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 贪心坐标梯度攻击（GCG）
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: Unicode零宽字符混淆式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #164
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-ASCII-SMUGGLING-ECHOLEAK-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: ASCII走私式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: Unicode零宽字符混淆式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #165
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-ONE-CLICK-URL-PARAM-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 一键式URL参数提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: Unicode零宽字符混淆式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #166
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-UNICODE-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: Unicode控制字符隐式指令注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: Unicode零宽字符混淆式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #167
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-META-PROMPT-CONVERSION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 元提示驱动的诗歌化批量转换
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: Unicode零宽字符混淆式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #168
+Shared Nodes: 敏感业务数据外泄, 工具参数校验器
+
+--- Existing Chain [chain_A-ARGUMENT-INJECTION-FIND-EXEC-001_F-TOOL-PARAMETER-VALIDATOR-001_R-DATA-EXFILTRATION-001] ---
+Attack: 预授权命令参数注入：find -exec滥用
+Func:   工具参数校验器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Augmented] ---
+Attack: rsync --rsh 滥用实现跨域数据回传
+Func:   工具参数校验器
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #169
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_attack_e5a49ae8bd_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: 多轮对话上下文劫持型提示注入
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 上下文锚定型角色劫持
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #170
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_A-NINJA-001_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: Haystack式越狱攻击（NINJA）
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 上下文锚定型角色劫持
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #171
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_A-INDIRECT-PROMPT-INJ-RCE-001_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: 间接提示注入触发远程命令执行（Auto-Execute绕过）
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 上下文锚定型角色劫持
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #172
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_A-UNICODE-PROMPT-INJECTION-001_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: Unicode控制字符隐式指令注入
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 上下文锚定型角色劫持
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #173
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_A-ADAPTIVE-TREE-SEARCH-001_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: 自适应树搜索引导式提示编织
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 上下文锚定型角色劫持
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #174
+Shared Nodes: 上下文窗口管理器, 模型语义劫持（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-EMERG-002_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: 多模态紧急指令嵌套注入
+Func:   上下文窗口管理器
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Cross-Source | Augmented] ---
+Attack: 上下文锚定型角色劫持
+Func:   上下文窗口管理器
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #175
+Shared Nodes: 多轮上下文规划器（Planner + Context Accumulator）, 模型语义劫持（越狱）
+
+--- Existing Chain [chain_A-JAILBREAK-CLAUDE-CODE-SEGMENTED-001_F-PLANNER-CONTEXT-ACCUMULATOR-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: 分段式越狱（Segmented Jailbreak）
+Func:   多轮上下文规划器（Planner + Context Accumulator）
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 上下文锚定型角色劫持
+Func:   多轮上下文规划器（Planner + Context Accumulator）
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #176
+Shared Nodes: 系统指令解析器（System Prompt Resolver）, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPTFLUX-CTF-JAILBREAK-001_F-SYSTEM-PROMPT-RESOLVER-001_R-JAILBREAK-001] ---
+Attack: CTF pretext jailbreak
+Func:   系统指令解析器（System Prompt Resolver）
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source | Augmented] ---
+Attack: 上下文锚定型角色劫持
+Func:   系统指令解析器（System Prompt Resolver）
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #177
+Shared Nodes: 系统指令解析器（System Prompt Resolver）, 通用越狱（Universal Jailbreak）
+
+--- Existing Chain [chain_A-POLICY-PUPPETRY-001_F-SYSTEM-PROMPT-RESOLVER-001_R-JAILBREAK-UNIVERSAL-001] ---
+Attack: Policy Puppetry（策略傀儡）
+Func:   系统指令解析器（System Prompt Resolver）
+Risk:   通用越狱（Universal Jailbreak）
+
+--- Discovered Chain [Augmented] ---
+Attack: 上下文锚定型角色劫持
+Func:   系统指令解析器（System Prompt Resolver）
+Risk:   通用越狱（Universal Jailbreak）
+--------------------------------------------------------------------------------
+
+Pair #178
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-PROMPT-INJ-INST-OVERRIDE-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 指令覆盖型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 上下文锚定型角色劫持
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #179
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-PROMPT-INJ-ROLE-DECEPTION-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 角色欺骗型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 上下文锚定型角色劫持
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #180
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-STORED-PROMPT-INJ-MCP-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 存储型提示注入（MCP工具中毒）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 上下文锚定型角色劫持
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #181
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-UNVALIDATED-TOOL-DESC-INJ-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 工具描述注入（自然语言注入）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 上下文锚定型角色劫持
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #182
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-TROJFILL-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 模板填充型越狱攻击（TrojFill）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 上下文锚定型角色劫持
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #183
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-JAILBREAK-ODYSSEY-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: Odyssey角色扮演越狱
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 上下文锚定型角色劫持
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #184
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-JAILBREAK-DEV-MODE-V3-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: Developer Mode v3 调试模式越狱
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 上下文锚定型角色劫持
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #185
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-POETRY-JAILBREAK-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 诗性越狱（Adversarial Poetry Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 上下文锚定型角色劫持
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #186
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-PROMPT-INJ-INST-OVERRIDE-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 指令覆盖型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 俳句链式越狱（Haiku Chain Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #187
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-PROMPT-INJ-ROLE-DECEPTION-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 角色欺骗型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 俳句链式越狱（Haiku Chain Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #188
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-STORED-PROMPT-INJ-MCP-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 存储型提示注入（MCP工具中毒）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 俳句链式越狱（Haiku Chain Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #189
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-UNVALIDATED-TOOL-DESC-INJ-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 工具描述注入（自然语言注入）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 俳句链式越狱（Haiku Chain Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #190
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-TROJFILL-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 模板填充型越狱攻击（TrojFill）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 俳句链式越狱（Haiku Chain Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #191
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-JAILBREAK-ODYSSEY-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: Odyssey角色扮演越狱
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 俳句链式越狱（Haiku Chain Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #192
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-JAILBREAK-DEV-MODE-V3-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: Developer Mode v3 调试模式越狱
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 俳句链式越狱（Haiku Chain Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #193
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-POETRY-JAILBREAK-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 诗性越狱（Adversarial Poetry Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 俳句链式越狱（Haiku Chain Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #194
+Shared Nodes: RAG Retriever, 自主漏洞利用代码生成
+
+--- Existing Chain [chain_A-PROMPT-INJECTION-RECON-TO-EXPLOIT-001_F-RAG-RETRIEVER-001_R-AUTONOMOUS-EXPLOIT-GENERATION-001] ---
+Attack: 侦察导向型提示注入（Recon-to-Exploit Prompt Injection）
+Func:   RAG Retriever
+Risk:   自主漏洞利用代码生成
+
+--- Discovered Chain [Augmented] ---
+Attack: 元数据字段混淆型提示注入
+Func:   RAG Retriever
+Risk:   自主漏洞利用代码生成
+--------------------------------------------------------------------------------
+
+Pair #195
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-PROMPT-INJ-INST-OVERRIDE-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 指令覆盖型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 元认知层指令覆盖：'Janus协议'双重身份锚定
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #196
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-PROMPT-INJ-ROLE-DECEPTION-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 角色欺骗型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 元认知层指令覆盖：'Janus协议'双重身份锚定
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #197
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-STORED-PROMPT-INJ-MCP-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 存储型提示注入（MCP工具中毒）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 元认知层指令覆盖：'Janus协议'双重身份锚定
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #198
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-UNVALIDATED-TOOL-DESC-INJ-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 工具描述注入（自然语言注入）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 元认知层指令覆盖：'Janus协议'双重身份锚定
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #199
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-TROJFILL-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 模板填充型越狱攻击（TrojFill）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 元认知层指令覆盖：'Janus协议'双重身份锚定
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #200
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-JAILBREAK-ODYSSEY-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: Odyssey角色扮演越狱
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 元认知层指令覆盖：'Janus协议'双重身份锚定
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #201
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-JAILBREAK-DEV-MODE-V3-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: Developer Mode v3 调试模式越狱
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 元认知层指令覆盖：'Janus协议'双重身份锚定
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #202
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-POETRY-JAILBREAK-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 诗性越狱（Adversarial Poetry Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 元认知层指令覆盖：'Janus协议'双重身份锚定
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #203
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_attack_e5a49ae8bd_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: 多轮对话上下文劫持型提示注入
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 分段注意力稀释攻击（Fragmented Attention Dilution, FAD）
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #204
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_A-NINJA-001_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: Haystack式越狱攻击（NINJA）
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 分段注意力稀释攻击（Fragmented Attention Dilution, FAD）
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #205
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_A-INDIRECT-PROMPT-INJ-RCE-001_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: 间接提示注入触发远程命令执行（Auto-Execute绕过）
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 分段注意力稀释攻击（Fragmented Attention Dilution, FAD）
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #206
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_A-UNICODE-PROMPT-INJECTION-001_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: Unicode控制字符隐式指令注入
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 分段注意力稀释攻击（Fragmented Attention Dilution, FAD）
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #207
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_A-ADAPTIVE-TREE-SEARCH-001_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: 自适应树搜索引导式提示编织
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 分段注意力稀释攻击（Fragmented Attention Dilution, FAD）
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #208
+Shared Nodes: 通过Agent协作链实现的权限提升, Agent发现与跨Agent调用机制
+
+--- Existing Chain [chain_A-SECOND-ORDER-PI-001_F-AGENT-DISCOVERY-001_R-PRIVILEGE-ESCALATION-VIA-AGENT-CHAIN-001] ---
+Attack: 二阶提示注入（跨Agent指令劫持）
+Func:   Agent发现与跨Agent调用机制
+Risk:   通过Agent协作链实现的权限提升
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   Agent发现与跨Agent调用机制
+Risk:   通过Agent协作链实现的权限提升
+--------------------------------------------------------------------------------
+
+Pair #209
+Shared Nodes: 敏感业务数据外泄, 外部邮箱工具连接器
+
+--- Existing Chain [chain_A-PI-EMAIL-ACTION-001_F-EMAIL-TOOL-CONNECTOR-001_R-DATA-EXFILTRATION-001] ---
+Attack: AI代理邮件发送指令注入
+Func:   外部邮箱工具连接器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   外部邮箱工具连接器
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #210
+Shared Nodes: 敏感业务数据外泄, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-MCP-EMAIL-BCC-INJECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-DATA-EXFILTRATION-001] ---
+Attack: 恶意 MCP Server BCC 邮件窃取注入
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #211
+Shared Nodes: 敏感业务数据外泄, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-ACE-JAILBREAK-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-DATA-EXFILTRATION-001] ---
+Attack: ACE三要素协同越狱
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #212
+Shared Nodes: 敏感业务数据外泄, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-PROMPT-INJ-DATA-EXFIL-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-DATA-EXFILTRATION-001] ---
+Attack: 数据外泄型提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #213
+Shared Nodes: 敏感业务数据外泄, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-PROMPT-INJ-COMET-URL-COLLECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-DATA-EXFILTRATION-001] ---
+Attack: CometJacking URL参数提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #214
+Shared Nodes: 敏感业务数据外泄, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-IDE-JSON-SCHEMA-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-DATA-EXFILTRATION-001] ---
+Attack: 远程 JSON Schema 数据外泄型提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   MCP Server 外部工具连接器
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #215
+Shared Nodes: 系统指令绕过（越狱）, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-PROMPT-INJ-EXTERNAL-SOURCE-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-JAILBREAK-001] ---
+Attack: 外部源注入型提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #216
+Shared Nodes: 系统指令绕过（越狱）, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #217
+Shared Nodes: 系统指令绕过（越狱）, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-UNVALIDATED-TOOL-DESC-INJ-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-JAILBREAK-001] ---
+Attack: 工具描述注入（自然语言注入）
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #218
+Shared Nodes: 系统指令绕过（越狱）, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-PROMPTFLUX-OBFS-PROMPT-INJ-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-JAILBREAK-001] ---
+Attack: 硬编码API密钥驱动的提示注入
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   MCP Server 外部工具连接器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #219
+Shared Nodes: MCP Server 外部工具连接器, 远程代码执行 (RCE)
+
+--- Existing Chain [chain_A-INDIRECT-PROMPT-INJ-RCE-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-RCE-002] ---
+Attack: 间接提示注入触发远程命令执行（Auto-Execute绕过）
+Func:   MCP Server 外部工具连接器
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Cross-Source | Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   MCP Server 外部工具连接器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #220
+Shared Nodes: 未经授权的Web请求, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-PI-WEB-FETCH-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-UNAUTHORIZED-WEB-REQUEST-001] ---
+Attack: AI代理Web请求指令注入
+Func:   MCP Server 外部工具连接器
+Risk:   未经授权的Web请求
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   MCP Server 外部工具连接器
+Risk:   未经授权的Web请求
+--------------------------------------------------------------------------------
+
+Pair #221
+Shared Nodes: 通过Agent协作链实现的敏感数据外泄, 输入验证器（Input Validator）
+
+--- Existing Chain [chain_A-SECOND-ORDER-PI-001_F-INPUT-SANITIZER-001_R-DATA-EXFILTRATION-VIA-AGENT-CHAIN-001] ---
+Attack: 二阶提示注入（跨Agent指令劫持）
+Func:   输入验证器（Input Validator）
+Risk:   通过Agent协作链实现的敏感数据外泄
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   输入验证器（Input Validator）
+Risk:   通过Agent协作链实现的敏感数据外泄
+--------------------------------------------------------------------------------
+
+Pair #222
+Shared Nodes: 通过Agent协作链实现的敏感数据外泄, 输入验证器（Input Validator）
+
+--- Existing Chain [chain_A-CONTEXTUAL-PI-002_F-INPUT-SANITIZER-001_R-DATA-EXFILTRATION-VIA-AGENT-CHAIN-001] ---
+Attack: 上下文感知型提示注入（非交互式Payload激活）
+Func:   输入验证器（Input Validator）
+Risk:   通过Agent协作链实现的敏感数据外泄
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   输入验证器（Input Validator）
+Risk:   通过Agent协作链实现的敏感数据外泄
+--------------------------------------------------------------------------------
+
+Pair #223
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #224
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-CONFUSION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 混淆诱导型提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #225
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-ENCODING-OBFUSCATION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 编码混淆型提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #226
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-GCG-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 贪心坐标梯度攻击（GCG）
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #227
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-ASCII-SMUGGLING-ECHOLEAK-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: ASCII走私式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #228
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-ONE-CLICK-URL-PARAM-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 一键式URL参数提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #229
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-UNICODE-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: Unicode控制字符隐式指令注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #230
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-META-PROMPT-CONVERSION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 元提示驱动的诗歌化批量转换
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #231
+Shared Nodes: Output Filter/Parser, 敏感业务数据外泄
+
+--- Existing Chain [chain_A-PROMPT-INJ-DATA-EXFIL-001_F-OUTPUT-FILTER-PARSER-001_R-DATA-EXFILTRATION-001] ---
+Attack: 数据外泄型提示注入
+Func:   Output Filter/Parser
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   Output Filter/Parser
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #232
+Shared Nodes: Output Filter/Parser, 敏感业务数据外泄
+
+--- Existing Chain [chain_A-MEMORY-DUMP-EXFILTRATION-001_F-OUTPUT-FILTER-PARSER-001_R-DATA-EXFILTRATION-001] ---
+Attack: 内存快照外泄
+Func:   Output Filter/Parser
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   Output Filter/Parser
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #233
+Shared Nodes: Output Filter/Parser, 敏感业务数据外泄
+
+--- Existing Chain [chain_A-IMAGE-RENDER-EXFIL-001_F-OUTPUT-FILTER-PARSER-001_R-DATA-EXFILTRATION-001] ---
+Attack: Markdown图像渲染触发数据外泄
+Func:   Output Filter/Parser
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   Output Filter/Parser
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #234
+Shared Nodes: Output Filter/Parser, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-TROJFILL-002_F-OUTPUT-FILTER-PARSER-001_R-JAILBREAK-001] ---
+Attack: 不安全性推理诱导型提示注入
+Func:   Output Filter/Parser
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source | Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   Output Filter/Parser
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #235
+Shared Nodes: 敏感业务数据外泄, ShellExecutor工具调用接口
+
+--- Existing Chain [chain_A-PROMPT-INJ-DIRECT-SHELL-001_F-SHELL-EXECUTOR-001_R-DATA-EXFILTRATION-001] ---
+Attack: 直接提示注入触发ShellExecutor命令执行
+Func:   ShellExecutor工具调用接口
+Risk:   敏感业务数据外泄
+
+--- Discovered Chain [Cross-Source | Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   ShellExecutor工具调用接口
+Risk:   敏感业务数据外泄
+--------------------------------------------------------------------------------
+
+Pair #236
+Shared Nodes: 系统指令绕过（越狱）, ShellExecutor工具调用接口
+
+--- Existing Chain [chain_A-PROMPT-INJ-DIRECT-SHELL-001_F-SHELL-EXECUTOR-001_R-JAILBREAK-001] ---
+Attack: 直接提示注入触发ShellExecutor命令执行
+Func:   ShellExecutor工具调用接口
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   ShellExecutor工具调用接口
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #237
+Shared Nodes: ShellExecutor工具调用接口, 远程代码执行 (RCE)
+
+--- Existing Chain [chain_A-PROMPT-INJ-DIRECT-SHELL-001_F-SHELL-EXECUTOR-001_R-RCE-002] ---
+Attack: 直接提示注入触发ShellExecutor命令执行
+Func:   ShellExecutor工具调用接口
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   ShellExecutor工具调用接口
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #238
+Shared Nodes: ShellExecutor工具调用接口, 远程代码执行 (RCE)
+
+--- Existing Chain [chain_A-INDIRECT-PROMPT-INJ-RCE-001_F-SHELL-EXECUTOR-001_R-RCE-002] ---
+Attack: 间接提示注入触发远程命令执行（Auto-Execute绕过）
+Func:   ShellExecutor工具调用接口
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   ShellExecutor工具调用接口
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #239
+Shared Nodes: ShellExecutor工具调用接口, 远程代码执行 (RCE)
+
+--- Existing Chain [chain_A-MCP-EXT-STOMPING-001_F-SHELL-EXECUTOR-001_R-RCE-002] ---
+Attack: 扩展伪装式MCP API劫持（Extension Stomping）
+Func:   ShellExecutor工具调用接口
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   ShellExecutor工具调用接口
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #240
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-PROMPT-INJ-INST-OVERRIDE-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 指令覆盖型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #241
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-PROMPT-INJ-ROLE-DECEPTION-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 角色欺骗型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #242
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-STORED-PROMPT-INJ-MCP-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 存储型提示注入（MCP工具中毒）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #243
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-UNVALIDATED-TOOL-DESC-INJ-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 工具描述注入（自然语言注入）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #244
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-TROJFILL-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 模板填充型越狱攻击（TrojFill）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #245
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-JAILBREAK-ODYSSEY-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: Odyssey角色扮演越狱
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #246
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-JAILBREAK-DEV-MODE-V3-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: Developer Mode v3 调试模式越狱
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #247
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-POETRY-JAILBREAK-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 诗性越狱（Adversarial Poetry Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #248
+Shared Nodes: 工具参数编码与序列化器, 远程代码执行 (RCE)
+
+--- Existing Chain [chain_A-ARGUMENT-INJECTION-FIND-EXEC-001_F-TOOL-PARAMETER-ENCODER-001_R-RCE-002] ---
+Attack: 预授权命令参数注入：find -exec滥用
+Func:   工具参数编码与序列化器
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   工具参数编码与序列化器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #249
+Shared Nodes: 工具参数编码与序列化器, 远程代码执行 (RCE)
+
+--- Existing Chain [chain_A-DSI-A-001_F-TOOL-PARAMETER-ENCODER-001_R-RCE-002] ---
+Attack: Argument-Exploitation 型数据结构注入
+Func:   工具参数编码与序列化器
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   工具参数编码与序列化器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #250
+Shared Nodes: 外部工作流加载器, 工作流接管 (risk-workflow-takeover)
+
+--- Existing Chain [chain_A-DSI-W-001_F-WORKFLOW-LOADER-001_R-WORKFLOW-TAKEOVER-001] ---
+Attack: Workflow-Exploitation 型数据结构注入
+Func:   外部工作流加载器
+Risk:   工作流接管 (risk-workflow-takeover)
+
+--- Discovered Chain [Augmented] ---
+Attack: 利用Markdown语法逃逸+零宽空格隐写混合混淆
+Func:   外部工作流加载器
+Risk:   工作流接管 (risk-workflow-takeover)
+--------------------------------------------------------------------------------
+
+Pair #251
+Shared Nodes: 系统指令绕过（越狱）, 思维链（CoT）执行器
+
+--- Existing Chain [chain_A-SCPGA-001_F-COT-EXECUTOR-001_R-JAILBREAK-001] ---
+Attack: SCPGA自认同CoT渐进式泛化攻击
+Func:   思维链（CoT）执行器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 动态CoT语法树嫁接攻击
+Func:   思维链（CoT）执行器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #252
+Shared Nodes: 上下文窗口管理器, 模型语义劫持（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-EMERG-002_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: 多模态紧急指令嵌套注入
+Func:   上下文窗口管理器
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 医疗文书格式伪装指令注入
+Func:   上下文窗口管理器
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #253
+Shared Nodes: 思维链推理引擎（CoT Reasoning Engine）, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-SELF-JAILBREAK-001_F-COT-REASONING-ENGINE_R-JAILBREAK-001] ---
+Attack: 自推理越狱（Self-Jailbreaking）
+Func:   思维链推理引擎（CoT Reasoning Engine）
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 反事实自我校准越狱
+Func:   思维链推理引擎（CoT Reasoning Engine）
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #254
+Shared Nodes: 身份核验环节被绕过（越狱）, 输入验证器（Input Validator）
+
+--- Existing Chain [chain_A-PROMPT-INJ-EMERG-001_F-INPUT-SANITIZER-001_R-JAILBREAK-BYPASS-AUTH-001] ---
+Attack: 紧急场景诱导型提示注入
+Func:   输入验证器（Input Validator）
+Risk:   身份核验环节被绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 司法羁押紧急提讯型提示注入
+Func:   输入验证器（Input Validator）
+Risk:   身份核验环节被绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #255
+Shared Nodes: 系统指令绕过（越狱）, LLM分词器编码组件
+
+--- Existing Chain [chain_A-IMPERCEPTIBLE-JAILBREAK-VS_F-TOKENIZER-ENCODING_R-JAILBREAK-001] ---
+Attack: 不可见变体选择器越狱攻击
+Func:   LLM分词器编码组件
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 同形异码空格注入式分词偏移攻击
+Func:   LLM分词器编码组件
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #256
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_attack_e5a49ae8bd_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: 多轮对话上下文劫持型提示注入
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 基于窗口滑动偏移的时序掩蔽越狱攻击
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #257
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_A-NINJA-001_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: Haystack式越狱攻击（NINJA）
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 基于窗口滑动偏移的时序掩蔽越狱攻击
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #258
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_A-INDIRECT-PROMPT-INJ-RCE-001_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: 间接提示注入触发远程命令执行（Auto-Execute绕过）
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 基于窗口滑动偏移的时序掩蔽越狱攻击
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #259
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_A-UNICODE-PROMPT-INJECTION-001_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: Unicode控制字符隐式指令注入
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 基于窗口滑动偏移的时序掩蔽越狱攻击
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #260
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_A-ADAPTIVE-TREE-SEARCH-001_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: 自适应树搜索引导式提示编织
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 基于窗口滑动偏移的时序掩蔽越狱攻击
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #261
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多模态注释注入式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #262
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-CONFUSION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 混淆诱导型提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多模态注释注入式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #263
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-ENCODING-OBFUSCATION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 编码混淆型提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多模态注释注入式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #264
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-GCG-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 贪心坐标梯度攻击（GCG）
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多模态注释注入式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #265
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-ASCII-SMUGGLING-ECHOLEAK-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: ASCII走私式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多模态注释注入式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #266
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-ONE-CLICK-URL-PARAM-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 一键式URL参数提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多模态注释注入式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #267
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-UNICODE-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: Unicode控制字符隐式指令注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多模态注释注入式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #268
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-META-PROMPT-CONVERSION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 元提示驱动的诗歌化批量转换
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多模态注释注入式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #269
+Shared Nodes: 系统指令绕过（越狱）, 模型侧解码工作流（含指令解析与自执行）
+
+--- Existing Chain [chain_A-ROGUEPROMPT-DUALCIPHER-001_F-MODEL-DECODING-WORKFLOW-001_R-JAILBREAK-001] ---
+Attack: RoguePrompt双层密文自重构越狱
+Func:   模型侧解码工作流（含指令解析与自执行）
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多模态注释注入式EchoLeak攻击
+Func:   模型侧解码工作流（含指令解析与自执行）
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #270
+Shared Nodes: RAG Retriever, 自主漏洞利用代码生成
+
+--- Existing Chain [chain_A-PROMPT-INJECTION-RECON-TO-EXPLOIT-001_F-RAG-RETRIEVER-001_R-AUTONOMOUS-EXPLOIT-GENERATION-001] ---
+Attack: 侦察导向型提示注入（Recon-to-Exploit Prompt Injection）
+Func:   RAG Retriever
+Risk:   自主漏洞利用代码生成
+
+--- Discovered Chain [Augmented] ---
+Attack: 多段式元数据拼接型提示注入
+Func:   RAG Retriever
+Risk:   自主漏洞利用代码生成
+--------------------------------------------------------------------------------
+
+Pair #271
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多语言嵌套元指令诱导
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #272
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-CONFUSION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 混淆诱导型提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多语言嵌套元指令诱导
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #273
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-ENCODING-OBFUSCATION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 编码混淆型提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多语言嵌套元指令诱导
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #274
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-GCG-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 贪心坐标梯度攻击（GCG）
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多语言嵌套元指令诱导
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #275
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-ASCII-SMUGGLING-ECHOLEAK-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: ASCII走私式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多语言嵌套元指令诱导
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #276
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-ONE-CLICK-URL-PARAM-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 一键式URL参数提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多语言嵌套元指令诱导
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #277
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-UNICODE-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: Unicode控制字符隐式指令注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多语言嵌套元指令诱导
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #278
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-META-PROMPT-CONVERSION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 元提示驱动的诗歌化批量转换
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多语言嵌套元指令诱导
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #279
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_A-NINJA-001_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: Haystack式越狱攻击（NINJA）
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多轮对话上下文劫持型提示注入
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #280
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_A-INDIRECT-PROMPT-INJ-RCE-001_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: 间接提示注入触发远程命令执行（Auto-Execute绕过）
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多轮对话上下文劫持型提示注入
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #281
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_A-UNICODE-PROMPT-INJECTION-001_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: Unicode控制字符隐式指令注入
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多轮对话上下文劫持型提示注入
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #282
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_A-ADAPTIVE-TREE-SEARCH-001_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: 自适应树搜索引导式提示编织
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多轮对话上下文劫持型提示注入
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #283
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-PROMPT-INJ-INST-OVERRIDE-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 指令覆盖型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多轮对话上下文劫持型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #284
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-PROMPT-INJ-ROLE-DECEPTION-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 角色欺骗型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多轮对话上下文劫持型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #285
+Shared Nodes: 多轮对话上下文劫持型提示注入, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_attack_e5a49ae8bd_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: 多轮对话上下文劫持型提示注入
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多轮对话上下文劫持型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #286
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-STORED-PROMPT-INJ-MCP-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 存储型提示注入（MCP工具中毒）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多轮对话上下文劫持型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #287
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-UNVALIDATED-TOOL-DESC-INJ-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 工具描述注入（自然语言注入）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多轮对话上下文劫持型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #288
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-TROJFILL-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 模板填充型越狱攻击（TrojFill）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多轮对话上下文劫持型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #289
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-JAILBREAK-ODYSSEY-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: Odyssey角色扮演越狱
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多轮对话上下文劫持型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #290
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-JAILBREAK-DEV-MODE-V3-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: Developer Mode v3 调试模式越狱
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多轮对话上下文劫持型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #291
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-POETRY-JAILBREAK-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 诗性越狱（Adversarial Poetry Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 多轮对话上下文劫持型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #292
+Shared Nodes: 系统指令解析器（System Prompt Resolver）, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPTFLUX-CTF-JAILBREAK-001_F-SYSTEM-PROMPT-RESOLVER-001_R-JAILBREAK-001] ---
+Attack: CTF pretext jailbreak
+Func:   系统指令解析器（System Prompt Resolver）
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 学术论文评审 pretext jailbreak
+Func:   系统指令解析器（System Prompt Resolver）
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #293
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-PROMPT-INJ-INST-OVERRIDE-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 指令覆盖型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 寓言体越狱（Adversarial Fable Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #294
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-PROMPT-INJ-ROLE-DECEPTION-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 角色欺骗型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 寓言体越狱（Adversarial Fable Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #295
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-STORED-PROMPT-INJ-MCP-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 存储型提示注入（MCP工具中毒）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 寓言体越狱（Adversarial Fable Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #296
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-UNVALIDATED-TOOL-DESC-INJ-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 工具描述注入（自然语言注入）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 寓言体越狱（Adversarial Fable Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #297
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-TROJFILL-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 模板填充型越狱攻击（TrojFill）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 寓言体越狱（Adversarial Fable Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #298
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-JAILBREAK-ODYSSEY-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: Odyssey角色扮演越狱
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 寓言体越狱（Adversarial Fable Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #299
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-JAILBREAK-DEV-MODE-V3-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: Developer Mode v3 调试模式越狱
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 寓言体越狱（Adversarial Fable Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #300
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-POETRY-JAILBREAK-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 诗性越狱（Adversarial Poetry Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 寓言体越狱（Adversarial Fable Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #301
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 时间维度指令竞争注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #302
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-CONFUSION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 混淆诱导型提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 时间维度指令竞争注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #303
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-ENCODING-OBFUSCATION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 编码混淆型提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 时间维度指令竞争注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #304
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-GCG-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 贪心坐标梯度攻击（GCG）
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 时间维度指令竞争注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #305
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-ASCII-SMUGGLING-ECHOLEAK-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: ASCII走私式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 时间维度指令竞争注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #306
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-ONE-CLICK-URL-PARAM-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 一键式URL参数提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 时间维度指令竞争注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #307
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-UNICODE-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: Unicode控制字符隐式指令注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 时间维度指令竞争注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #308
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-META-PROMPT-CONVERSION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 元提示驱动的诗歌化批量转换
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 时间维度指令竞争注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #309
+Shared Nodes: 多轮上下文规划器（Planner + Context Accumulator）, 模型语义劫持（越狱）
+
+--- Existing Chain [chain_A-JAILBREAK-CLAUDE-CODE-SEGMENTED-001_F-PLANNER-CONTEXT-ACCUMULATOR-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: 分段式越狱（Segmented Jailbreak）
+Func:   多轮上下文规划器（Planner + Context Accumulator）
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 渐进式角色熵增攻击
+Func:   多轮上下文规划器（Planner + Context Accumulator）
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #310
+Shared Nodes: 身份核验环节被绕过（越狱）, 输入验证器（Input Validator）
+
+--- Existing Chain [chain_A-PROMPT-INJ-EMERG-001_F-INPUT-SANITIZER-001_R-JAILBREAK-BYPASS-AUTH-001] ---
+Attack: 紧急场景诱导型提示注入
+Func:   输入验证器（Input Validator）
+Risk:   身份核验环节被绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 灾难响应协同型提示注入
+Func:   输入验证器（Input Validator）
+Risk:   身份核验环节被绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #311
+Shared Nodes: 系统指令解析器（System Prompt Resolver）, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPTFLUX-CTF-JAILBREAK-001_F-SYSTEM-PROMPT-RESOLVER-001_R-JAILBREAK-001] ---
+Attack: CTF pretext jailbreak
+Func:   系统指令解析器（System Prompt Resolver）
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source | Augmented] ---
+Attack: 角色协议降级投毒（Role Protocol Downgrade Poisoning）
+Func:   系统指令解析器（System Prompt Resolver）
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #312
+Shared Nodes: 系统指令解析器（System Prompt Resolver）, 通用越狱（Universal Jailbreak）
+
+--- Existing Chain [chain_A-POLICY-PUPPETRY-001_F-SYSTEM-PROMPT-RESOLVER-001_R-JAILBREAK-UNIVERSAL-001] ---
+Attack: Policy Puppetry（策略傀儡）
+Func:   系统指令解析器（System Prompt Resolver）
+Risk:   通用越狱（Universal Jailbreak）
+
+--- Discovered Chain [Augmented] ---
+Attack: 角色协议降级投毒（Role Protocol Downgrade Poisoning）
+Func:   系统指令解析器（System Prompt Resolver）
+Risk:   通用越狱（Universal Jailbreak）
+--------------------------------------------------------------------------------
+
+Pair #313
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-PROMPT-INJ-INST-OVERRIDE-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 指令覆盖型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 角色协议降级投毒（Role Protocol Downgrade Poisoning）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #314
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-PROMPT-INJ-ROLE-DECEPTION-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 角色欺骗型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 角色协议降级投毒（Role Protocol Downgrade Poisoning）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #315
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-STORED-PROMPT-INJ-MCP-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 存储型提示注入（MCP工具中毒）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 角色协议降级投毒（Role Protocol Downgrade Poisoning）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #316
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-UNVALIDATED-TOOL-DESC-INJ-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 工具描述注入（自然语言注入）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 角色协议降级投毒（Role Protocol Downgrade Poisoning）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #317
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-TROJFILL-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 模板填充型越狱攻击（TrojFill）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 角色协议降级投毒（Role Protocol Downgrade Poisoning）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #318
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-JAILBREAK-ODYSSEY-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: Odyssey角色扮演越狱
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 角色协议降级投毒（Role Protocol Downgrade Poisoning）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #319
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-JAILBREAK-DEV-MODE-V3-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: Developer Mode v3 调试模式越狱
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 角色协议降级投毒（Role Protocol Downgrade Poisoning）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #320
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-POETRY-JAILBREAK-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 诗性越狱（Adversarial Poetry Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 角色协议降级投毒（Role Protocol Downgrade Poisoning）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #321
+Shared Nodes: 持久化驻留, Windows 启动项管理器
+
+--- Existing Chain [chain_A-PROMPTFLUX-PERSISTENCE-001_F-WINDOWS-STARTUP-MANAGER-001_R-PERSISTENCE-001] ---
+Attack: 启动目录投毒持久化
+Func:   Windows 启动项管理器
+Risk:   持久化驻留
+
+--- Discovered Chain [Augmented] ---
+Attack: 计划任务投毒持久化
+Func:   Windows 启动项管理器
+Risk:   持久化驻留
+--------------------------------------------------------------------------------
+
+Pair #322
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 语义角色反转型越狱攻击（RoleFlip）
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #323
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-CONFUSION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 混淆诱导型提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 语义角色反转型越狱攻击（RoleFlip）
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #324
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-ENCODING-OBFUSCATION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 编码混淆型提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 语义角色反转型越狱攻击（RoleFlip）
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #325
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-GCG-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 贪心坐标梯度攻击（GCG）
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 语义角色反转型越狱攻击（RoleFlip）
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #326
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-ASCII-SMUGGLING-ECHOLEAK-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: ASCII走私式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 语义角色反转型越狱攻击（RoleFlip）
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #327
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-ONE-CLICK-URL-PARAM-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 一键式URL参数提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 语义角色反转型越狱攻击（RoleFlip）
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #328
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-UNICODE-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: Unicode控制字符隐式指令注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 语义角色反转型越狱攻击（RoleFlip）
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #329
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-META-PROMPT-CONVERSION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 元提示驱动的诗歌化批量转换
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 语义角色反转型越狱攻击（RoleFlip）
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #330
+Shared Nodes: 系统指令绕过（越狱）, 模型侧解码工作流（含指令解析与自执行）
+
+--- Existing Chain [chain_A-ROGUEPROMPT-DUALCIPHER-001_F-MODEL-DECODING-WORKFLOW-001_R-JAILBREAK-001] ---
+Attack: RoguePrompt双层密文自重构越狱
+Func:   模型侧解码工作流（含指令解析与自执行）
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 语义角色反转型越狱攻击（RoleFlip）
+Func:   模型侧解码工作流（含指令解析与自执行）
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #331
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-PROMPT-INJ-INST-OVERRIDE-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 指令覆盖型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 语义角色反转型越狱攻击（RoleFlip）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #332
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-PROMPT-INJ-ROLE-DECEPTION-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 角色欺骗型提示注入
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 语义角色反转型越狱攻击（RoleFlip）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #333
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-STORED-PROMPT-INJ-MCP-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 存储型提示注入（MCP工具中毒）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 语义角色反转型越狱攻击（RoleFlip）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #334
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-UNVALIDATED-TOOL-DESC-INJ-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 工具描述注入（自然语言注入）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 语义角色反转型越狱攻击（RoleFlip）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #335
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-TROJFILL-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 模板填充型越狱攻击（TrojFill）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 语义角色反转型越狱攻击（RoleFlip）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #336
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-JAILBREAK-ODYSSEY-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: Odyssey角色扮演越狱
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 语义角色反转型越狱攻击（RoleFlip）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #337
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-JAILBREAK-DEV-MODE-V3-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: Developer Mode v3 调试模式越狱
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 语义角色反转型越狱攻击（RoleFlip）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #338
+Shared Nodes: 系统指令绕过（越狱）, System Prompt Store
+
+--- Existing Chain [chain_A-POETRY-JAILBREAK-001_F-SYSTEM-PROMPT-STORE-001_R-JAILBREAK-001] ---
+Attack: 诗性越狱（Adversarial Poetry Jailbreak）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 语义角色反转型越狱攻击（RoleFlip）
+Func:   System Prompt Store
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #339
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_attack_e5a49ae8bd_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: 多轮对话上下文劫持型提示注入
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source | Augmented] ---
+Attack: 跨模态诊疗对话流劫持
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #340
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_A-NINJA-001_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: Haystack式越狱攻击（NINJA）
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source | Augmented] ---
+Attack: 跨模态诊疗对话流劫持
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #341
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_A-INDIRECT-PROMPT-INJ-RCE-001_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: 间接提示注入触发远程命令执行（Auto-Execute绕过）
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source | Augmented] ---
+Attack: 跨模态诊疗对话流劫持
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #342
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_A-UNICODE-PROMPT-INJECTION-001_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: Unicode控制字符隐式指令注入
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source | Augmented] ---
+Attack: 跨模态诊疗对话流劫持
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #343
+Shared Nodes: 系统指令绕过（越狱）, 上下文窗口管理器
+
+--- Existing Chain [chain_A-ADAPTIVE-TREE-SEARCH-001_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-001] ---
+Attack: 自适应树搜索引导式提示编织
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Cross-Source | Augmented] ---
+Attack: 跨模态诊疗对话流劫持
+Func:   上下文窗口管理器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #344
+Shared Nodes: 上下文窗口管理器, 模型语义劫持（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-EMERG-002_F-CONTEXT-WINDOW-MANAGER-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: 多模态紧急指令嵌套注入
+Func:   上下文窗口管理器
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 跨模态诊疗对话流劫持
+Func:   上下文窗口管理器
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #345
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 跨模态诊疗对话流劫持
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #346
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-CONFUSION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 混淆诱导型提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 跨模态诊疗对话流劫持
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #347
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-ENCODING-OBFUSCATION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 编码混淆型提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 跨模态诊疗对话流劫持
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #348
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-PROMPT-INJ-GCG-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 贪心坐标梯度攻击（GCG）
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 跨模态诊疗对话流劫持
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #349
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-ASCII-SMUGGLING-ECHOLEAK-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: ASCII走私式EchoLeak攻击
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 跨模态诊疗对话流劫持
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #350
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-ONE-CLICK-URL-PARAM-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 一键式URL参数提示注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 跨模态诊疗对话流劫持
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #351
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-UNICODE-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: Unicode控制字符隐式指令注入
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 跨模态诊疗对话流劫持
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #352
+Shared Nodes: 输入清洗/验证器, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-META-PROMPT-CONVERSION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-001] ---
+Attack: 元提示驱动的诗歌化批量转换
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 跨模态诊疗对话流劫持
+Func:   输入清洗/验证器
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #353
+Shared Nodes: 输入清洗/验证器, 模型语义劫持（越狱）
+
+--- Existing Chain [chain_A-SHADOWLEAK-HTML-PROMPT-INJECTION-001_F-INPUT-SANITIZER-VALIDATOR-001_R-JAILBREAK-SEMANTIC-HIJACK-001] ---
+Attack: ShadowLeak HTML内嵌提示注入
+Func:   输入清洗/验证器
+Risk:   模型语义劫持（越狱）
+
+--- Discovered Chain [Cross-Source | Augmented] ---
+Attack: 跨模态诊疗对话流劫持
+Func:   输入清洗/验证器
+Risk:   模型语义劫持（越狱）
+--------------------------------------------------------------------------------
+
+Pair #354
+Shared Nodes: LLM内部知识图谱（Knowledge Graph）, 系统指令绕过（越狱）
+
+--- Existing Chain [chain_A-TROJAN-KNOWLEDGE-001_F-KNOWLEDGE-GRAPH-001_R-JAILBREAK-001] ---
+Attack: 知识分解型越狱攻击（Trojan Knowledge Attack）
+Func:   LLM内部知识图谱（Knowledge Graph）
+Risk:   系统指令绕过（越狱）
+
+--- Discovered Chain [Augmented] ---
+Attack: 跨模态诊疗对话流劫持
+Func:   LLM内部知识图谱（Knowledge Graph）
+Risk:   系统指令绕过（越狱）
+--------------------------------------------------------------------------------
+
+Pair #355
+Shared Nodes: MCP Server 外部工具连接器, 远程代码执行 (RCE)
+
+--- Existing Chain [chain_A-INDIRECT-PROMPT-INJ-RCE-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-RCE-002] ---
+Attack: 间接提示注入触发远程命令执行（Auto-Execute绕过）
+Func:   MCP Server 外部工具连接器
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Cross-Source | Augmented] ---
+Attack: 通过 JSON-LD @context 动态解析注入恶意 JavaScript URI Scheme
+Func:   MCP Server 外部工具连接器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #356
+Shared Nodes: 未经授权的Web请求, MCP Server 外部工具连接器
+
+--- Existing Chain [chain_A-PI-WEB-FETCH-001_F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER_R-UNAUTHORIZED-WEB-REQUEST-001] ---
+Attack: AI代理Web请求指令注入
+Func:   MCP Server 外部工具连接器
+Risk:   未经授权的Web请求
+
+--- Discovered Chain [Augmented] ---
+Attack: 通过 JSON-LD @context 动态解析注入恶意 JavaScript URI Scheme
+Func:   MCP Server 外部工具连接器
+Risk:   未经授权的Web请求
+--------------------------------------------------------------------------------
+
+Pair #357
+Shared Nodes: 工具参数编码与序列化器, 远程代码执行 (RCE)
+
+--- Existing Chain [chain_A-ARGUMENT-INJECTION-FIND-EXEC-001_F-TOOL-PARAMETER-ENCODER-001_R-RCE-002] ---
+Attack: 预授权命令参数注入：find -exec滥用
+Func:   工具参数编码与序列化器
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Augmented] ---
+Attack: 通过 JSON-LD @context 动态解析注入恶意 JavaScript URI Scheme
+Func:   工具参数编码与序列化器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+
+Pair #358
+Shared Nodes: 工具参数编码与序列化器, 远程代码执行 (RCE)
+
+--- Existing Chain [chain_A-DSI-A-001_F-TOOL-PARAMETER-ENCODER-001_R-RCE-002] ---
+Attack: Argument-Exploitation 型数据结构注入
+Func:   工具参数编码与序列化器
+Risk:   远程代码执行 (RCE)
+
+--- Discovered Chain [Augmented] ---
+Attack: 通过 JSON-LD @context 动态解析注入恶意 JavaScript URI Scheme
+Func:   工具参数编码与序列化器
+Risk:   远程代码执行 (RCE)
+--------------------------------------------------------------------------------
+

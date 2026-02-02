@@ -140,17 +140,35 @@ def validate_and_insert_edge(cursor, source, target, relation, description, inte
 
 def save_graph_data(conn, data, source_url, intelligence_id):
     cursor = conn.cursor()
+    
+    if not isinstance(data, dict):
+        print(f"    [Error] LLM 返回数据格式错误 (预期为 dict, 实际为 {type(data)})。跳过记录。")
+        cursor.execute("UPDATE intel_core SET extraction_status = 'error' WHERE id = ?", (intelligence_id,))
+        conn.commit()
+        return
+
     if not data.get("graphable", False):
         cursor.execute("UPDATE intel_core SET extraction_status = 'skipped' WHERE id = ?", (intelligence_id,))
         conn.commit()
         return
 
     atomic_chains = data.get("atomic_chains", [])
-    complex_scenarios = data.get("complex_scenarios", [])
+    raw_scenarios = data.get("complex_scenarios", [])
     if not atomic_chains and data.get("scenarios"): atomic_chains = data.get("scenarios")
 
-    print(f"  -> 提取: {len(atomic_chains)} 原子链, {len(complex_scenarios)} 复合场景")
+    complex_scenarios = []
+    if isinstance(raw_scenarios, list):
+        for s in raw_scenarios:
+            if not isinstance(s, dict): continue
+            steps = s.get('steps', [])
+            if len(steps) == 1 and isinstance(steps[0].get('chain'), dict):
+                # 显式降级：单步场景直接转为原子链
+                atomic_chains.append(steps[0]['chain'])
+            elif len(steps) >= 2:
+                complex_scenarios.append(s)
 
+    print(f"  -> 提取: {len(atomic_chains)} 原子链, {len(complex_scenarios)} 复合场景")
+    
     cursor.execute("SELECT id, label, type, description, origin FROM graph_nodes")
     all_existing_nodes = cursor.fetchall()
     existing_nodes_by_type = {}
@@ -166,10 +184,17 @@ def save_graph_data(conn, data, source_url, intelligence_id):
     id_mapping = {}
 
     def process_chain(chain_data):
+        if not isinstance(chain_data, dict):
+            print(f"    [Warning] 跳过格式错误的原子链 (预期为 dict, 实际为 {type(chain_data)}): {chain_data}")
+            return None
+            
         attack_node = chain_data.get('attack')
         func_node = chain_data.get('functionality')
         risk_node = chain_data.get('risk')
-        if not (attack_node and func_node and risk_node): return None
+        if not (isinstance(attack_node, dict) and isinstance(func_node, dict) and isinstance(risk_node, dict)): 
+            atk_label = attack_node.get('label', 'Unknown') if isinstance(attack_node, dict) else str(attack_node)
+            print(f"    [Warning] 跳过数据不完整的原子链 (节点格式错误): {atk_label}")
+            return None
 
         atk_id, atk_is_new = process_node(cursor, attack_node, existing_nodes_dict, existing_nodes_by_type, id_mapping, intelligence_id)
         func_id, _ = process_node(cursor, func_node, existing_nodes_dict, existing_nodes_by_type, id_mapping, intelligence_id)
@@ -194,6 +219,7 @@ def save_graph_data(conn, data, source_url, intelligence_id):
         return (atk_id, func_id, risk_id)
 
     for chain in atomic_chains:
+        if not isinstance(chain, dict): continue
         ids = process_chain(chain)
         if ids:
             atk_id, func_id, risk_id = ids
@@ -201,18 +227,36 @@ def save_graph_data(conn, data, source_url, intelligence_id):
             cursor.execute('INSERT OR IGNORE INTO chains (id, attack_id, func_id, risk_id, source_type, source_refs) VALUES (?, ?, ?, ?, "existing", ?)', (chain_id, atk_id, func_id, risk_id, json.dumps([intelligence_id])))
 
     for scenario in complex_scenarios:
+        if not isinstance(scenario, dict): continue
         s_name = scenario.get('name', '未命名场景')
         s_id = "scenario_" + s_name.lower().replace(" ", "_")
         steps_processed = []
         for step in scenario.get('steps', []):
+            if not isinstance(step, dict): continue
             chain_data = step.get('chain')
             if chain_data:
-                ids = process_chain(chain_data)
-                if ids:
-                    atk_id, func_id, risk_id = ids
-                    c_id = f"chain_{atk_id[:15]}_{func_id[:10]}_{risk_id[:10]}"
-                    cursor.execute('INSERT OR IGNORE INTO chains (id, attack_id, func_id, risk_id, source_type, source_refs) VALUES (?, ?, ?, ?, "existing", ?)', (c_id, atk_id, func_id, risk_id, json.dumps([intelligence_id])))
-                    steps_processed.append({"order": step.get('order'), "chain_id": c_id, "action": chain_data.get('attack', {}).get('label', ''), "resulting_state": step.get('resulting_state', '')})
+                # Handle both inline chain definitions (dict) and chain references (string)
+                if isinstance(chain_data, str):
+                    # It's a chain ID reference - skip processing, just record it
+                    steps_processed.append({
+                        "order": step.get('order'),
+                        "chain_id": chain_data,
+                        "action": step.get('action', ''),
+                        "resulting_state": step.get('resulting_state', '')
+                    })
+                elif isinstance(chain_data, dict):
+                    # It's an inline chain definition - process it
+                    ids = process_chain(chain_data)
+                    if ids:
+                        atk_id, func_id, risk_id = ids
+                        c_id = f"chain_{atk_id}_{func_id}_{risk_id}"
+                        cursor.execute('INSERT OR IGNORE INTO chains (id, attack_id, func_id, risk_id, source_type, source_refs) VALUES (?, ?, ?, ?, "existing", ?)', (c_id, atk_id, func_id, risk_id, json.dumps([intelligence_id])))
+                        steps_processed.append({
+                            "order": step.get('order'),
+                            "chain_id": c_id,
+                            "action": chain_data.get('attack', {}).get('label', ''),
+                            "resulting_state": step.get('resulting_state', '')
+                        })
         if steps_processed:
             cursor.execute('INSERT OR REPLACE INTO scenarios (id, name, description, steps_json, final_state) VALUES (?, ?, ?, ?, ?)', (s_id, s_name, scenario.get('description', ''), json.dumps(steps_processed, ensure_ascii=False), scenario.get('final_state')))
 

@@ -2,7 +2,7 @@
 import sqlite3
 
 def reset_graph():
-    DB_PATH = 'intelligence_v2.db'
+    DB_PATH = '../intelligence_v2.db'
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
@@ -15,7 +15,12 @@ def reset_graph():
         cursor.execute("DELETE FROM edge_evidence")
         print("- 已清空 graph_nodes, graph_edges 和 edge_evidence 表。")
 
-        # 2. 重置情报主表的提取状态
+        # 2. 清空 scenarios 和 chains 表
+        cursor.execute("DELETE FROM scenarios")
+        cursor.execute("DELETE FROM chains")
+        print("- 已清空 scenarios 和 chains 表。")
+
+        # 3. 重置情报主表的提取状态
         # 将所有已提取(extracted)或跳过(skipped)的状态重置为待处理(pending)
         cursor.execute("UPDATE intel_core SET extraction_status = 'pending'")
         print("- 已将所有情报的 extraction_status 重置为 'pending'。")
