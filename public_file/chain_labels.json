@@ -3626,9 +3626,9 @@
         "note": "This existing chain shares 2/3 nodes with the discovered chain. Use it to judge Novelty."
       },
       "human_label": {
-        "reproducibility": -1,
-        "novelty": -1,
-        "notes": ""
+        "reproducibility": 0.6,
+        "novelty": 0,
+        "notes": "只有risk不一样。✅ 攻击手段完全相同✅ 利用的漏洞完全相同❌ 只是后果描述不同。这本质上是同一次攻击的不同危害表现，而非一个新攻击。"
       }
     },
     {
@@ -3673,9 +3673,9 @@
         "note": "This existing chain shares 2/3 nodes with the discovered chain. Use it to judge Novelty."
       },
       "human_label": {
-        "reproducibility": -1,
-        "novelty": -1,
-        "notes": ""
+        "reproducibility": 0.3,
+        "novelty": 0,
+        "notes": "这是对同一攻击的错误重构，而非新发现"
       }
     },
     {
@@ -3908,8 +3908,8 @@
         "note": "This existing chain shares 2/3 nodes with the discovered chain. Use it to judge Novelty."
       },
       "human_label": {
-        "reproducibility": -1,
-        "novelty": -1,
+        "reproducibility": 0.75,
+        "novelty": 0,
         "notes": ""
       }
     },
@@ -4426,8 +4426,8 @@
       },
       "human_label": {
         "reproducibility": -1,
-        "novelty": -1,
-        "notes": ""
+        "novelty": 0.3,
+        "notes": "唯一有意义的例外: Risk 暗示了新的攻击持久性自动化级别"
       }
     },
     {
@@ -5036,10 +5036,10 @@
         "note": "This existing chain shares 2/3 nodes with the discovered chain. Use it to judge Novelty."
       },
       "human_label": {
-        "reproducibility": -1,
-        "novelty": -1,
-        "notes": ""
-      }
+		"reproducibility": 0.1,
+		"novelty": 0.3,
+		"notes": "无效组合:Attack/Func描述Web检索场景(ChatGPT/SearchGPT),Risk描述VSCode环境,环境不匹配。如需体现'越狱→RCE'升级,应使用语义匹配的链路。"
+		}
     },
     {
       "index": 32,
