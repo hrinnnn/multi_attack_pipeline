@@ -35,7 +35,7 @@ def extract_graph_from_text(text: str, source_url: str) -> Dict[str, Any]:
     start_time = time.time()
     try:
         completion = client.chat.completions.create(
-            model="qwen-plus",
+            model="qwen3.5-plus",
             messages=[
                 {'role': 'system', 'content': SYSTEM_PROMPT},
                 {'role': 'user', 'content': user_prompt}
@@ -67,7 +67,7 @@ def merge_node_descriptions(old_desc: str, new_desc: str) -> str:
     start_time = time.time()
     try:
         completion = client.chat.completions.create(
-            model="qwen-plus",
+            model="qwen3.5-plus",
             messages=[
                 {'role': 'user', 'content': prompt}
             ]
@@ -113,7 +113,7 @@ def check_semantic_similarity(new_node: Dict[str, Any], candidates: List[Dict[st
     start_time = time.time()
     try:
         completion = client.chat.completions.create(
-            model="qwen-plus",
+            model="qwen3.5-plus",
             messages=[
                 {'role': 'user', 'content': prompt}
             ],
@@ -149,7 +149,7 @@ def augment_attack_node(original_node_id, original_label, original_desc, context
     start_time = time.time()
     try:
         completion = client.chat.completions.create(
-            model="qwen-plus",
+            model="qwen3.5-plus",
             messages=[{'role': 'user', 'content': prompt}],
             response_format={"type": "json_object"}
         )
