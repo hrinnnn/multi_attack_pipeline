@@ -1,66 +1,178 @@
---- Graph Nodes (Total: 59) ---
+--- Graph Nodes (Total: 171) ---
 
 [ATTACK] nodes:
-  - 紧急场景诱导型提示注入 (ID: A-001)
-  - 多模态紧急凭证伪造型提示注入 (ID: attack_e5a49ae6a8) [augmented]
-  - 时序压缩型语音紧急指令注入 (ID: attack_e697b6e5ba) [augmented]
-  - RAG检索器上下文污染注入 (ID: A-002)
-  - 通过检索器Query重写机制注入伪造元数据过滤条件 (ID: attack_e9809ae8bf) [augmented]
-  - 输出过滤器语义盲区绕过 (ID: A-003)
-  - 间接提示注入（PDF白字隐写） (ID: ai-attack-pi-pdf-white-text)
-  - PDF注释层指令注入（隐藏批注+自动触发） (ID: attack_504446e6b3) [augmented]
-  - 会话劫持与凭证收集 (ID: atk-004)
-  - 直接指令覆盖攻击（Instruction Overriding） (ID: AI-PI-001)
-  - 元指令混淆式覆盖（Meta-Instruction Obfuscation） (ID: attack_e58583e68c) [augmented]
-  - 角色欺骗攻击（Role-Based Deception） (ID: AI-PI-002)
-  - 时间轴欺骗攻击 (ID: attack_e697b6e997) [augmented]
-  - 多语言/同形字混淆绕过（Multilingual & Homoglyph Bypass） (ID: AI-PI-003)
-  - 叙事诱导攻击（Narrative-Based Induction） (ID: AI-PI-004)
-  - 视觉提示注入攻击（Visual Prompt Injection） (ID: AI-PI-006)
-  - 贪婪坐标梯度攻击（Greedy Coordinate Gradient, GCG） (ID: AI-PI-007)
-  - Arbitrary Shell Command Injection via Unsanitized cURL Construction (ID: ATT-001)
-  - 恶意 OAuth 登录话题重定向注入 (ID: A-CPHISH-OAUTH-REDIRECT)
-  - Unicode Variation Selector Jailbreak (ID: A-JB-001)
-  - Unicode ZWJ/ZWNJ 序列混淆攻击 (ID: attack_556e69636f) [augmented]
-  - MCP服务器端提示注入（恶意工具描述+伪造元数据诱导） (ID: A-MCP-PROMPT-INJ-001)
-  - MCP初始化逻辑越狱（Init Hook注入） (ID: A-MCP-JAILBREAK-001)
-  - BreakFun Trojan Schema 注入 (ID: A-BreakFun-TrojanSchema)
+  - 紧急场景诱导型提示注入 (ID: A-PROMPT-INJ-EMERG-001)
+  - 灾难响应协同型提示注入 (ID: attack_e781bee99a) [augmented]
+  - 司法羁押紧急提讯型提示注入 (ID: attack_e58fb8e6b3) [augmented]
+  - 多模态紧急指令嵌套注入 (ID: A-PROMPT-INJ-EMERG-002)
+  - 医疗文书格式伪装指令注入 (ID: attack_e58cbbe796) [augmented]
+  - 跨模态诊疗对话流劫持 (ID: attack_e8b7a8e6a8) [augmented]
+  - 白底白字PDF隐写提示注入 (ID: A-PDF-STEALTH-INJ-001)
+  - ACE三要素协同越狱 (ID: A-ACE-JAILBREAK-001)
+  - 恶意 MCP Server BCC 邮件窃取注入 (ID: A-MCP-EMAIL-BCC-INJECTION-001)
+  - ShadowLeak HTML内嵌提示注入 (ID: A-SHADOWLEAK-HTML-PROMPT-INJECTION-001)
+  - CometJacking URL参数提示注入 (ID: A-PROMPT-INJ-COMET-URL-COLLECTION-001)
+  - 指令覆盖型提示注入 (ID: A-PROMPT-INJ-INST-OVERRIDE-001)
+  - 多轮对话上下文劫持型提示注入 (ID: attack_e5a49ae8bd) [augmented]
+  - 角色欺骗型提示注入 (ID: A-PROMPT-INJ-ROLE-DECEPTION-001)
+  - 上下文锚定型角色劫持 (ID: attack_e4b88ae4b8) [augmented]
+  - 混淆诱导型提示注入 (ID: A-PROMPT-INJ-CONFUSION-001)
+  - 多语言嵌套元指令诱导 (ID: attack_e5a49ae8af) [augmented]
+  - 时间维度指令竞争注入 (ID: attack_e697b6e997) [augmented]
+  - 外部源注入型提示注入 (ID: A-PROMPT-INJ-EXTERNAL-SOURCE-001)
+  - 视觉提示注入 (ID: A-PROMPT-INJ-VISUAL-001)
+  - 编码混淆型提示注入 (ID: A-PROMPT-INJ-ENCODING-OBFUSCATION-001)
+  - 利用Markdown语法逃逸+零宽空格隐写混合混淆 (ID: attack_e588a9e794) [augmented]
+  - 贪心坐标梯度攻击（GCG） (ID: A-PROMPT-INJ-GCG-001)
+  - 数据外泄型提示注入 (ID: A-PROMPT-INJ-DATA-EXFIL-001)
+  - Wave-Echo 音频回声扰动越狱 (ID: A-MULTIMODAL-JAILBREAK-WAVE-ECHO-001)
+  - 存储型提示注入（MCP工具中毒） (ID: A-STORED-PROMPT-INJ-MCP-001)
+  - 工具描述注入（自然语言注入） (ID: A-UNVALIDATED-TOOL-DESC-INJ-001)
+  - 不可见变体选择器越狱攻击 (ID: A-IMPERCEPTIBLE-JAILBREAK-VS)
+  - 同形异码空格注入式分词偏移攻击 (ID: attack_e5908ce5bd) [augmented]
+  - Policy Puppetry（策略傀儡） (ID: A-POLICY-PUPPETRY-001)
+  - 角色协议降级投毒（Role Protocol Downgrade Poisoning） (ID: attack_e8a792e889) [augmented]
+  - ASCII走私式EchoLeak攻击 (ID: A-ASCII-SMUGGLING-ECHOLEAK-001)
+  - Unicode零宽字符混淆式EchoLeak攻击 (ID: attack_556e69636f) [augmented]
+  - 多模态注释注入式EchoLeak攻击 (ID: attack_e5a49ae6a8) [augmented]
+  - 上下文截断越狱 (ID: A-CONTEXT-TRUNCATION-JAILBREAK-001)
+  - 内存快照外泄 (ID: A-MEMORY-DUMP-EXFILTRATION-001)
+  - Schema Trojan 型越狱攻击 (ID: A-BREAKFUN-SCHEMA-TROJAN-001)
+  - Schema 递归引用膨胀型越狱攻击 (ID: attack_536368656d) [augmented]
+  - CTF pretext jailbreak (ID: A-PROMPTFLUX-CTF-JAILBREAK-001)
+  - 学术论文评审 pretext jailbreak (ID: attack_e5ada6e69c) [augmented]
+  - 硬编码API密钥驱动的提示注入 (ID: A-PROMPTFLUX-OBFS-PROMPT-INJ-001)
+  - 启动目录投毒持久化 (ID: A-PROMPTFLUX-PERSISTENCE-001)
+  - 计划任务投毒持久化 (ID: attack_e8aea1e588) [augmented]
+  - 一键式URL参数提示注入 (ID: A-ONE-CLICK-URL-PARAM-001)
+  - Markdown围栏代码块渲染缺陷隐匿提示注入 (ID: A-MARKDOWN-FENCED-BLOCK-OBSCURATION-001)
+  - Markdown 行内代码反引号嵌套逃逸注入 (ID: attack_4d61726b64) [augmented]
+  - AI-targeted cloaking（AI定向伪装） (ID: A-CLOAKING-USER-AGENT-SWITCH-001)
+  - 直接提示注入触发ShellExecutor命令执行 (ID: A-PROMPT-INJ-DIRECT-SHELL-001)
+  - 预授权命令参数注入：find -exec滥用 (ID: A-ARGUMENT-INJECTION-FIND-EXEC-001)
+  - rsync --rsh 滥用实现跨域数据回传 (ID: attack_7273796e63) [augmented]
+  - Omnibox URL混淆型提示注入 (ID: A-OMNIBOX-PROMPT-INJECTION-001)
+  - 模板填充型越狱攻击（TrojFill） (ID: A-TROJFILL-001)
+  - 语义角色反转型越狱攻击（RoleFlip） (ID: attack_e8afade4b9) [augmented]
+  - 不安全性推理诱导型提示注入 (ID: A-TROJFILL-002)
+  - 自推理越狱（Self-Jailbreaking） (ID: A-SELF-JAILBREAK-001)
+  - 反事实自我校准越狱 (ID: attack_e58f8de4ba) [augmented]
+  - KV缓存历史块级替换攻击（History Swapping） (ID: A-KV-HISTORY-SWAP-001)
+  - KV缓存跨层时序错位注入（Temporal Misalignment Injection） (ID: attack_4b56e7bc93) [augmented]
+  - Odyssey角色扮演越狱 (ID: A-JAILBREAK-ODYSSEY-001)
+  - 元认知层指令覆盖：'Janus协议'双重身份锚定 (ID: attack_e58583e8ae) [augmented]
+  - Developer Mode v3 调试模式越狱 (ID: A-JAILBREAK-DEV-MODE-V3-001)
+  - 分段式越狱（Segmented Jailbreak） (ID: A-JAILBREAK-CLAUDE-CODE-SEGMENTED-001)
+  - 渐进式角色熵增攻击 (ID: attack_e6b890e8bf) [augmented]
+  - 侦察导向型提示注入（Recon-to-Exploit Prompt Injection） (ID: A-PROMPT-INJECTION-RECON-TO-EXPLOIT-001)
+  - 元数据字段混淆型提示注入 (ID: attack_e58583e695) [augmented]
+  - 多段式元数据拼接型提示注入 (ID: attack_e5a49ae6ae) [augmented]
+  - 结构化自建模诱导型提示注入（SSM） (ID: A-SSM-001)
+  - Workflow-Exploitation 型数据结构注入 (ID: A-DSI-W-001)
+  - Argument-Exploitation 型数据结构注入 (ID: A-DSI-A-001)
+  - 通过 JSON-LD @context 动态解析注入恶意 JavaScript URI Scheme (ID: attack_e9809ae8bf) [augmented]
+  - Haystack式越狱攻击（NINJA） (ID: A-NINJA-001)
+  - 分段注意力稀释攻击（Fragmented Attention Dilution, FAD） (ID: attack_e58886e6ae) [augmented]
+  - Unicode控制字符隐式指令注入 (ID: A-UNICODE-PROMPT-INJECTION-001)
+  - Web爬虫上下文劫持重述 (ID: A-WEB-CRAWL-CONTEXT-HIJACK-001)
+  - DOM树结构诱导性重排序注入 (ID: attack_444f4de6a0) [augmented]
+  - 诗性越狱（Adversarial Poetry Jailbreak） (ID: A-POETRY-JAILBREAK-001)
+  - 寓言体越狱（Adversarial Fable Jailbreak） (ID: attack_e5af93e8a8) [augmented]
+  - 俳句链式越狱（Haiku Chain Jailbreak） (ID: attack_e4bfb3e58f) [augmented]
+  - 元提示驱动的诗歌化批量转换 (ID: A-META-PROMPT-CONVERSION-001)
+  - RoguePrompt双层密文自重构越狱 (ID: A-ROGUEPROMPT-DUALCIPHER-001)
+  - 间接提示注入触发远程命令执行（Auto-Execute绕过） (ID: A-INDIRECT-PROMPT-INJ-RCE-001)
+  - Markdown图像渲染触发数据外泄 (ID: A-IMAGE-RENDER-EXFIL-001)
+  - AI代理邮件发送指令注入 (ID: A-PI-EMAIL-ACTION-001)
+  - AI代理Web请求指令注入 (ID: A-PI-WEB-FETCH-001)
+  - 扩展伪装式MCP API劫持（Extension Stomping） (ID: A-MCP-EXT-STOMPING-001)
+  - SCPGA自认同CoT渐进式泛化攻击 (ID: A-SCPGA-001)
+  - CoT种子污染式跨模型迁移攻击 (ID: attack_436f54e7a7) [augmented]
+  - 动态CoT语法树嫁接攻击 (ID: attack_e58aa8e680) [augmented]
+  - 二阶提示注入（跨Agent指令劫持） (ID: A-SECOND-ORDER-PI-001)
+  - 上下文感知型提示注入（非交互式Payload激活） (ID: A-CONTEXTUAL-PI-002)
+  - 源码注释型提示注入 + DNS外带 (ID: A-PI-DNS-EXFIL-001)
+  - Markdown图像语法前缀混淆型提示注入 (ID: A-GEMINI-MD-IMG-BYPASS-001)
+  - LLM扫描器诱导型提示注入 (ID: A-PROMPT-INJ-ESLINT-001)
+  - LLM扫描器上下文污染型注释混淆攻击 (ID: attack_4c4c4de689) [augmented]
+  - 工具名混淆型工具冒用（Tool Mimicry） (ID: A-MCP-TOOL-IMPERSONATION-001)
+  - 知识分解型越狱攻击（Trojan Knowledge Attack） (ID: A-TROJAN-KNOWLEDGE-001)
+  - 自适应树搜索引导式提示编织 (ID: A-ADAPTIVE-TREE-SEARCH-001)
+  - 基于窗口滑动偏移的时序掩蔽越狱攻击 (ID: attack_e59fbae4ba) [augmented]
+  - 远程 JSON Schema 数据外泄型提示注入 (ID: A-IDE-JSON-SCHEMA-001)
+  - IDE 设置覆盖型远程代码执行提示注入 (ID: A-IDE-SETTINGS-OVERWRITE-001)
+  - IDE 插件配置覆盖型远程代码执行提示注入 (ID: attack_49444520e6) [augmented]
+  - IDE 调试配置覆盖型远程代码执行提示注入 (ID: attack_49444520e8) [augmented]
+  - GitHub Issue/PR体注入型提示注入（PromptPwnd） (ID: A-PROMPTPWND-GHA-001)
 
 [FUNCTIONALITY] nodes:
-  - Input Sanitizer/Validator (ID: F-001)
-  - RAG Retriever (ID: F-002)
-  - Output Filter/Parser (ID: F-003)
-  - External Tool Connector（search工具接口） (ID: func-external-tool-connector-search)
-  - Input Sanitizer/Validator (ID: f2)
-  - Input Sanitizer/Validator (ID: FUNC-2025-001)
-  - System Prompt Store (ID: FUNC-2025-002)
-  - 上下文窗口管理器 (ID: func-002)
-  - 沙箱执行器 (ID: func-003)
-  - Input Sanitizer/Validator (ID: FUNC-003)
-  - Model Parameter/Weights (ID: FUNC-007)
-  - Copilot Studio Login Topic (ID: F-COPILSTUDIO-LOGIN-TOPIC)
-  - Entra ID 应用权限授予流程 (ID: F-ENTRA-ID-APP-CONSENT-FLOW)
-  - LLM Tokenizer (ID: F-TOK-001)
-  - MCP工具描述与元数据组件（Tool Schema & Metadata） (ID: F-MCP-TOOL-SCHEMA)
-  - MCP服务器初始化钩子（Init Hook / Connection Callback） (ID: F-MCP-INIT-HOOK)
-  - MCP工具后端执行逻辑（Tool Backend Implementation） (ID: F-MCP-TOOL-BACKEND)
-  - Schema 解析器 / 结构化输入处理器 (ID: F-SchemaParser)
+  - 输入验证器（Input Validator） (ID: F-INPUT-SANITIZER-001)
+  - 上下文窗口管理器 (ID: F-CONTEXT-WINDOW-MANAGER-001)
+  - PDF内容解析与上下文载入器 (ID: F-PDF-INGESTOR-001)
+  - AI Agent执行环境（ACE三位一体架构） (ID: F-AGENT-EXECUTION-ENV-001)
+  - MCP Server 外部工具连接器 (ID: F-EXTERNAL-TOOL-CONNECTOR-MCP-SERVER)
+  - Deep Research 检索器 (ID: F-DEEP-RESEARCH-RETRIEVER-001)
+  - 输入清洗/验证器 (ID: F-INPUT-SANITIZER-VALIDATOR-001)
+  - URL参数解析器（collection字段） (ID: F-URL-PARAM-PROCESSOR-COMET-001)
+  - 记忆访问编排器 (ID: F-MEMORY-ACCESS-ORCHESTRATOR-COMET-001)
+  - System Prompt Store (ID: F-SYSTEM-PROMPT-STORE-001)
+  - Multimodal Input Processor (ID: F-MULTIMODAL-INPUT-PROCESSOR-001)
+  - Output Filter/Parser (ID: F-OUTPUT-FILTER-PARSER-001)
+  - 视觉-语言跨模态对齐机制 (ID: F-VLM-CROSSMODAL-ALIGNMENT-001)
+  - 视觉编码器注意力机制 (ID: F-VLM-ATTENTION-MECHANISM-001)
+  - RAG Retriever (ID: F-RAG-RETRIEVER-001)
+  - LLM分词器编码组件 (ID: F-TOKENIZER-ENCODING)
+  - 系统指令解析器（System Prompt Resolver） (ID: F-SYSTEM-PROMPT-RESOLVER-001)
+  - 结构化Schema解析器 (ID: F-SCHEMA-PROCESSOR-001)
+  - Windows 启动项管理器 (ID: F-WINDOWS-STARTUP-MANAGER-001)
+  - SearchGPT 检索器 (ID: F-SEARCHGPT-RETRIEVER)
+  - ChatGPT 记忆存储 (ID: F-CHATGPT-MEMORY-STORE)
+  - Markdown 渲染器 (ID: F-MARKDOWN-RENDERER)
+  - ShellExecutor工具调用接口 (ID: F-SHELL-EXECUTOR-001)
+  - 工具参数校验器 (ID: F-TOOL-PARAMETER-VALIDATOR-001)
+  - Omnibox 输入路由组件 (ID: F-OMNIBOX-INPUT-ROUTER-001)
+  - 思维链推理引擎（CoT Reasoning Engine） (ID: F-COT-REASONING-ENGINE)
+  - KV缓存管理器 (ID: F-KV-CACHE-MANAGER)
+  - 多轮上下文规划器（Planner + Context Accumulator） (ID: F-PLANNER-CONTEXT-ACCUMULATOR-001)
+  - 工具参数编码与序列化器 (ID: F-TOOL-PARAMETER-ENCODER-001)
+  - 外部工作流加载器 (ID: F-WORKFLOW-LOADER-001)
+  - 模型侧解码工作流（含指令解析与自执行） (ID: F-MODEL-DECODING-WORKFLOW-001)
+  - 外部邮箱工具连接器 (ID: F-EMAIL-TOOL-CONNECTOR-001)
+  - 思维链（CoT）执行器 (ID: F-COT-EXECUTOR-001)
+  - Agent发现与跨Agent调用机制 (ID: F-AGENT-DISCOVERY-001)
+  - execute_command工具调用机制 (ID: F-SYSTEM-PROMPT-EXECUTE-COMMAND)
+  - Export to Colab 导出管道 (ID: F-MARKDOWN-EXPORT-PIPELINE-001)
+  - RAG增强型AI代码审查代理 (ID: F-RAG-SCANNER-001)
+  - MCP工具注册表动态解析器 (ID: F-MCP-TOOL-REGISTRY-RESOLUTION)
+  - LLM内部知识图谱（Knowledge Graph） (ID: F-KNOWLEDGE-GRAPH-001)
+  - IDE 配置加载器 (ID: F-IDE-CONFIG-LOADER)
+  - IDE 多根工作区管理器 (ID: F-IDE-WORKSPACE-MANAGER)
+  - GitHub Actions Prompt Ingestor (ID: F-GHA-PROMPT-INGESTOR-001)
 
 [RISK] nodes:
-  - 敏感医疗数据明文泄露 (ID: R-001)
-  - 越权数据检索 (ID: R-002)
-  - 结构化敏感信息外泄 (ID: R-003)
-  - 通过Web日志通道的隐蔽数据外泄 (ID: risk-data-exfiltration-via-web-log)
-  - Prompt Injection indiretta attraverso input non validato (ID: r2)
-  - 凭证窃取 (ID: risk-001)
-  - 社会工程成功 (ID: risk-002)
-  - 绕过静态分析与沙箱检测 (ID: risk-003)
-  - 系统指令失效（System Prompt Bypass） (ID: RISK-001)
-  - 输出过滤降级（Output Filter Degradation） (ID: RISK-004)
-  - 第三方内容污染（Third-Party Content Poisoning） (ID: RISK-005)
-  - 模态通道污染（Modality Channel Poisoning） (ID: RISK-006)
-  - 对齐边界侵蚀（Alignment Boundary Erosion） (ID: RISK-007)
-  - OAuth 访问令牌劫持与会话接管 (ID: R-OAUTH-TOKEN-HIJACK)
-  - Safety Alignment Circumvention (ID: R-JB-001)
-  - Privilege Escalation via Context Poisoning (ID: R-PI-001)
-  - 结构化敏感数据明文泄露（含凭证、schema、业务逻辑） (ID: R-DATA-LEAKAGE-001)
+  - 身份核验环节被绕过（越狱） (ID: R-JAILBREAK-BYPASS-AUTH-001)
+  - 模型语义劫持（越狱） (ID: R-JAILBREAK-SEMANTIC-HIJACK-001)
+  - 敏感业务数据外泄 (ID: R-DATA-EXFILTRATION-001)
+  - 系统指令绕过（越狱） (ID: R-JAILBREAK-001)
+  - 不可见提示注入 (ID: R-PROMPT-INJECTION-IMPERCEPTIBLE)
+  - 通用越狱（Universal Jailbreak） (ID: R-JAILBREAK-UNIVERSAL-001)
+  - PII数据明文外泄 (ID: R-PII-EXFILTRATION-001)
+  - 上下文污染 (ID: R-CONTEXT-POLLUTION-001)
+  - 截断边界越狱 (ID: R-JAILBREAK-CONTEXT-TRUNCATED-001)
+  - 持久化驻留 (ID: R-PERSISTENCE-001)
+  - 持久化敏感数据外泄 (ID: R-PERSISTENT-DATA-EXFILTRATION-001)
+  - 非授权数据外泄（data-exfiltration-unprompted-sql） (ID: R-DATA-EXFILTRATION-VIA-UNPROMPTED-SQL-001)
+  - 凭证窃取 (ID: R-CREDENTIAL-EXFILTRATION-001)
+  - 远程代码执行 (RCE) (ID: R-RCE-002)
+  - 自主漏洞利用代码生成 (ID: R-AUTONOMOUS-EXPLOIT-GENERATION-001)
+  - 元认知级越狱（已知风险下的确定性违规执行） (ID: R-JAILBREAK-META-AWARE-001)
+  - 工具调用劫持 (risk-tool-call-hijack) (ID: R-TOOL-HIJACK-001)
+  - 工作流接管 (risk-workflow-takeover) (ID: R-WORKFLOW-TAKEOVER-001)
+  - 大规模虚假信息传播 (ID: R-DISINFORMATION-DISSEMINATION-001)
+  - 未经授权的Web请求 (ID: R-UNAUTHORIZED-WEB-REQUEST-001)
+  - 系统提示词泄露 (ID: R-SYSTEM-PROMPT-LEAK-001)
+  - 通过Agent协作链实现的权限提升 (ID: R-PRIVILEGE-ESCALATION-VIA-AGENT-CHAIN-001)
+  - 通过Agent协作链实现的敏感数据外泄 (ID: R-DATA-EXFILTRATION-VIA-AGENT-CHAIN-001)
+  - AI安全扫描器越狱（误判豁免） (ID: R-JAILBREAK-SCANNER-001)
+  - 工作区路径逃逸 (ID: R-PATH-ESCAPE-001)
+  - 越权工具调用导致的系统越狱与凭证泄露 (ID: R-JAILBREAK-TOOL-EXEC-001)

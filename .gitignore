@@ -10,3 +10,12 @@ ENV/
 *.db
 *.sqlite3
 
+# Attack Pipeline - runtime outputs
+# (logs contain mock API keys generated during attack simulation,
+#  which trigger GitHub Secret Scanning false positives)
+auto_attack_pipeline/logs/
+auto_attack_pipeline/sandbox/
+auto_attack_pipeline/pipeline_results.json
+auto_attack_pipeline/batch_run_results.json
+auto_attack_pipeline/phase1_full_results.json
+auto_attack_pipeline/*.json
