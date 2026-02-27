@@ -109,14 +109,22 @@ def run_pair_on_chain(chain: AttackChain, kb: GraphKnowledgeBase,
             log_print(f"  [Target {t_target:.1f}s] Response (前100字): {response[:100]}...")
             time.sleep(API_DELAY)
 
-            # Step 3: Judge LLM 评判
+            # Step 3: Judge LLM 双维度评判
             t0 = time.time()
             judge_result = judge_attack(payload, response, risk)
-            score = judge_result["score"]
-            judge_reason = judge_result["reason"]
+            score = judge_result["score"]           # realization_score（向后兼容）
+            severity_score = judge_result.get("severity_score", 0)
+            judge_reason = judge_result["reason"]   # realization_reason
             evidence = judge_result.get("evidence", "")
+            missing_steps = judge_result.get("missing_steps", "")
             t_judge = time.time() - t0
-            log_print(f"  Judge Score: {score}/10 [{t_judge:.1f}s] | {judge_reason[:80]}")
+            log_print(
+                f"  [Judge {t_judge:.1f}s] "
+                f"危险度={severity_score}/10  实现度={score}/10 | "
+                f"{judge_reason[:80]}"
+            )
+            if missing_steps and missing_steps != "无":
+                log_print(f"  [Judge] 未达成步骤: {missing_steps[:80]}")
             time.sleep(API_DELAY)
             
             # 将本轮的交互全量留存入历史列表
@@ -125,6 +133,7 @@ def run_pair_on_chain(chain: AttackChain, kb: GraphKnowledgeBase,
                 "payload": payload,
                 "response": response,
                 "score": score,
+                "severity_score": severity_score,
                 "judge_reason": judge_reason
             })
 
@@ -140,8 +149,12 @@ def run_pair_on_chain(chain: AttackChain, kb: GraphKnowledgeBase,
                     "strategy": strategy,
                     "payload": payload,
                     "response": response,
-                    "score": score,
+                    "realization_score": score,
+                    "severity_score": severity_score,
+                    "score": score,              # 向后兼容
                     "judge_reason": judge_reason,
+                    "severity_reason": judge_result.get("severity_reason", ""),
+                    "missing_steps": missing_steps,
                     "evidence": evidence,
                     "timestamp": datetime.now().isoformat(),
                 }
@@ -203,6 +216,17 @@ def run_pair_on_chain(chain: AttackChain, kb: GraphKnowledgeBase,
             "evidence": "",
         }
 
+        # ---- 失败后：尝试模式B横向跳转 (寻找防御更弱的组件) ----
+        jump_results = _run_failure_jump(
+            base_chain=chain,
+            kb=kb,
+            max_iters=max_iters,
+            log_file=log_file,
+            verbose=verbose,
+        )
+        if jump_results:
+            final_result["failure_jumps"] = jump_results
+
     return final_result
 
 
@@ -255,6 +279,52 @@ def _run_lateral_expansion(
         lateral_results.append(result)
 
     return lateral_results
+
+
+def _run_failure_jump(
+    base_chain: AttackChain,
+    kb: GraphKnowledgeBase,
+    max_iters: int,
+    log_file: Optional[str],
+    verbose: bool,
+) -> list:
+    """
+    攻击失败后的"换靶子"尝试（模式B 跳转）。
+    寻找具有相同攻击手法但不同组件（Func）的 discovered chain。
+    """
+    log_print = print if verbose else (lambda *a, **k: None)
+    jump_results = []
+
+    # 只关注 Pattern B: 相同 Attack，尝试不同组件
+    candidates = kb.get_discovered_chains_same_attack_risk(
+        attack_id=base_chain.attack.id,
+        risk_id=base_chain.risk.id,
+        exclude_func_id=base_chain.func.id,
+    )
+
+    if not candidates:
+        return []
+
+    log_print(f"\n  [失败跳转] 原始组件攻不破，发现 {len(candidates)} 条相同手法的候选组件，尝试跳转...")
+    for cand in candidates:
+        validation = validate_chain(cand)
+        if not validation["valid"]:
+            log_print(f"  [语义检查] ✗ 跳转至 {cand.func.label} 无效: {validation['reason']}")
+            continue
+
+        log_print(f"  [语义检查] ✓ 跳转至 {cand.id} 有效，开始补救攻击...")
+        result = run_pair_on_chain(
+            chain=cand,
+            kb=kb,
+            verbose=verbose,
+            max_iters=max_iters,
+            log_file=log_file,
+        )
+        result["jump_type"] = "Pattern_B_Failure_Jump"
+        result["base_chain_id"] = base_chain.id
+        jump_results.append(result)
+
+    return jump_results
 
 
 # ------------------------------------------------------------------ #

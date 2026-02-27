@@ -9,6 +9,7 @@ import re
 from openai import OpenAI
 from tool_target import ToolTarget
 from target_builder import TargetBuilder
+from coze_target import CozeTarget
 
 TARGET_MODEL = "qwen2.5-7b-instruct"
 
@@ -167,9 +168,14 @@ class MCPTarget:
 def get_target(chain):
     """
     根据 AttackChain 节点信息返回对应靶机实例。
-    采用“混合驱动”策略：先匹配 L1 静态库，未能命中则调用 TargetBuilder 动态生成。
-    这里为了方便演示，我们修改了原本只传 `func_label` 的方法定义，改为传入完整的 `chain` 对象。
     """
+    # ---- 优先检查是否配置了真实 Coze 靶机 ----
+    coze_token = os.getenv("COZE_TOKEN")
+    coze_bot_id = os.getenv("COZE_BOT_ID")
+    if coze_token and coze_bot_id:
+        print(f"[Router] 检测到 Coze 凭证，将所有攻击均打向真实 Coze Bot (ID: {coze_bot_id})")
+        return CozeTarget(bot_id=coze_bot_id, token=coze_token)
+
     func_label = chain.func.label
     label_lower = func_label.lower()
     
