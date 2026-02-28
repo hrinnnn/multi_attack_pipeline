@@ -64,7 +64,7 @@ class CozeTarget:
             if not self.conversation_id:
                 self.conversation_id = conv_id
             # 2. 简易轮询等待结果 (Polling)
-            print(f"  [Coze] 任务已创建 (ChatID: {chat_id})，正在等待 Bot 思考...")
+            print(f"  [Coze] 任务已创建 (ChatID: {chat_id})，正在等待 Bot 思考...", flush=True)
             for attempt in range(24): # 最多等待 120s
                 time.sleep(3) # 缩短到 3s 查一次
                 retrieve_resp = requests.get(
@@ -76,7 +76,7 @@ class CozeTarget:
                 retrieve_data = retrieve_resp.json()
                 status = retrieve_data.get("data", {}).get("status", "")
                 
-                print(f"  [Coze] 当前状态: {status} (第 {attempt+1} 次尝试)")
+                print(f"  [Coze] 当前状态: {status} (第 {attempt+1} 次尝试)", flush=True)
 
                 if status == "completed":
                     # === Step 3: 获取回答消息 ===
@@ -87,11 +87,30 @@ class CozeTarget:
                         timeout=15,
                     )
                     messages = msg_resp.json().get("data", [])
-                    # 找到最后一条 assistant 的 answer 消息
-                    for msg in reversed(messages):
-                        if msg.get("role") == "assistant" and msg.get("type") == "answer":
-                            return msg.get("content", "").strip()
-                    return "[Coze] Completed but no answer found."
+                    # 提取中间件执行流和终态答案
+                    trace = []
+                    final_answer = ""
+                    for msg in messages:
+                        msg_type = msg.get("type")
+                        role = msg.get("role")
+                        content = msg.get("content", "")
+                        
+                        if msg_type == "function_call":
+                            trace.append(f"[Tool Call] {content}")
+                        elif msg_type == "tool_response":
+                            # 截断过长的工具返回值避免爆破 token
+                            trace.append(f"[Tool Result] {content[:500]} {'...' if len(content)>500 else ''}")
+                        elif msg_type == "verbose":
+                            trace.append(f"[Thinking] {content}")
+                        elif msg_type == "answer" and role == "assistant":
+                            final_answer = content.strip()
+                            
+                    if trace:
+                        return "\n".join(trace + [f"[Final Answer]\n{final_answer}"])
+                    elif final_answer:
+                        return final_answer
+                    else:
+                        return "[Coze] Completed but no answer found."
 
                 if status in ["failed", "canceled", "requires_action"]:
                     return f"[Coze Error] Chat ended with status: {status}"
@@ -108,8 +127,11 @@ class CozeTarget:
 
 if __name__ == "__main__":
     # 冒烟测试
-    from dotenv import load_dotenv
-    load_dotenv()
+    try:
+        from dotenv import load_dotenv
+        load_dotenv()
+    except ImportError:
+        pass
     t = CozeTarget(
         bot_id=os.getenv("COZE_BOT_ID"),
         token=os.getenv("COZE_TOKEN"),

@@ -15,6 +15,7 @@ from attacker import generate_payload
 from judge import judge_attack
 from environment_router import get_target
 from chain_validator import validate_chain
+from openclaw_bridge import OpenClawBridge
 
 # ------------------------------------------------------------------ #
 #  超参数
@@ -48,6 +49,7 @@ def run_pair_on_chain(chain: AttackChain, kb: GraphKnowledgeBase,
     total_iters = 0
     switch_count = 0
     final_result = None
+    score = 0  # 初始化 score，防止 payload 全部跳过时引发 UnboundLocalError
 
     log_print = print if verbose else (lambda *a, **k: None)
 
@@ -342,11 +344,18 @@ def run_pipeline(
     max_iters_override: Optional[int] = None,
     log_dir: str = "logs",
     skip_tested: bool = False,
+    only_existing: bool = False,
+    use_openclaw: bool = False,
 ):
     kb = GraphKnowledgeBase(db_path=db_path)
     effective_max_iters = max_iters_override if max_iters_override else MAX_ITERS
 
-    # 创建日志目录
+    # 生成本次 Run 的根目录
+    session_time = datetime.now().strftime('%Y%m%d_%H%M%S')
+    archive_root = Path("run_archives") / f"{session_time}_Session"
+    archive_root.mkdir(parents=True, exist_ok=True)
+    
+    # 兼容老的 log_dir
     Path(log_dir).mkdir(parents=True, exist_ok=True)
 
     if chain_ids:
@@ -355,37 +364,89 @@ def run_pipeline(
     elif phase1_only:
         chains = kb.get_phase1_chains(limit=max_chains)
     elif skip_tested:
-        chains = kb.get_untested_chains(max_count=max_chains)
-        print(f"[Pipeline] 模式: 跳过已测链路，优先选取未泣试的 existing chain")
+        all_untested = kb.get_untested_chains(max_count=1000, source_type="existing" if only_existing else None)
+        chains = [c for c in all_untested if (not func_keyword or func_keyword == "ALL" or func_keyword in c.func.label)][:max_chains]
+        print(f"[Pipeline] 模式: 跳过已测链路 (Existing Only: {only_existing})")
+    elif only_existing:
+        all_existing = kb.get_all_chains(source_type="existing")
+        chains = [c for c in all_existing if (not func_keyword or func_keyword == "ALL" or func_keyword in c.func.label)][:max_chains]
     else:
-        chains = kb.get_feasible_chains_by_func(func_keyword)
-        chains = chains[:max_chains]
+        if not func_keyword or func_keyword == "ALL":
+            chains = kb.get_all_chains()[:max_chains]
+        else:
+            chains = kb.get_feasible_chains_by_func(func_keyword)[:max_chains]
 
     print(f"\n[Pipeline] 将对 {len(chains)} 条链路发起攻击")
     print(f"[Pipeline] 参数: MAX_ITERS={effective_max_iters}, SUCCESS_THRESHOLD={SUCCESS_THRESHOLD}, "
           f"MAX_STRATEGY_SWITCHES={MAX_STRATEGY_SWITCHES}")
-    print(f"[Pipeline] 日志目录: {log_dir}/")
+    print(f"[Pipeline] 归档目录: {archive_root}/")
     print(f"[Pipeline] 开始时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
 
     all_results = []
     success_count = 0
     failed_count = 0
+    
+    bridge = OpenClawBridge() if use_openclaw else None
+    coze_bot_id = os.getenv("COZE_BOT_ID", "")
 
     for i, chain in enumerate(chains):
         print(f"\n{'#'*60}")
         print(f"# [{i+1}/{len(chains)}] {chain.attack.label}")
         print(f"{'#'*60}")
 
-        # 每条链路一个独立日志文件（清除旧日志）
+        # 为本条链路建立单独归档子目录
         safe_id = chain.id.replace("/", "_")[:80]
-        log_file = os.path.join(log_dir, f"{safe_id}.jsonl")
-        if os.path.exists(log_file):
-            os.remove(log_file)
+        chain_dir = archive_root / safe_id
+        chain_dir.mkdir(parents=True, exist_ok=True)
+        
+        # 保存 Metadata
+        with open(chain_dir / "00_chain_meta.json", "w", encoding="utf-8") as f:
+            json.dump({
+                "chain_id": chain.id,
+                "attack": chain.attack.__dict__,
+                "func": chain.func.__dict__,
+                "risk": chain.risk.__dict__,
+                "source_type": chain.source_type
+            }, f, ensure_ascii=False, indent=2)
+
+        # ====== OpenClaw 动态靶机配置阶段 ======
+        if bridge and coze_bot_id:
+            print(f"[Pipeline] 调用 OpenClaw 为 Chain {safe_id} 构建独立靶机...")
+            setup_log = bridge.setup_target_environment(
+                attack_label=chain.attack.label,
+                func_label=chain.func.label,
+                risk_label=chain.risk.label,
+                bot_id=coze_bot_id
+            )
+            with open(chain_dir / "01_openclaw_setup.log", "w", encoding="utf-8") as f:
+                f.write(setup_log or "OPENCLAW SETUP FAILED OR RETURNED NONE")
+                
+            if setup_log and "无法构建环境" in setup_log:
+                print(f"[Pipeline] ⚠️ OpenClaw 评估能力无法构建 {chain.func.label} 的靶场环境，跳过本链路")
+                
+                result = {
+                    "status": "skipped",
+                    "chain_id": chain.id,
+                    "score": 0,
+                    "reason": "OpenClaw 无法支持的组件或靶标环境: " + (setup_log.split('无法构建环境')[-1][:100].strip())
+                }
+                all_results.append(result)
+                continue
+        # =======================================
+
+        # 设置交互日志记录文件（取代老的单一文件）
+        log_file = str(chain_dir / "03_coze_responses.jsonl")
 
         result = run_pair_on_chain(chain, kb, verbose=verbose,
                                    max_iters=effective_max_iters,
                                    log_file=log_file)
         all_results.append(result)
+
+        # ====== OpenClaw 环境清理销毁阶段 ======
+        if bridge and coze_bot_id:
+            print(f"[Pipeline] 触发 OpenClaw 清理靶机状态...")
+            bridge.teardown_target_environment(bot_id=coze_bot_id)
+        # =======================================
 
         if result["status"] == "success":
             success_count += 1

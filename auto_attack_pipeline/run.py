@@ -29,14 +29,17 @@ sys.path.insert(0, os.path.dirname(__file__))
 from pipeline import run_pipeline
 
 
+from dotenv import load_dotenv
+
 def main():
+    load_dotenv()
     parser = argparse.ArgumentParser(
         description="图谱增强版 PAIR 自动攻击复现 Pipeline",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument(
-        "--func", type=str, default="上下文窗口",
-        help="Func 节点标签关键词过滤（如 '上下文窗口', 'RAG', '输入验证'）"
+        "--func", type=str, default="ALL",
+        help="Func 节点标签关键词过滤（如 '上下文窗口', 'RAG', '输入验证'，传 'ALL' 表示不过滤）"
     )
     parser.add_argument(
         "--max-iters", type=int, default=None,
@@ -75,6 +78,14 @@ def main():
         "--skip-tested", action="store_true",
         help="跳过已经测试过的链路，只选取尚未测试的 existing chain"
     )
+    parser.add_argument(
+        "--only-existing", action="store_true",
+        help="强制仅筛选图谱数据库中来源为 existing (人类总结) 的真实漏洞链路"
+    )
+    parser.add_argument(
+        "--use-openclaw", action="store_true",
+        help="在打靶前阻塞调用 OpenClaw 动态去 Coze 根据链路类型挂载所需插件环境"
+    )
 
     args = parser.parse_args()
 
@@ -108,6 +119,8 @@ def main():
         phase1_only=args.phase1,
         max_iters_override=args.max_iters,
         skip_tested=args.skip_tested,
+        only_existing=args.only_existing,
+        use_openclaw=args.use_openclaw,
     )
 
 
